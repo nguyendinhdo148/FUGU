@@ -1,31 +1,40 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "../lib/utils";
 
 export const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
-  // Kiểm tra theme đã lưu khi component mount
   useEffect(() => {
+    // Kiểm tra theme từ localStorage
     const storedTheme = localStorage.getItem("theme");
-
-    if (storedTheme === "dark") {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setIsDarkMode(true);
+    
+    // Nếu không có stored theme, mặc định là dark
+    if (!storedTheme) {
+      localStorage.setItem("theme", "dark");
       document.documentElement.classList.add("dark");
+      setIsDarkMode(true);
+    } else if (storedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      setIsDarkMode(true);
     } else {
-      localStorage.setItem("theme", "light");
-      setIsDarkMode(false);
       document.documentElement.classList.remove("dark");
+      setIsDarkMode(false);
     }
   }, []);
 
   const toggleTheme = () => {
-    const nextTheme = isDarkMode ? "light" : "dark";
-
+    const newTheme = !isDarkMode ? "dark" : "light";
+    
     setIsDarkMode(!isDarkMode);
-    localStorage.setItem("theme", nextTheme);
-    document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", newTheme);
+    
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   };
 
   return (
@@ -44,7 +53,7 @@ export const ThemeToggle = () => {
       {isDarkMode ? (
         <Sun className="h-5 w-5 text-yellow-400" />
       ) : (
-        <Moon className="h-5 w-5 text-blue-900 dark:text-blue-300" />
+        <Moon className="h-5 w-5 text-slate-700" />
       )}
     </button>
   );

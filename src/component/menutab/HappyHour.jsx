@@ -31,30 +31,17 @@ export const HappyHour = ({ drinks }) => {
   {/* Main Title Section */}
   <div className="mb-10">
     <div className="flex flex-col items-center gap-6">
-      <div className="relative">
-        <div className="w-24 h-24 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 rounded-full flex items-center justify-center shadow-2xl">
-          <div className="w-20 h-20 bg-gradient-to-tr from-yellow-300 to-orange-400 rounded-full flex items-center justify-center shadow-inner">
-            <span className="text-4xl">🍹</span>
-          </div>
-        </div>
-        <div className="absolute -top-2 -right-2 w-10 h-10 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center animate-pulse">
-          <span className="text-lg">🔥</span>
-        </div>
-      </div>
       
-      <div className="space-y-3">
-        <h1 className="text-5xl md:text-6xl font-black tracking-tight">
-          <span className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 bg-clip-text text-transparent">
-            HAPPY HOUR
-          </span>
-        </h1>
-        <p className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100">
-          All Cocktails Just 
-          <span className="ml-3 text-transparent bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text">
-            99,000 VND
-          </span>
-        </p>
-      </div>
+      
+      <div className="space-y-2">
+          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto mb-4"></div>
+          <span className="text-amber-600 font-semibold tracking-widest text-xs uppercase">
+            Happy Hour
+          </span> 
+          <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-serif tracking-tight">
+          All Cocktails Just 99K
+        </h3>
+</div>
     </div>
   </div>
 
@@ -64,51 +51,37 @@ export const HappyHour = ({ drinks }) => {
       {/* Background glow effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-amber-400/20 via-orange-500/20 to-red-500/20 blur-3xl -z-10"></div>
       
-      <div className="relative bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 rounded-2xl p-1 shadow-xl">
-        <div className="bg-white dark:bg-gray-900 rounded-xl p-1">
-          <div className="relative bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 rounded-xl p-6">
-            {/* Shimmer effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
-            
-            <div className="relative z-10 flex items-center justify-between max-w-2xl mx-auto">
-              {/* Start Time */}
-              <div className="flex flex-col items-center space-y-2 flex-1">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/20">
-                  <span className="text-2xl font-bold text-white">5:00</span>
-                </div>
-                <div className="text-center">
-                  <div className="text-white font-bold text-lg">START</div>
-                  <div className="text-white/80 text-sm">5:00 PM</div>
-                </div>
-              </div>
-
-              {/* Arrow Divider */}
-              <div className="flex flex-col items-center space-y-2 px-8">
-                <div className="relative">
-                  <div className="text-4xl text-white animate-pulse">➜</div>
-                  <div className="absolute -top-3 -right-3">
-                    <div className="bg-white text-orange-500 text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                      SALE
-                    </div>
-                  </div>
-                </div>
-                <div className="text-white/70 text-sm">2.5 Hours</div>
-              </div>
-
-              {/* End Time */}
-              <div className="flex flex-col items-center space-y-2 flex-1">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/20">
-                  <span className="text-2xl font-bold text-white">7:30</span>
-                </div>
-                <div className="text-center">
-                  <div className="text-white font-bold text-lg">END</div>
-                  <div className="text-white/80 text-sm">7:30 PM</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="relative bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl p-6 shadow-xl">
+  <div className="relative z-10 flex items-center justify-between max-w-2xl mx-auto">
+    {/* Start Time */}
+    <div className="flex flex-col items-center space-y-2 flex-1">
+      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30">
+        <span className="text-2xl font-bold text-white">5:00</span>
       </div>
+      <div className="text-center">
+        <div className="text-white font-bold text-lg">START</div>
+        <div className="text-white/80 text-sm">5:00 PM</div>
+      </div>
+    </div>
+
+    {/* Arrow Divider */}
+    <div className="flex flex-col items-center space-y-2 px-8">
+      <div className="text-4xl text-white animate-pulse">→</div>
+      <div className="text-white/70 text-sm">2.5 Hours</div>
+    </div>
+
+    {/* End Time */}
+    <div className="flex flex-col items-center space-y-2 flex-1">
+      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30">
+        <span className="text-2xl font-bold text-white">7:30</span>
+      </div>
+      <div className="text-center">
+        <div className="text-white font-bold text-lg">END</div>
+        <div className="text-white/80 text-sm">7:30 PM</div>
+      </div>
+    </div>
+  </div>
+</div>
       
       {/* Time labels */}
       <div className="flex justify-between mt-4 px-4 max-w-2xl mx-auto">
@@ -118,64 +91,10 @@ export const HappyHour = ({ drinks }) => {
     </div>
   </div>
 
-  {/* Special Offer Banner */}
-  <div className="max-w-3xl mx-auto">
-    <div className="relative group">
-      {/* Glow border effect */}
-      <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-      
-      <div className="relative bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-xl p-6 border border-amber-100 dark:border-orange-900/30">
-        <div className="flex items-center justify-center gap-4">
-          <div className="flex-shrink-0">
-            <div className="w-14 h-14 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
-              <span className="text-2xl">🎉</span>
-            </div>
-          </div>
-          <div className="text-center md:text-left">
-            <p className="text-xl font-semibold text-gray-800 dark:text-gray-100">
-              <span className="bg-gradient-to-r from-red-500 to-pink-600 bg-clip-text text-transparent font-bold">
-                SPECIAL OFFER:
-              </span>{' '}
-              All premium cocktails at the same amazing price during Happy Hour!
-            </p>
-          </div>
-        </div>
-        
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="w-32 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 </div>
       
-      {/* Happy Hour Overview Image */}
-      <div className="mb-12">
-        <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden shadow-2xl group cursor-pointer" onClick={() => handleImageClick({image: "/happy_hour/1.jpg", name: "Happy Hour Collection"})}>
-          <img
-            src="/happy_hour/1.jpg"
-            alt="Happy Hour Cocktail Collection"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end">
-            <div className="p-8 text-white">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-4xl">✨</span>
-                <h4 className="text-3xl md:text-4xl font-bold">UNIFORM PRICE</h4>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-4xl md:text-5xl font-bold text-yellow-300">99,000 VND</span>
-                <span className="text-lg opacity-90">each cocktail</span>
-              </div>
-              <p className="text-lg opacity-90 mt-2">6 signature cocktails at the same amazing price</p>
-            </div>
-          </div>
-          <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-medium">
-            Click to zoom
-          </div>
-        </div>
-      </div>
+      
       
       {/* Happy Hour Drink Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -231,7 +150,7 @@ export const HappyHour = ({ drinks }) => {
                   {drink.description}
                 </p>
                 
-                {/* Price Section */}
+                {/* Price Section
                 <div className="mb-6 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl p-4">
                   <div className="flex items-center justify-between">
                     <div>
@@ -251,7 +170,7 @@ export const HappyHour = ({ drinks }) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 
                 {/* Features */}
                 <div className="mb-6">

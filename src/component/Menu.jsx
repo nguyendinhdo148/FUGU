@@ -87,26 +87,23 @@ export const Menu = () => {
   ];
 
   const setMenuData = [
-  {
-    id: 1,
-    name: "Set Menu Premium",
-    price: "1.000.000 VNĐ",
-    image: "/setmenu/1.jpg",
-    color: "from-amber-900 to-amber-700",
-    promoTag: "Special offers",
-    
-  },
-  {
-    id: 2,
-    name: "Set Menu Deluxe",
-    price: "2.000.000 VNĐ",
-    image: "/setmenu/2.jpg",
-    color: "from-rose-900 to-rose-700",
-    promoTag: "Premium Experience",
-    
-  }
-];
-
+    {
+      id: 1,
+      name: "Set Menu Premium",
+      price: "1.000.000 VNĐ",
+      image: "/setmenu/1.jpg",
+      color: "from-amber-900 to-amber-700",
+      promoTag: "Special offers",
+    },
+    {
+      id: 2,
+      name: "Set Menu Deluxe",
+      price: "2.000.000 VNĐ",
+      image: "/setmenu/2.jpg",
+      color: "from-rose-900 to-rose-700",
+      promoTag: "Premium Experience",
+    }
+  ];
 
   useEffect(() => {
     const checkMobile = () => {
@@ -132,24 +129,24 @@ export const Menu = () => {
       <section id="menu" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Title Skeleton */}
-          <div className="h-12 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900 rounded-lg w-48 mx-auto mb-8 animate-pulse"></div>
+          <div className="h-12 bg-gradient-to-r from-secondary to-secondary/50 rounded-lg w-48 mx-auto mb-8 animate-pulse"></div>
           
           {/* Categories Skeleton */}
           <div className="flex overflow-x-auto gap-3 mb-8 pb-4">
             {[1,2,3,4,5,6,7,8,9].map((item) => (
-              <div key={item} className="h-10 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900 rounded-full w-24 animate-pulse"></div>
+              <div key={item} className="h-10 bg-gradient-to-r from-secondary to-secondary/50 rounded-full w-24 animate-pulse"></div>
             ))}
           </div>
 
           {/* Menu Items Skeleton */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1,2,3,4,5,6].map((item) => (
-              <div key={item} className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-                <div className="h-48 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 animate-pulse"></div>
+              <div key={item} className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
+                <div className="h-48 bg-gradient-to-r from-secondary to-secondary/50 animate-pulse"></div>
                 <div className="p-4">
-                  <div className="h-6 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-lg w-3/4 mb-3 animate-pulse"></div>
-                  <div className="h-4 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded w-full mb-2 animate-pulse"></div>
-                  <div className="h-4 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded w-2/3 animate-pulse"></div>
+                  <div className="h-6 bg-gradient-to-r from-secondary to-secondary/50 rounded-lg w-3/4 mb-3 animate-pulse"></div>
+                  <div className="h-4 bg-gradient-to-r from-secondary to-secondary/50 rounded w-full mb-2 animate-pulse"></div>
+                  <div className="h-4 bg-gradient-to-r from-secondary to-secondary/50 rounded w-2/3 animate-pulse"></div>
                 </div>
               </div>
             ))}
@@ -160,40 +157,43 @@ export const Menu = () => {
   }
 
   return (
-    <section id="menu" className="py-20">
+    <section id="menu" className="py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-4">
-            <span className="text-6xl mb-4">🍽️</span>
+        {/* Header - Dồn gọn lại */}
+        <div className="text-center mb-12">
+          <div className="inline-block mb-3">
+            <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto mb-3"></div>
+            <span className="text-amber-600 font-semibold tracking-widest text-xs uppercase">
+              Our New Menu
+            </span> 
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-4">
-            Our Menu
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Discover a diverse culinary world with dishes meticulously prepared from the freshest ingredients
-          </p>
+          <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-serif tracking-tight">
+            New Menu
+          </h3>
         </div>
 
-        {/* Banner Carousel */}
-        <Banner bannerImages={bannerImages} />
+        {/* Các sections dồn sát nhau */}
+        <div className="space-y-12 md:space-y-16">
+          {/* Banner Carousel */}
+          <Banner bannerImages={bannerImages} />
 
-        {/* Happy Hour Special Promotion */}
-        <HappyHour drinks={happyHourDrinks} />
+          {/* Happy Hour Special Promotion */}
+          <HappyHour drinks={happyHourDrinks} />
 
-        {/* Daily Menu Section - includes both food and drinks */}
-        <MenuDaily 
-          activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
-          activeDrinkCategory={activeDrinkCategory}
-          setActiveDrinkCategory={setActiveDrinkCategory}
-        />
+          {/* Daily Menu Section */}
+          <MenuDaily 
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+            activeDrinkCategory={activeDrinkCategory}
+            setActiveDrinkCategory={setActiveDrinkCategory}
+          />
 
-        {/* Set Menu Section */}
-        <SetMenu setMenus={setMenuData} />
+          {/* Set Menu Section */}
+          <SetMenu setMenus={setMenuData} />
 
-        {/* Buffet Packages Section */}
-        <Buffet  /> 
+          {/* Buffet Packages Section */}
+          <Buffet /> 
+        </div>
       </div>
     </section>
   );

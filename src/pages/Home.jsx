@@ -30,7 +30,7 @@ export const Home = () => {
       
       <Navbar toggleFullscreen={toggleFullscreen} isFullscreen={isFullscreen} />
 
-      <main className="flex flex-col w-full pt-32">
+<main className="flex flex-col w-full pt-24 md:pt-28">
 
         <Introduce />
         <Menu />

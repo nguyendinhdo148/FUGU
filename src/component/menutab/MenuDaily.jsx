@@ -112,21 +112,19 @@ export const MenuDaily = () => {
   }, []);
 
   return (
-    <section id="menudaily" className="mb-20">
+    <section id="menudaily" className="mb-10">
       {/* Header - More Compact */}
       <div className="text-center mb-12">
         <div className="inline-block mb-4">
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto mb-4"></div>
           <span className="text-amber-600 font-semibold tracking-widest text-xs uppercase">
             Menu Collection
-          </span>
+          </span> 
         </div>
         <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-serif tracking-tight">
           Browse Our Menus
         </h3>
-        <p className="text-foreground/70 max-w-xl mx-auto text-base leading-relaxed">
-          Select between food and drinks to view complete menu details
-        </p>
+        
       </div>
 
       {/* Compact Container for Everything */}
@@ -139,13 +137,12 @@ export const MenuDaily = () => {
                 <button
                   key={tab}
                   onClick={() => handleTabChange(tab)}
-                  className={`flex-1 py-4 px-8 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 min-w-[180px] ${
+                  className={`flex-1 py-3 px-8 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 min-w-[180px] ${
                     activeTab === tab
                       ? `bg-gradient-to-r ${menuItems[tab].color} text-white shadow-lg transform scale-105`
                       : "text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`}
                 >
-                  <span className="text-2xl">{menuItems[tab].icon}</span>
                   <span>{menuItems[tab].name}</span>
                 </button>
               ))}
@@ -184,16 +181,6 @@ export const MenuDaily = () => {
             
             {/* Combined Action Buttons - Compact */}
             <div className="flex gap-3 mt-4 lg:mt-0">
-              <button
-                onClick={handleDownload}
-                className="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl min-w-[140px]"
-                title="Download PDF"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                <span>Download</span>
-              </button>
               
               <button
                 onClick={handleFullscreenToggle}
@@ -312,27 +299,6 @@ export const MenuDaily = () => {
               </div>
             </div>
 
-            <div className="mt-6 max-w-2xl mx-auto">
-              <div className="grid grid-cols-3 gap-3">
-                <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-orange-100 dark:border-gray-700">
-                  <div className="text-2xl mb-2">🔍</div>
-                  <div className="font-semibold text-gray-800 dark:text-white mb-1">Zoom</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">Ctrl + Mouse Wheel</div>
-                </div>
-                
-                <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-blue-100 dark:border-gray-700">
-                  <div className="text-2xl mb-2">🖱️</div>
-                  <div className="font-semibold text-gray-800 dark:text-white mb-1">Navigate</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">Click & Drag to Pan</div>
-                </div>
-                
-                <div className="text-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-green-100 dark:border-gray-700">
-                  <div className="text-2xl mb-2">📱</div>
-                  <div className="font-semibold text-gray-800 dark:text-white mb-1">Fullscreen</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">Best Viewing Experience</div>
-                </div>
-              </div>
-            </div>
           </>
         )}
       </div>

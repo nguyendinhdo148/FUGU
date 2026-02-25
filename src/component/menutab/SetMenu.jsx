@@ -19,31 +19,29 @@ export const SetMenu = ({ setMenus }) => {
     
     if (zoomedImage) {
       document.addEventListener('keydown', handleEscKey);
-      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      document.body.style.overflow = 'hidden';
     }
     
     return () => {
       document.removeEventListener('keydown', handleEscKey);
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = 'auto';
     };
   }, [zoomedImage]);
 
   return (
-    <div className="mb-28">
+    <div className="mb-10 font-sans">
       {/* Header Section */}
       <div className="text-center mb-16">
         <div className="inline-block mb-4">
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-6"></div>
-          <span className="text-amber-600 font-semibold tracking-widest text-sm uppercase">
+          <span className="text-amber-600 font-semibold tracking-widest text-sm uppercase font-inter">
             Culinary Excellence
           </span>
         </div>
-        <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-serif tracking-tight">
+        <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-serif tracking-tight font-notoserif">
           Signature Set Menus
         </h3>
-        <p className="text-foreground/70 max-w-2xl mx-auto text-lg leading-relaxed">
-          Curated dining experiences crafted by our executive chef, featuring seasonal ingredients and innovative pairings
-        </p>
+        
       </div>
       
       {/* Set Menu Cards */}
@@ -59,54 +57,54 @@ export const SetMenu = ({ setMenus }) => {
             
             {/* Card Content */}
             <div className="relative p-9 z-10">
-              {/* Header Section - Compact */}
-              <div className="flex items-start justify-between mb-8">
-                <div>
-                  <h4 className="text-2xl md:text-3xl font-bold mb-2 tracking-tight font-serif">
-                    {setMenu.name}
-                  </h4>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-2xl md:text-3xl font-semibold">
-                      {setMenu.price}
-                    </span>
-                    <span className="text-white/40 text-xs font-light">per person</span>
-                  </div>
-                </div>
-                {setMenu.promoTag && (
-                  <span className="bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap shadow-lg border border-white/20">
-                    {setMenu.promoTag}
-                  </span>
-                )}
-              </div>
-              
-              {/* Image Section - Extended Height */}
-              <div 
-                className="h-[420px] rounded-2xl overflow-hidden shadow-2xl group/image cursor-pointer relative"
-                onClick={() => handleImageClick(setMenu)}
-              >
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent z-10"></div>
-                
-                {/* Main Image */}
-                <img 
-                  src={setMenu.image} 
-                  alt={setMenu.name}
-                  className="w-full h-full object-cover group-hover/image:scale-110 transition-transform duration-[1200ms] ease-out"
-                />
-                
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-all duration-500"></div>
-                
-                {/* Zoom Indicator */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-all duration-500">
-                  <div className="bg-black/40 backdrop-blur-md p-4 rounded-full transform -translate-y-4 group-hover/image:translate-y-0 transition-transform duration-500">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
+  {/* Header Section */}
+  <div className="flex items-start justify-between mb-6 -ml-6">
+    <div>
+      <h4 className="text-xl md:text-2xl font-semibold mb-1 tracking-tight font-notoserif">
+        {setMenu.name}
+      </h4>
+      <div className="flex items-baseline gap-2 font-inter">
+        <span className="text-xl md:text-2xl font-semibold">
+          {setMenu.price}
+        </span>
+        <span className="text-white/40 text-xs font-light">
+          per person
+        </span>
+      </div>
+    </div>
+
+    {setMenu.promoTag && (
+      <span className="-mr-6 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-[11px] font-medium whitespace-nowrap shadow-lg border border-white/20 font-inter">
+        {setMenu.promoTag}
+      </span>
+    )}
+  </div>
+
+  {/* Image Section */}
+  <div
+    className="h-[420px] rounded-2xl overflow-hidden shadow-2xl group/image cursor-pointer relative"
+    onClick={() => handleImageClick(setMenu)}
+  >
+    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent z-10"></div>
+
+    <img
+      src={setMenu.image}
+      alt={setMenu.name}
+      className="w-full h-full object-cover group-hover/image:scale-110 transition-transform duration-[1200ms] ease-out"
+    />
+
+    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-all duration-500"></div>
+
+    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-all duration-500">
+      <div className="bg-black/40 backdrop-blur-md p-4 rounded-full transform -translate-y-4 group-hover/image:translate-y-0 transition-transform duration-500">
+        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
           </div>
         ))}
       </div>
@@ -114,7 +112,7 @@ export const SetMenu = ({ setMenus }) => {
       {/* Zoom Modal - Minimal & Elegant */}
       {zoomedImage && (
         <div 
-          className="fixed inset-0 bg-black z-[100] flex items-center justify-center p-4 cursor-zoom-out"
+          className="fixed inset-0 bg-black z-[100] flex items-center justify-center p-4 cursor-zoom-out font-sans"
           onClick={closeZoom}
         >
           {/* Close Button */}
@@ -136,14 +134,14 @@ export const SetMenu = ({ setMenus }) => {
               <div className="bg-gradient-to-t from-black/80 via-black/40 to-transparent backdrop-blur-sm rounded-2xl p-6">
                 <div className="flex items-end justify-between">
                   <div>
-                    <h3 className="text-2xl font-bold text-white mb-2 font-serif">{zoomedImage.name}</h3>
-                    <div className="flex items-center gap-2">
+                    <h3 className="text-2xl font-bold text-white mb-2 font-notoserif">{zoomedImage.name}</h3>
+                    <div className="flex items-center gap-2 font-inter">
                       <span className="text-xl text-white/60">Premium set menu</span>
                       <div className="w-1 h-1 bg-white/40 rounded-full"></div>
                       <span className="text-xl font-semibold text-amber-300">{zoomedImage.price}</span>
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-right font-inter">
                     <div className="text-xs text-white/40 font-mono tracking-wider">ESC to close</div>
                     <div className="text-xs text-white/30 mt-1">• Click anywhere to close •</div>
                   </div>
@@ -154,7 +152,7 @@ export const SetMenu = ({ setMenus }) => {
 
           {/* ESC Hint */}
           <div className="absolute top-8 left-8 z-20">
-            <div className="text-white/30 text-sm font-mono tracking-wider bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
+            <div className="text-white/30 text-sm font-mono tracking-wider bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 font-inter">
               Press ESC to close
             </div>
           </div>
@@ -188,7 +186,7 @@ export const SetMenu = ({ setMenus }) => {
 
           {/* Subtle Navigation Hint */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
-            <div className="text-white/20 text-xs font-light tracking-widest uppercase">
+            <div className="text-white/20 text-xs font-light tracking-widest uppercase font-inter">
               — View Mode —
             </div>
           </div>

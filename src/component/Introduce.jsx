@@ -18,19 +18,19 @@ export const Introduce = () => {
   ];
 
   const features = [
-    { icon: Music, text: "Live music every night" },
-    { icon: Users, text: "120 seats & 5 VIP rooms" },
+    { icon: Music, text: "Live music last week" },
+    { icon: Users, text: "150 seats" },
     { icon: Sparkles, text: "Modern Japanese architecture" },
-    { icon: Wine, text: "Over 50 premium sake varieties" },
-    { icon: ChefHat, text: "Japanese chefs with 15+ years experience" },
+    { icon: Wine, text: "Over 100 premium liquor selections" },
+    { icon: ChefHat, text: "Japanese chefs with 5+ years experience" },
     { icon: CreditCard, text: "Multiple payment methods" },
   ];
 
   const stats = [
     { value: "4.9", label: "Rating", icon: Star },
-    { value: "15+", label: "Years experience", icon: Award },
-    { value: "120", label: "Seats", icon: Users },
-    { value: "50+", label: "Sake varieties", icon: Wine },
+    { value: "5+", label: "Years experience", icon: Award },
+    { value: "150", label: "Seats", icon: Users },
+    { value: "100+", label: "Premium liquor selections", icon: Wine },
   ];
 
   useEffect(() => {
@@ -114,9 +114,6 @@ export const Introduce = () => {
               Fugu Modern
               <span className="block text-primary font-extrabold">Izakaya & Bar</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
-              Experience contemporary Japanese cuisine in a modern setting
-            </p>
           </div>
         </div>
 
@@ -257,9 +254,9 @@ export const Introduce = () => {
                       <MapPin className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
                       <div>
                         <p className="text-muted-foreground">
-                          13-15-17 Dong Khoi, Ben Nghe, District 1
+                          13-15-17 Đồng Khởi, Phường Sài Gòn, Quận 1
                           <br />
-                          Ho Chi Minh City
+                          Thành phố Hồ Chí Minh, Việt Nam
                         </p>
                       </div>
                     </div>
@@ -287,7 +284,7 @@ export const Introduce = () => {
                         </div>
                         <div className="text-left">
                           <p className="text-foreground font-medium">Email</p>
-                          <p className="text-muted-foreground text-sm">info@fuguizakaya.vn</p>
+                          <p className="text-muted-foreground text-sm">seidininglounge@gmail.com</p>
                         </div>
                       </a>
                     </div>
@@ -328,14 +325,17 @@ export const Introduce = () => {
               {/* Action Buttons & Social */}
               <div className="space-y-6">
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a 
-                    href="#reservation" 
+                  <a
+                    href="https://zalo.me/84855873979"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group flex-1 px-6 py-3 md:py-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 font-bold text-base md:text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                   >
                     <Calendar className="w-5 h-5" />
                     Book a Table Now
                     <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                   </a>
+
                   <a 
                     href="#menu" 
                     className="flex-1 px-6 py-3 md:py-4 border border-primary text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-bold text-base md:text-lg text-center hover:-translate-y-0.5"
