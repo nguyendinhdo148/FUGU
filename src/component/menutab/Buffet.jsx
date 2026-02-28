@@ -25,7 +25,6 @@ export const Buffet = ({ buffetPackages = [] }) => {
     return () => {
       document.removeEventListener('keydown', handleEscKey);
       document.body.style.overflow = 'auto';
-
     };
   }, [zoomedImage]);
 
@@ -57,13 +56,12 @@ export const Buffet = ({ buffetPackages = [] }) => {
   const packagesToShow = buffetPackages.length > 0 ? buffetPackages : defaultPackages;
 
   return (
-   <div className="mb-4 font-sans">
-
+    <div className="mb-4 font-sans bg-background">
       {/* Header Section */}
       <div className="text-center mb-16">
         <div className="inline-block mb-4">
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent mx-auto mb-6"></div>
-          <span className="text-emerald-600 font-semibold tracking-widest text-sm uppercase font-inter">
+          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto mb-6"></div>
+          <span className="text-primary font-semibold tracking-widest text-sm uppercase font-inter">
             Exclusive Events
           </span>
         </div>
@@ -74,78 +72,81 @@ export const Buffet = ({ buffetPackages = [] }) => {
 
       {/* Compact Service Terms */}
       <div className="max-w-2xl mx-auto mb-12 px-4">
-  <div className="bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 rounded-xl border border-primary/20 dark:border-primary/30 p-5 shadow-sm">
-    <div className="flex items-center gap-3 mb-3">
-      <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-lg flex items-center justify-center shadow-sm">
-        <span className="text-lg text-primary-foreground">📋</span>
-      </div>
-      <h4 className="text-lg font-semibold text-foreground font-inter">
-        Service Terms
-      </h4>
-    </div>
-    
-    <div className="space-y-3 pl-2">
-      <div className="flex items-start gap-2">
-        <div className="w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-          <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+        <div className="bg-card border border-border rounded-xl p-5 shadow-sm">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shadow-sm">
+              <span className="text-lg text-primary">📋</span>
+            </div>
+            <h4 className="text-lg font-semibold text-foreground font-inter">
+              Service Terms
+            </h4>
+          </div>
+          
+          <div className="space-y-3 pl-2">
+            <div className="flex items-start gap-2">
+              <div className="w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+              </div>
+              <p className="text-sm text-muted-foreground font-medium font-inter leading-snug">
+                Buffet packages are exclusively for private events & group catering (20+ people).
+              </p>
+            </div>
+            
+            <div className="flex items-start gap-2">
+              <div className="w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+              </div>
+              <p className="text-sm text-muted-foreground font-medium font-inter leading-snug">
+                Not available for individual orders. Advance booking required (3+ days)
+              </p>
+            </div>
+          </div>
         </div>
-        <p className="text-sm text-foreground/80 font-medium font-inter leading-snug">
-          Buffet packages are exclusively for private events & group catering (20+ people).
-        </p>
       </div>
-      
-      <div className="flex items-start gap-2">
-        <div className="w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-          <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-        </div>
-        <p className="text-sm text-foreground/80 font-medium font-inter leading-snug">
-          Not available for individual orders. Advance booking required (3+ days)
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
       
       {/* Buffet Packages */}
       <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto px-4">
         {packagesToShow.map((buffet) => (
           <div
             key={buffet.id}
-            className={`relative bg-gradient-to-br ${buffet.color} rounded-3xl overflow-hidden text-white shadow-2xl hover:shadow-3xl transition-all duration-500 group`}
+            className="relative bg-card border border-border rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 group"
           >
+            {/* Gradient Background based on type */}
+            <div className={`absolute inset-0 bg-gradient-to-br ${buffet.color} opacity-90`}></div>
+            
             {/* Decorative Elements */}
-            <div className="absolute top-0 left-0 w-32 h-32 -translate-x-16 -translate-y-16 bg-white/5 rounded-full blur-xl"></div>
-            <div className="absolute bottom-0 right-0 w-40 h-40 translate-x-10 translate-y-10 bg-white/5 rounded-full blur-xl"></div>
+            <div className="absolute top-0 left-0 w-32 h-32 -translate-x-16 -translate-y-16 bg-white/10 rounded-full blur-xl"></div>
+            <div className="absolute bottom-0 right-0 w-40 h-40 translate-x-10 translate-y-10 bg-white/10 rounded-full blur-xl"></div>
             
             {/* Card Content */}
             <div className="relative p-9 z-10">
-              {/* Header Section - Fixed alignment */}
+              {/* Header Section */}
               <div className="flex flex-col mb-8 space-y-4">
                 <div className="flex items-start justify-between">
-                  <h4 className="text-2xl md:text-3xl font-bold tracking-tight font-notoserif">
+                  <h4 className="text-2xl md:text-3xl font-bold tracking-tight font-notoserif text-white">
                     {buffet.name}
                   </h4>
                   {buffet.promoTag && (
-                    <span className="bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap shadow-lg border border-white/20 font-inter">
+                    <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap shadow-lg border border-white/30 font-inter text-white">
                       {buffet.promoTag}
                     </span>
                   )}
                 </div>
                 <div className="flex items-baseline gap-2 font-inter">
-                  <span className="text-2xl md:text-3xl font-semibold">
+                  <span className="text-2xl md:text-3xl font-semibold text-white">
                     {buffet.price}
                   </span>
-                  <span className="text-white/60 text-sm font-light">per person</span>
+                  <span className="text-white/70 text-sm font-light">per person</span>
                 </div>
               </div>
               
-              {/* Image Section - Extended Height */}
+              {/* Image Section */}
               <div 
                 className="h-[420px] rounded-2xl overflow-hidden shadow-2xl group/image cursor-pointer relative"
                 onClick={() => handleImageClick(buffet)}
               >
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10"></div>
                 
                 {/* Main Image */}
                 <img 
@@ -155,11 +156,11 @@ export const Buffet = ({ buffetPackages = [] }) => {
                 />
                 
                 {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-all duration-500"></div>
                 
                 {/* Zoom Indicator */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-all duration-500">
-                  <div className="bg-black/40 backdrop-blur-md p-4 rounded-full transform -translate-y-4 group-hover/image:translate-y-0 transition-transform duration-500">
+                  <div className="bg-black/60 backdrop-blur-md p-4 rounded-full transform -translate-y-4 group-hover/image:translate-y-0 transition-transform duration-500 border border-white/30">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                     </svg>
@@ -171,15 +172,15 @@ export const Buffet = ({ buffetPackages = [] }) => {
         ))}
       </div>
 
-      {/* Zoom Modal - Minimal & Elegant */}
+      {/* Zoom Modal */}
       {zoomedImage && (
         <div 
-          className="fixed inset-0 bg-black z-[100] flex items-center justify-center p-4 cursor-zoom-out font-sans"
+          className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4 cursor-zoom-out font-sans backdrop-blur-sm"
           onClick={closeZoom}
         >
           {/* Close Button */}
           <button 
-            className="absolute top-8 right-8 z-20 bg-black/50 hover:bg-black/70 backdrop-blur-sm text-white p-3.5 rounded-full transition-all duration-300 hover:scale-110 shadow-2xl border border-white/10"
+            className="absolute top-8 right-8 z-20 bg-black/70 hover:bg-black/90 backdrop-blur-sm text-white p-3.5 rounded-full transition-all duration-300 hover:scale-110 shadow-2xl border border-white/20"
             onClick={(e) => {
               e.stopPropagation();
               closeZoom();
@@ -190,15 +191,15 @@ export const Buffet = ({ buffetPackages = [] }) => {
             </svg>
           </button>
 
-          {/* Minimal Info Overlay - Auto-hide */}
+          {/* Info Overlay */}
           <div className="absolute bottom-8 left-0 right-0 z-20 opacity-0 hover:opacity-100 transition-opacity duration-500">
             <div className="max-w-4xl mx-auto px-8">
-              <div className="bg-gradient-to-t from-black/80 via-black/40 to-transparent backdrop-blur-sm rounded-2xl p-6">
+              <div className="bg-gradient-to-t from-black/90 via-black/60 to-transparent backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                 <div className="flex items-end justify-between">
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-2 font-notoserif">{zoomedImage.name}</h3>
                     <div className="flex items-center gap-2 font-inter">
-                      <span className="text-xl text-white/60">
+                      <span className="text-xl text-white/70">
                         {zoomedImage.type === "food" ? "Premium buffet package" : "Unlimited drinks package"}
                       </span>
                       <div className="w-1 h-1 bg-white/40 rounded-full"></div>
@@ -206,8 +207,8 @@ export const Buffet = ({ buffetPackages = [] }) => {
                     </div>
                   </div>
                   <div className="text-right font-inter">
-                    <div className="text-xs text-white/40 font-mono tracking-wider">ESC to close</div>
-                    <div className="text-xs text-white/30 mt-1">• Click anywhere to close •</div>
+                    <div className="text-xs text-white/50 font-mono tracking-wider">ESC to close</div>
+                    <div className="text-xs text-white/40 mt-1">• Click anywhere to close •</div>
                   </div>
                 </div>
               </div>
@@ -216,7 +217,7 @@ export const Buffet = ({ buffetPackages = [] }) => {
 
           {/* ESC Hint */}
           <div className="absolute top-8 left-8 z-20">
-            <div className="text-white/30 text-sm font-mono tracking-wider bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 font-inter">
+            <div className="text-white/50 text-sm font-mono tracking-wider bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 font-inter">
               Press ESC to close
             </div>
           </div>
@@ -248,9 +249,9 @@ export const Buffet = ({ buffetPackages = [] }) => {
             </div>
           </div>
 
-          {/* Subtle Navigation Hint */}
+          {/* Navigation Hint */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
-            <div className="text-white/20 text-xs font-light tracking-widest uppercase font-inter">
+            <div className="text-white/30 text-xs font-light tracking-widest uppercase font-inter">
               — View Mode —
             </div>
           </div>
