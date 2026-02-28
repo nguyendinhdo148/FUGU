@@ -248,10 +248,10 @@ export const MenuDaily = () => {
             </div>
           )}
 
-          {/* PDF Viewer */}
+          {/* PDF Viewer - TĂNG CHIỀU CAO LÊN GẤP ĐÔI */}
           <div className={`${isFullscreen ? 'pt-12 md:pt-16 h-screen' : 'relative rounded-xl overflow-hidden shadow-2xl border border-border bg-card'}`}
             style={!isFullscreen ? { 
-              height: '500px',
+              height: '1000px', // Tăng từ 500px lên 1000px (gấp đôi)
               width: '100%'
             } : {}}
           >
