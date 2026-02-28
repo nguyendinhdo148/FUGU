@@ -1,10 +1,22 @@
 // src/components/EventShow.jsx
-import React, { useState } from "react";
-import { Cake, Heart, Award, Users, Play } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Cake, Heart, Award, Users, Play, X } from "lucide-react";
 
 export const Event = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [imageErrors, setImageErrors] = useState({});
+
+  // Lock scroll khi modal mở
+  useEffect(() => {
+    if (selectedVideo) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedVideo]);
 
   // Dữ liệu các video sự kiện
   const eventVideos = [
@@ -43,7 +55,7 @@ export const Event = () => {
     },
     {
       id: 4,
-      title: "meeting party",
+      title: "Meeting Party",
       thumbnail: "/tiec/bb.jpg",
       url: "https://drive.google.com/file/d/1oYx_3lAK_TCwZa3lUq6unK5WVOrVCVw1/preview",
       description: "Professional corporate events, meetings, and team building activities",
@@ -95,16 +107,16 @@ export const Event = () => {
               Special Events
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Event Gallery
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-sm md:text-lg text-muted-foreground max-w-3xl mx-auto px-4">
             Explore our memorable events and celebrations
           </p>
         </div>
 
-        {/* Grid Event Videos */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Grid Event Videos - 2 cột mobile, 3 cột desktop */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
           {eventVideos.map((item) => {
             const Icon = item.icon;
             const hasImageError = imageErrors[item.id];
@@ -113,7 +125,7 @@ export const Event = () => {
               <div
                 key={item.id}
                 onClick={() => setSelectedVideo(item)}
-                className="group cursor-pointer bg-card border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group cursor-pointer bg-card border border-border rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {/* Thumbnail Container */}
                 <div className="relative aspect-video overflow-hidden">
@@ -126,100 +138,81 @@ export const Event = () => {
                     />
                   ) : (
                     <div className={`w-full h-full bg-gradient-to-br ${item.color} bg-opacity-20 flex items-center justify-center`}>
-                      <Icon className="w-16 h-16 text-white/50" />
+                      <Icon className="w-12 h-12 md:w-16 md:h-16 text-white/50" />
                     </div>
                   )}
                   
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                   
-                  {/* Play Button Overlay */}
+                  {/* Play Button Overlay - Nhỏ hơn trên mobile */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="relative">
-                      <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300">
-                        <Play className="w-8 h-8 text-white" fill="white" />
+                      <div className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300">
+                        <Play className="w-5 h-5 md:w-8 md:h-8 text-white" fill="white" />
                       </div>
-                      <div className="absolute -inset-4 bg-white/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-2 md:-inset-4 bg-white/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                   </div>
                   
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <div className={`px-3 py-1 bg-gradient-to-r ${item.color} rounded-full`}>
-                      <span className="text-white text-xs font-medium uppercase">
+                  {/* Category Badge - Nhỏ hơn trên mobile */}
+                  <div className="absolute top-2 left-2 md:top-4 md:left-4 z-10">
+                    <div className={`px-2 py-0.5 md:px-3 md:py-1 bg-gradient-to-r ${item.color} rounded-full`}>
+                      <span className="text-white text-[8px] md:text-xs font-medium uppercase">
                         {item.category}
                       </span>
                     </div>
                   </div>
                   
-                  {/* Duration Badge */}
-                  <div className="absolute top-4 right-4 z-10">
-                    <div className="px-2 py-1 bg-black/70 backdrop-blur-sm rounded">
-                      <span className="text-white text-xs">{item.duration}</span>
+                  {/* Duration Badge - Nhỏ hơn trên mobile */}
+                  <div className="absolute top-2 right-2 md:top-4 md:right-4 z-10">
+                    <div className="px-1.5 py-0.5 md:px-2 md:py-1 bg-black/70 backdrop-blur-sm rounded">
+                      <span className="text-white text-[8px] md:text-xs">{item.duration}</span>
                     </div>
                   </div>
                   
-                  {/* Title Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-white font-semibold text-lg mb-1 line-clamp-2">
+                  {/* Title Overlay - Nhỏ hơn trên mobile */}
+                  <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4">
+                    <h3 className="text-white font-semibold text-xs md:text-lg mb-0.5 md:mb-1 line-clamp-2">
                       {item.title}
                     </h3>
-                    <p className="text-white/80 text-sm">
-                      {item.artist}
+                    <p className="text-white/80 text-[8px] md:text-sm line-clamp-1">
+                      {item.description.length > 30 
+                        ? item.description.substring(0, 25) + '...' 
+                        : item.description}
                     </p>
                   </div>
-                </div>
-                
-                {/* Description */}
-                <div className="p-4 border-t border-border">
-                  <p className="text-muted-foreground text-sm line-clamp-2">
-                    {item.description}
-                  </p>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Video Player Modal */}
+        {/* Video Player Modal - Responsive */}
         {selectedVideo && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4">
-            <div className="relative w-full max-w-5xl bg-card border border-border rounded-2xl overflow-hidden shadow-2xl">
-              {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b border-border">
-                <div>
-                  <h3 className="text-xl font-bold text-foreground">
-                    {selectedVideo.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {selectedVideo.artist}
-                  </p>
-                </div>
-                <button
-                  onClick={closeVideo}
-                  className="px-4 py-2 bg-secondary hover:bg-secondary/80 text-foreground rounded-lg text-sm font-medium transition-colors"
-                >
-                  Close
-                </button>
-              </div>
+          <div 
+            className="fixed inset-0 z-50 bg-black"
+            onClick={closeVideo}
+          >
+            {/* Nút Close - Responsive */}
+            <button
+              onClick={closeVideo}
+              className="absolute top-2 right-2 md:top-4 md:right-4 z-50 w-8 h-8 md:w-12 md:h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors"
+              aria-label="Close video"
+            >
+              <X className="w-4 h-4 md:w-6 md:h-6 text-white" />
+            </button>
 
-              {/* Video Player */}
-              <div className="relative pt-[56.25%] bg-black">
-                <iframe
-                  src={selectedVideo.url}
-                  title={selectedVideo.title}
-                  className="absolute inset-0 w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-
-              {/* Description */}
-              <div className="p-4 border-t border-border">
-                <p className="text-muted-foreground">
-                  {selectedVideo.description}
-                </p>
-              </div>
+            {/* Video Container - Full màn hình */}
+            <div className="w-full h-full flex items-center justify-center">
+              <iframe
+                src={selectedVideo.url}
+                title={selectedVideo.title}
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                frameBorder="0"
+              />
             </div>
           </div>
         )}

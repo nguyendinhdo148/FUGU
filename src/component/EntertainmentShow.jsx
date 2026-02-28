@@ -1,14 +1,27 @@
 // src/components/EntertainmentShow.jsx
-import React, { useState } from "react";
-import { Play, Music, Mic2, Piano, Guitar, Volume2 } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Play, Music, Mic2, Piano, Guitar, Volume2, X } from "lucide-react";
 
 export const EntertainmentShow = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [imageErrors, setImageErrors] = useState({});
 
+  // Lock scroll khi modal mở
+  useEffect(() => {
+    if (selectedVideo) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedVideo]);
+
   // Dữ liệu các tiết mục
   const performances = [
-    // {
+    {
+      // {
     //   id: 1,
     //   title: "Piano Solo - Romantic Classics",
     //   artist: "Piano Artist Nguyen Tuan Anh",
@@ -20,9 +33,8 @@ export const EntertainmentShow = () => {
     //   duration: "4:30",
     //   color: "from-blue-500 to-indigo-500"
     // },
-    {
       id: 2,
-      title: "Violin Solo ",
+      title: "Violin Solo",
       thumbnail: "/show/violin.png",
       url: "https://drive.google.com/file/d/1P1U55z0MxYVZxJEcClHX09NboAkuj53a/preview",
       description: "Sweet and pure violin performances",
@@ -66,7 +78,7 @@ export const EntertainmentShow = () => {
     },
     {
       id: 6,
-      title: "Sexophone solo",
+      title: "Saxophone solo",
       thumbnail: "/show/sexophonesolo.png",
       url: "https://drive.google.com/file/d/1GXGFZWcaMTfO-U7di40r1_pjxOu9KeI2/preview",
       description: "Perfect harmony between piano and violin",
@@ -104,8 +116,8 @@ export const EntertainmentShow = () => {
           </p>
         </div>
 
-        {/* Grid Performances */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Grid Performances - 2 cột mobile, 3 cột desktop */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
           {performances.map((item) => {
             const Icon = item.icon;
             const hasImageError = imageErrors[item.id];
@@ -114,7 +126,7 @@ export const EntertainmentShow = () => {
               <div
                 key={item.id}
                 onClick={() => setSelectedVideo(item)}
-                className="group cursor-pointer bg-card border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group cursor-pointer bg-card border border-border rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {/* Thumbnail Container */}
                 <div className="relative aspect-video overflow-hidden">
@@ -127,53 +139,53 @@ export const EntertainmentShow = () => {
                     />
                   ) : (
                     <div className={`w-full h-full bg-gradient-to-br ${item.color} bg-opacity-20 flex items-center justify-center`}>
-                      <Icon className="w-16 h-16 text-white/50" />
+                      <Icon className="w-12 h-12 md:w-16 md:h-16 text-white/50" />
                     </div>
                   )}
                   
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                   
-                  {/* Play Button Overlay */}
+                  {/* Play Button Overlay - Nhỏ hơn trên mobile */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="relative">
-                      <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300">
-                        <Play className="w-8 h-8 text-white" fill="white" />
+                      <div className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300">
+                        <Play className="w-5 h-5 md:w-8 md:h-8 text-white" fill="white" />
                       </div>
-                      <div className="absolute -inset-4 bg-white/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-2 md:-inset-4 bg-white/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                   </div>
                   
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <div className={`px-3 py-1 bg-gradient-to-r ${item.color} rounded-full`}>
-                      <span className="text-white text-xs font-medium uppercase">
+                  {/* Category Badge - Nhỏ hơn trên mobile */}
+                  <div className="absolute top-2 left-2 md:top-4 md:left-4 z-10">
+                    <div className={`px-2 py-0.5 md:px-3 md:py-1 bg-gradient-to-r ${item.color} rounded-full`}>
+                      <span className="text-white text-[8px] md:text-xs font-medium uppercase">
                         {item.category}
                       </span>
                     </div>
                   </div>
                   
-                  {/* Duration Badge */}
-                  <div className="absolute top-4 right-4 z-10">
-                    <div className="px-2 py-1 bg-black/70 backdrop-blur-sm rounded">
-                      <span className="text-white text-xs">{item.duration}</span>
+                  {/* Duration Badge - Nhỏ hơn trên mobile */}
+                  <div className="absolute top-2 right-2 md:top-4 md:right-4 z-10">
+                    <div className="px-1.5 py-0.5 md:px-2 md:py-1 bg-black/70 backdrop-blur-sm rounded">
+                      <span className="text-white text-[8px] md:text-xs">{item.duration}</span>
                     </div>
                   </div>
                   
-                  {/* Title Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-white font-semibold text-lg mb-1 line-clamp-2">
+                  {/* Title Overlay - Nhỏ hơn trên mobile */}
+                  <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4">
+                    <h3 className="text-white font-semibold text-xs md:text-lg mb-0.5 md:mb-1 line-clamp-2">
                       {item.title}
                     </h3>
-                    <p className="text-white/80 text-sm">
+                    <p className="text-white/80 text-[8px] md:text-sm line-clamp-1">
                       {item.artist}
                     </p>
                   </div>
                 </div>
                 
-                {/* Description (hidden on hover, shown below) */}
-                <div className="p-4 border-t border-border">
-                  <p className="text-muted-foreground text-sm line-clamp-2">
+                {/* Description - Nhỏ hơn trên mobile */}
+                <div className="p-2 md:p-4 border-t border-border">
+                  <p className="text-muted-foreground text-[8px] md:text-sm line-clamp-2 md:line-clamp-2">
                     {item.description}
                   </p>
                 </div>
@@ -182,45 +194,31 @@ export const EntertainmentShow = () => {
           })}
         </div>
 
-        {/* Video Player Modal */}
+        {/* Video Player Modal - Responsive */}
         {selectedVideo && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4">
-            <div className="relative w-full max-w-5xl bg-card border border-border rounded-2xl overflow-hidden shadow-2xl">
-              {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b border-border">
-                <div>
-                  <h3 className="text-xl font-bold text-foreground">
-                    {selectedVideo.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {selectedVideo.artist}
-                  </p>
-                </div>
-                <button
-                  onClick={closeVideo}
-                  className="px-4 py-2 bg-secondary hover:bg-secondary/80 text-foreground rounded-lg text-sm font-medium transition-colors"
-                >
-                  Close
-                </button>
-              </div>
+          <div 
+            className="fixed inset-0 z-50 bg-black"
+            onClick={closeVideo}
+          >
+            {/* Nút Close - Responsive */}
+            <button
+              onClick={closeVideo}
+              className="absolute top-2 right-2 md:top-4 md:right-4 z-50 w-8 h-8 md:w-12 md:h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors"
+              aria-label="Close video"
+            >
+              <X className="w-4 h-4 md:w-6 md:h-6 text-white" />
+            </button>
 
-              {/* Video Player */}
-              <div className="relative pt-[56.25%] bg-black">
-                <iframe
-                  src={selectedVideo.url}
-                  title={selectedVideo.title}
-                  className="absolute inset-0 w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-
-              {/* Description */}
-              <div className="p-4 border-t border-border">
-                <p className="text-muted-foreground">
-                  {selectedVideo.description}
-                </p>
-              </div>
+            {/* Video Container - Full màn hình */}
+            <div className="w-full h-full flex items-center justify-center">
+              <iframe
+                src={selectedVideo.url}
+                title={selectedVideo.title}
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                frameBorder="0"
+              />
             </div>
           </div>
         )}
