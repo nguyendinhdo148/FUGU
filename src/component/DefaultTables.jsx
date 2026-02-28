@@ -57,7 +57,7 @@ export const Table = () => {
           </span>
         </div>
         <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6 font-notoserif">
-          Table Map & Seating Arrangement
+          Table Map 
         </h3>
       </div>
 

@@ -98,7 +98,7 @@ export const EntertainmentShow = () => {
   };
 
   return (
-    <section id="entertainment" className="py-20 bg-background">
+    <section id="entertainment-show" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
