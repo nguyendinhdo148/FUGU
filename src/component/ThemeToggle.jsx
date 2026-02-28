@@ -36,7 +36,6 @@ export const ThemeToggle = () => {
       document.documentElement.classList.remove("dark");
     }
   };
-//adasdasd
   return (
     <button
       onClick={toggleTheme}
