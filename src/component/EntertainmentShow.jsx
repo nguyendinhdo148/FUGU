@@ -21,6 +21,18 @@ export const EntertainmentShow = () => {
   // Dữ liệu các tiết mục
   const performances = [
     {
+      // {
+    //   id: 1,
+    //   title: "Piano Solo - Romantic Classics",
+    //   artist: "Piano Artist Nguyen Tuan Anh",
+    //   thumbnail: "/logotab1.jpg",
+    //   url: "https://drive.google.com/file/d/1NCCX5FDE_G7LgsDh2K4jBcwxs6R76BkQ/preview",
+    //   description: "Gentle and romantic piano melodies",
+    //   category: "piano",
+    //   icon: Piano,
+    //   duration: "4:30",
+    //   color: "from-blue-500 to-indigo-500"
+    // },
       id: 2,
       title: "Violin Solo",
       thumbnail: "/show/violin.png",
@@ -69,7 +81,7 @@ export const EntertainmentShow = () => {
       title: "Saxophone solo",
       thumbnail: "/show/sexophonesolo.png",
       url: "https://drive.google.com/file/d/1GXGFZWcaMTfO-U7di40r1_pjxOu9KeI2/preview",
-      description: "Smooth and soulful saxophone melodies",
+      description: "Perfect harmony between piano and violin",
       category: "saxophone",
       icon: Music,
       duration: "0:30",
@@ -134,14 +146,17 @@ export const EntertainmentShow = () => {
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                   
-                  {/* Play Button Overlay - Nút Play to rõ */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-14 h-14 md:w-20 md:h-20 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shadow-2xl border-2 border-white/50 transform group-hover:scale-110 transition-all duration-300">
-                      <Play className="w-7 h-7 md:w-10 md:h-10 text-white ml-1" fill="white" />
+                  {/* Play Button Overlay - Nhỏ hơn trên mobile */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="relative">
+                      <div className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300">
+                        <Play className="w-5 h-5 md:w-8 md:h-8 text-white" fill="white" />
+                      </div>
+                      <div className="absolute -inset-2 md:-inset-4 bg-white/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                   </div>
                   
-                  {/* Category Badge */}
+                  {/* Category Badge - Nhỏ hơn trên mobile */}
                   <div className="absolute top-2 left-2 md:top-4 md:left-4 z-10">
                     <div className={`px-2 py-0.5 md:px-3 md:py-1 bg-gradient-to-r ${item.color} rounded-full`}>
                       <span className="text-white text-[8px] md:text-xs font-medium uppercase">
@@ -150,15 +165,15 @@ export const EntertainmentShow = () => {
                     </div>
                   </div>
                   
-                  {/* Duration Badge */}
+                  {/* Duration Badge - Nhỏ hơn trên mobile */}
                   <div className="absolute top-2 right-2 md:top-4 md:right-4 z-10">
                     <div className="px-1.5 py-0.5 md:px-2 md:py-1 bg-black/70 backdrop-blur-sm rounded">
                       <span className="text-white text-[8px] md:text-xs">{item.duration}</span>
                     </div>
                   </div>
                   
-                  {/* Title Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4 bg-gradient-to-t from-black/90 to-transparent">
+                  {/* Title Overlay - Nhỏ hơn trên mobile */}
+                  <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4">
                     <h3 className="text-white font-semibold text-xs md:text-lg mb-0.5 md:mb-1 line-clamp-2">
                       {item.title}
                     </h3>
@@ -167,41 +182,43 @@ export const EntertainmentShow = () => {
                     </p>
                   </div>
                 </div>
+                
+                {/* Description - Nhỏ hơn trên mobile */}
+                <div className="p-2 md:p-4 border-t border-border">
+                  <p className="text-muted-foreground text-[8px] md:text-sm line-clamp-2 md:line-clamp-2">
+                    {item.description}
+                  </p>
+                </div>
               </div>
             );
           })}
         </div>
 
-        {/* Video Player Modal - Đơn giản, chỉ có video */}
+        {/* Video Player Modal - Responsive */}
         {selectedVideo && (
           <div 
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-2 md:p-4"
+            className="fixed inset-0 z-50 bg-black"
             onClick={closeVideo}
           >
-            <div 
-              className="relative w-full h-full max-w-6xl max-h-[90vh] bg-black rounded-2xl overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
+            {/* Nút Close - Responsive */}
+            <button
+              onClick={closeVideo}
+              className="absolute top-2 right-2 md:top-4 md:right-4 z-50 w-8 h-8 md:w-12 md:h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors"
+              aria-label="Close video"
             >
-              {/* Nút Close */}
-              <button
-                onClick={closeVideo}
-                className="absolute top-2 right-2 md:top-4 md:right-4 z-50 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors"
-                aria-label="Close video"
-              >
-                <X className="w-5 h-5 md:w-6 md:h-6 text-white" />
-              </button>
+              <X className="w-4 h-4 md:w-6 md:h-6 text-white" />
+            </button>
 
-              {/* Video Container */}
-              <div className="w-full h-full flex items-center justify-center">
-                <iframe
-                  src={selectedVideo.url}
-                  title={selectedVideo.title}
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  frameBorder="0"
-                />
-              </div>
+            {/* Video Container - Full màn hình */}
+            <div className="w-full h-full flex items-center justify-center">
+              <iframe
+                src={selectedVideo.url}
+                title={selectedVideo.title}
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                frameBorder="0"
+              />
             </div>
           </div>
         )}
