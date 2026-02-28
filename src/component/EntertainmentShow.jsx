@@ -18,21 +18,27 @@ export const EntertainmentShow = () => {
     };
   }, [selectedVideo]);
 
+  // Hàm chuyển đổi URL Google Drive sang direct link
+  const getDirectGoogleDriveUrl = (url) => {
+    // Trích xuất file ID từ URL Google Drive
+    const fileIdMatch = url.match(/\/d\/(.+?)\/|id=(.+?)&|file\/d\/(.+?)\//);
+    let fileId = '';
+    
+    if (fileIdMatch) {
+      fileId = fileIdMatch[1] || fileIdMatch[2] || fileIdMatch[3];
+    }
+    
+    if (fileId) {
+      // Sử dụng direct link để tự động phát
+      return `https://drive.google.com/file/d/${fileId}/preview?autoplay=1`;
+    }
+    
+    return url;
+  };
+
   // Dữ liệu các tiết mục
   const performances = [
     {
-      // {
-    //   id: 1,
-    //   title: "Piano Solo - Romantic Classics",
-    //   artist: "Piano Artist Nguyen Tuan Anh",
-    //   thumbnail: "/logotab1.jpg",
-    //   url: "https://drive.google.com/file/d/1NCCX5FDE_G7LgsDh2K4jBcwxs6R76BkQ/preview",
-    //   description: "Gentle and romantic piano melodies",
-    //   category: "piano",
-    //   icon: Piano,
-    //   duration: "4:30",
-    //   color: "from-blue-500 to-indigo-500"
-    // },
       id: 2,
       title: "Violin Solo",
       thumbnail: "/show/violin.png",
@@ -81,7 +87,7 @@ export const EntertainmentShow = () => {
       title: "Saxophone solo",
       thumbnail: "/show/sexophonesolo.png",
       url: "https://drive.google.com/file/d/1GXGFZWcaMTfO-U7di40r1_pjxOu9KeI2/preview",
-      description: "Perfect harmony between piano and violin",
+      description: "Smooth and soulful saxophone melodies",
       category: "saxophone",
       icon: Music,
       duration: "0:30",
@@ -95,6 +101,15 @@ export const EntertainmentShow = () => {
 
   const closeVideo = () => {
     setSelectedVideo(null);
+  };
+
+  const openVideo = (item) => {
+    // Tạo URL với autoplay
+    const videoWithAutoplay = {
+      ...item,
+      url: getDirectGoogleDriveUrl(item.url)
+    };
+    setSelectedVideo(videoWithAutoplay);
   };
 
   return (
@@ -125,7 +140,7 @@ export const EntertainmentShow = () => {
             return (
               <div
                 key={item.id}
-                onClick={() => setSelectedVideo(item)}
+                onClick={() => openVideo(item)}
                 className="group cursor-pointer bg-card border border-border rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {/* Thumbnail Container */}
@@ -146,13 +161,12 @@ export const EntertainmentShow = () => {
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                   
-                  {/* Play Button Overlay - Nhỏ hơn trên mobile */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {/* Play Button Overlay - Luôn hiển thị trên mobile */}
+                  <div className="absolute inset-0 flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                     <div className="relative">
-                      <div className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300">
-                        <Play className="w-5 h-5 md:w-8 md:h-8 text-white" fill="white" />
+                      <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center">
+                        <Play className="w-6 h-6 md:w-8 md:h-8 text-white" fill="white" />
                       </div>
-                      <div className="absolute -inset-2 md:-inset-4 bg-white/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                   </div>
                   
@@ -203,15 +217,16 @@ export const EntertainmentShow = () => {
             {/* Nút Close - Responsive */}
             <button
               onClick={closeVideo}
-              className="absolute top-2 right-2 md:top-4 md:right-4 z-50 w-8 h-8 md:w-12 md:h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors"
+              className="absolute top-2 right-2 md:top-4 md:right-4 z-50 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors"
               aria-label="Close video"
             >
-              <X className="w-4 h-4 md:w-6 md:h-6 text-white" />
+              <X className="w-5 h-5 md:w-6 md:h-6 text-white" />
             </button>
 
             {/* Video Container - Full màn hình */}
             <div className="w-full h-full flex items-center justify-center">
               <iframe
+                key={selectedVideo.id} // Thêm key để force re-render khi đổi video
                 src={selectedVideo.url}
                 title={selectedVideo.title}
                 className="w-full h-full"
