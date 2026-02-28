@@ -87,7 +87,7 @@ export const TableInfo = ({
           {/* Important Note */}
           <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
             <p className="text-xs md:text-sm text-amber-700 dark:text-amber-300">
-              <span className="font-medium">Note:</span> {selectedTable.note || "Floral decorations shown are for demonstration only. Actual decorations require purchasing a decor package."}
+              <span className="font-medium"></span> {selectedTable.note || "Floral decorations shown are for demonstration only. Actual decorations require purchasing a decor package."}
             </p>
           </div>
 
