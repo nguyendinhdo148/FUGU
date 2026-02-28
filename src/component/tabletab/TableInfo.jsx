@@ -9,49 +9,34 @@ export const TableInfo = ({
   setSelectedTable 
 }) => {
   return (
-    <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-lg mb-8 md:mb-12">
-      <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
+    <div className="bg-card border border-border rounded-xl p-4 md:p-6 shadow-lg mb-6 md:mb-8">
+      <div className="flex flex-col lg:flex-row gap-4 md:gap-6">
         {/* Image Section */}
         <div className="lg:w-2/5">
           <div 
-            className="relative rounded-xl overflow-hidden shadow-lg cursor-pointer group border border-border/50"
+            className="relative rounded-lg overflow-hidden shadow-md cursor-pointer group border border-border/50"
             onClick={() => handleImageClick(selectedTable)}
           >
             <div className="aspect-video bg-secondary/50 relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10"></div>
-              
               <img 
                 src={tableImages[selectedTable.id] || "/tables/default.jpg"}
                 alt={`Table ${selectedTable.name}`}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = "/tables/default.jpg";
                 }}
               />
               
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <div className="bg-black/60 backdrop-blur-md p-3 md:p-4 rounded-full transform -translate-y-4 group-hover:translate-y-0 transition-transform duration-500 border border-white/20">
-                  <svg className="w-5 h-5 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                  </svg>
-                </div>
+              <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="bg-black/60 text-white text-xs px-2 py-1 rounded-full">
+                  Click to zoom
+                </span>
               </div>
               
-              <div className="absolute bottom-2 left-2 md:bottom-4 md:left-4 z-20">
-                <span className="px-2 py-1 md:px-3 md:py-1.5 bg-black/80 backdrop-blur-sm text-white text-[10px] md:text-sm rounded-full font-medium font-inter">
+              <div className="absolute top-2 left-2">
+                <span className="px-2 py-1 bg-black/70 text-white text-xs rounded-full">
                   {getTableTypeLabel(selectedTable.type)}
-                </span>
-              </div>
-            </div>
-            
-            <div className="p-3 md:p-4 bg-card border-t border-border">
-              <div className="flex justify-between items-center">
-                <span className="text-xs md:text-sm text-muted-foreground font-inter">
-                  Click to zoom in
-                </span>
-                <span className="text-[10px] md:text-xs px-2 py-1 md:px-3 md:py-1 bg-primary/10 text-primary rounded-full font-medium font-inter">
-                  Actual Photo
                 </span>
               </div>
             </div>
@@ -59,23 +44,24 @@ export const TableInfo = ({
         </div>
         
         {/* Details Section */}
-        <div className="lg:w-3/5">
-          <div className="flex items-start justify-between mb-4 md:mb-6">
-            <div className="flex items-center gap-3 md:gap-4">
-              <div className={`w-12 h-12 md:w-20 md:h-20 rounded-xl flex items-center justify-center ${getTableColor(selectedTable.type)} shadow-lg flex-shrink-0`}>
-                <span className="text-lg md:text-3xl text-white font-bold font-inter">
+        <div className="lg:w-3/5 space-y-4">
+          {/* Header */}
+          <div className="flex items-start justify-between">
+            <div className="flex items-center gap-3">
+              <div className={`w-10 h-10 md:w-14 md:h-14 rounded-lg flex items-center justify-center ${getTableColor(selectedTable.type)} shadow-md flex-shrink-0`}>
+                <span className="text-base md:text-2xl text-white font-bold">
                   {selectedTable.name}
                 </span>
               </div>
-              <div className="min-w-0 flex-1">
-                <h4 className="text-lg md:text-3xl font-bold text-foreground font-notoserif mb-1 md:mb-2 truncate">
+              <div>
+                <h4 className="text-lg md:text-2xl font-bold text-foreground">
                   {selectedTable.type === 'private-room' ? 'Private Room' : 'Table'} {selectedTable.name}
                 </h4>
-                <div className="flex flex-wrap items-center gap-1 md:gap-2">
-                  <span className="px-2 py-1 md:px-3 md:py-1.5 bg-secondary text-secondary-foreground rounded-full text-[10px] md:text-sm font-medium font-inter whitespace-nowrap">
+                <div className="flex flex-wrap gap-1 mt-1">
+                  <span className="px-2 py-0.5 bg-secondary text-secondary-foreground rounded text-xs">
                     {getTableTypeLabel(selectedTable.type)}
                   </span>
-                  <span className="px-2 py-1 md:px-3 md:py-1.5 bg-secondary text-secondary-foreground rounded-full text-[10px] md:text-sm font-medium font-inter whitespace-nowrap">
+                  <span className="px-2 py-0.5 bg-secondary text-secondary-foreground rounded text-xs">
                     {selectedTable.capacity}
                   </span>
                 </div>
@@ -83,135 +69,62 @@ export const TableInfo = ({
             </div>
             <button
               onClick={() => setSelectedTable(null)}
-              className="p-1.5 md:p-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors flex-shrink-0"
-              aria-label="Close"
+              className="p-1 text-muted-foreground hover:text-foreground hover:bg-secondary rounded"
             >
-              <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-          
-          {/* Table Description */}
-          <div className="mb-4 md:mb-6">
-            <h5 className="text-base md:text-xl font-semibold text-foreground mb-2 md:mb-3 font-notoserif">Description</h5>
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-3 md:mb-4 font-inter">
+
+          {/* Description */}
+          <div>
+            <p className="text-sm md:text-base text-foreground leading-relaxed">
               {selectedTable.description || 'Comfortable seating area with excellent ambiance.'}
             </p>
-            
-            {/* Decoration Note */}
-            <div className="mt-3 md:mt-4 p-3 md:p-4 bg-amber-500/10 border border-amber-500/20 rounded-lg">
-              <div className="flex items-start gap-2 md:gap-3">
-                <span className="text-amber-600 dark:text-amber-400 text-base md:text-xl flex-shrink-0">ℹ️</span>
-                <div>
-                  <p className="text-amber-700 dark:text-amber-300 font-medium mb-0.5 md:mb-1 font-notoserif text-sm md:text-base">Important Note</p>
-                  <p className="text-amber-600 dark:text-amber-400 text-xs md:text-sm font-inter">
-                    {selectedTable.note || "Floral decorations shown are for demonstration only. Actual decorations require purchasing a decor package."}
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
-          
-          {/* Features */}
-          <div className="mb-4 md:mb-6">
-            <h5 className="text-base md:text-xl font-semibold text-foreground mb-3 md:mb-4 font-notoserif">Features</h5>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
+
+          {/* Important Note */}
+          <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
+            <p className="text-xs md:text-sm text-amber-700 dark:text-amber-300">
+              <span className="font-medium">Note:</span> {selectedTable.note || "Floral decorations shown are for demonstration only. Actual decorations require purchasing a decor package."}
+            </p>
+          </div>
+
+          {/* Features - Simplified */}
+          <div>
+            <h5 className="text-sm font-semibold text-foreground mb-2">Features:</h5>
+            <div className="flex flex-wrap gap-2">
               {selectedTable.type === 'private-room' ? (
                 <>
-                  <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-secondary/50 rounded-lg">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-purple-600 dark:text-purple-400 text-base md:text-lg">🏠</span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-foreground font-inter truncate">Private Space</span>
-                  </div>
-                  <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-secondary/50 rounded-lg">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-purple-600 dark:text-purple-400 text-base md:text-lg">🎤</span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-foreground font-inter truncate">Sound System</span>
-                  </div>
-                  <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-secondary/50 rounded-lg">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-purple-600 dark:text-purple-400 text-base md:text-lg">👑</span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-foreground font-inter truncate">VIP Service</span>
-                  </div>
-                  <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-secondary/50 rounded-lg">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-purple-600 dark:text-purple-400 text-base md:text-lg">🔒</span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-foreground font-inter truncate">Exclusive</span>
-                  </div>
+                  <span className="px-2 py-1 bg-secondary/50 rounded text-xs">Private Space</span>
+                  <span className="px-2 py-1 bg-secondary/50 rounded text-xs">Sound System</span>
+                  <span className="px-2 py-1 bg-secondary/50 rounded text-xs">VIP Service</span>
+                  <span className="px-2 py-1 bg-secondary/50 rounded text-xs">Exclusive</span>
                 </>
               ) : selectedTable.type === 'vip' ? (
                 <>
-                  <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-secondary/50 rounded-lg">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-amber-600 dark:text-amber-400 text-base md:text-lg">⭐</span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-foreground font-inter truncate">Premium</span>
-                  </div>
-                  <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-secondary/50 rounded-lg">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-amber-600 dark:text-amber-400 text-base md:text-lg">👁️</span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-foreground font-inter truncate">Best View</span>
-                  </div>
-                  <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-secondary/50 rounded-lg">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-amber-600 dark:text-amber-400 text-base md:text-lg">💎</span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-foreground font-inter truncate">Priority</span>
-                  </div>
-                  <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-secondary/50 rounded-lg">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-amber-600 dark:text-amber-400 text-base md:text-lg">🎯</span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-foreground font-inter truncate">Center Spot</span>
-                  </div>
+                  <span className="px-2 py-1 bg-secondary/50 rounded text-xs">Premium</span>
+                  <span className="px-2 py-1 bg-secondary/50 rounded text-xs">Best View</span>
+                  <span className="px-2 py-1 bg-secondary/50 rounded text-xs">Priority</span>
+                  <span className="px-2 py-1 bg-secondary/50 rounded text-xs">Center Spot</span>
                 </>
               ) : (
                 <>
-                  <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-secondary/50 rounded-lg">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-blue-600 dark:text-blue-400 text-base md:text-lg">🪑</span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-foreground font-inter truncate">Comfortable</span>
-                  </div>
-                  <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-secondary/50 rounded-lg">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-blue-600 dark:text-blue-400 text-base md:text-lg">💡</span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-foreground font-inter truncate">Good Lighting</span>
-                  </div>
-                  <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-secondary/50 rounded-lg">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-blue-600 dark:text-blue-400 text-base md:text-lg">🔊</span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-foreground font-inter truncate">Good Acoustics</span>
-                  </div>
-                  <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-secondary/50 rounded-lg">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-blue-600 dark:text-blue-400 text-base md:text-lg">🚶</span>
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-foreground font-inter truncate">Easy Access</span>
-                  </div>
+                  <span className="px-2 py-1 bg-secondary/50 rounded text-xs">Comfortable</span>
+                  <span className="px-2 py-1 bg-secondary/50 rounded text-xs">Good Lighting</span>
+                  <span className="px-2 py-1 bg-secondary/50 rounded text-xs">Good Acoustics</span>
+                  <span className="px-2 py-1 bg-secondary/50 rounded text-xs">Easy Access</span>
                 </>
               )}
             </div>
           </div>
-          
-          {/* Reservation Note */}
-          <div className="bg-primary/5 border border-primary/10 rounded-xl p-3 md:p-4">
-            <div className="flex items-center gap-2 md:gap-3">
-              <span className="text-primary text-base md:text-xl flex-shrink-0">📞</span>
-              <div>
-                <p className="text-xs md:text-sm text-muted-foreground font-inter">
-                  For reservations and information about decor packages, please contact our reservation team.
-                </p>
-              </div>
-            </div>
+
+          {/* Reservation Contact */}
+          <div className="pt-2">
+            <p className="text-xs text-muted-foreground">
+              For reservations: 📞 Contact our team
+            </p>
           </div>
         </div>
       </div>

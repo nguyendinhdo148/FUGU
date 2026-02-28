@@ -265,28 +265,6 @@ export const VIPLounge = () => {
           </div>
 
           {/* Amenities */}
-          <div className="bg-card rounded-xl p-4 md:p-5 border border-border shadow-sm">
-            <div className="flex items-center justify-between mb-2 md:mb-3">
-              <h4 className="text-base md:text-lg font-bold text-foreground font-notoserif">Amenities</h4>
-              <div className="flex items-center gap-1">
-                <span className="px-1.5 py-0.5 md:px-2 md:py-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[8px] md:text-xs rounded-full border border-amber-500/20">
-                  ℹ️
-                </span>
-                <span className="text-[8px] md:text-xs text-muted-foreground">Note below</span>
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-4">
-              {vipLoungeDetails.amenities.map((amenity, index) => (
-                <span 
-                  key={index}
-                  className="px-2 py-1 md:px-3 md:py-1.5 bg-purple-500/10 text-foreground text-[8px] md:text-sm rounded-lg border border-purple-500/20 font-inter"
-                >
-                  {amenity}
-                </span>
-              ))}
-            </div>
-            
-            {/* Decoration Note */}
             <div className="mt-3 md:mt-4 p-2 md:p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
               <div className="flex items-start gap-1 md:gap-2">
                 <div className="flex-shrink-0 mt-0.5">
@@ -301,20 +279,9 @@ export const VIPLounge = () => {
                 </div>
               </div>
             </div>
-          </div>
+          
 
-          {/* Note */}
-          <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-4 md:p-5">
-            <div className="flex items-start gap-2 md:gap-3">
-              <div className="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center flex-shrink-0">
-                <span className="text-white text-xs md:text-sm">i</span>
-              </div>
-              <div>
-                <h5 className="text-sm md:text-base font-bold text-foreground mb-0.5 md:mb-1 font-notoserif">Information</h5>
-                <p className="text-muted-foreground text-xs md:text-sm font-inter">{vipLoungeDetails.note}</p>
-              </div>
-            </div>
-          </div>
+          
 
           {/* Contact Button */}
           <button className="w-full py-2 md:py-3 bg-purple-600 hover:bg-purple-700 dark:bg-purple-700 dark:hover:bg-purple-600 text-white rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-1 md:gap-2">

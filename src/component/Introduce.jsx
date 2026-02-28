@@ -284,7 +284,7 @@ export const Introduce = () => {
                         </div>
                         <div className="text-left">
                           <p className="text-foreground font-medium">Email</p>
-                          <p className="text-muted-foreground text-sm break-words leading-tight">
+                          <p className="text-muted-foreground text-sm break-all leading-tight">
   seidininglounge@gmail.com
 </p>
                         </div>
