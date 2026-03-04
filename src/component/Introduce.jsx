@@ -254,7 +254,7 @@ export const Introduce = () => {
                       <MapPin className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
                       <div>
                         <p className="text-muted-foreground">
-                          13-15-17 Đồng Khởi, Phường Sài Gòn, Quận 1
+                          13-15-17 Đồng Khởi, Phường Sài Gòn
                           <br />
                           Thành phố Hồ Chí Minh, Việt Nam
                         </p>
@@ -275,7 +275,7 @@ export const Introduce = () => {
                         </div>
                       </a>
                       
-                      <a 
+                      {/* <a 
                         href="mailto:info@fuguizakaya.vn" 
                         className="group flex items-center gap-3 p-3 bg-secondary hover:bg-secondary/80 rounded-lg transition-all"
                       >
@@ -288,7 +288,7 @@ export const Introduce = () => {
   seidininglounge@gmail.com
 </p>
                         </div>
-                      </a>
+                      </a> */}
                     </div>
                     
                     <a
@@ -357,12 +357,12 @@ export const Introduce = () => {
                       { icon: Instagram, href: "https://www.instagram.com/fugu.dininglounge?fbclid=IwY2xjawPpHjFleHRuA2FlbQIxMABicmlkETFETVgzWTB4RHJ4RFljTlEyc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHkIFWNKj41BmDZwoVYAX1HazcQuGvw7XXykePfZjEliXJpi4uqsy_iz_yZb3_aem_CThmH5nGNEsrBg5-3RJ2Zg", color: "bg-pink-500" },
                       { icon: Facebook, href: "https://www.facebook.com/fugumodernizakayabar", color: "bg-blue-600" },
                       { icon: Phone, href: "tel:+84855873979", color: "bg-green-500" },
-                      {
-  icon: Mail,
+//                       {
+//   icon: Mail,
   
-   href: "mailto:nguyendinhdo2k4@gmail.com",
-  color: "bg-purple-500"
-}
+//    href: "mailto:nguyendinhdo2k4@gmail.com",
+//   color: "bg-purple-500"
+// }
 
                     ].map((social, index) => {
                       const Icon = social.icon;
