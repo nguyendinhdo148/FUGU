@@ -312,7 +312,7 @@ export const Introduce = () => {
                       {['Monday - Sunday'].map((day, index) => (
                         <div key={index} className="flex justify-between items-center py-2">
                           <span className="text-foreground/70">{day}</span>
-                          <span className="text-foreground font-bold">5:00 PM – 12:00 AM</span>
+                          <span className="text-foreground font-bold">5:00 PM – 12:00 PM</span>
                         </div>
                       ))}
                     </div>

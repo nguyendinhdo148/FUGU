@@ -24,7 +24,7 @@ export const MenuDaily = () => {
       color: "from-orange-500 to-red-500"
     },
     drinks: {
-      name: "Drinks Menu",
+      name: "Drink Menu",
       description: "Complete beverage selection",
       googleDriveUrl: "https://drive.google.com/file/d/19WOnD3myETmFsW9pU3wjjVkvYc7iDtUf/preview",
       embedUrl: "https://drive.google.com/file/d/19WOnD3myETmFsW9pU3wjjVkvYc7iDtUf/preview",
