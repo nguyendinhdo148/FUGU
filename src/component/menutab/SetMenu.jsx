@@ -87,7 +87,7 @@ export const SetMenu = ({ setMenus }) => {
             </span>
           </div>
           <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-serif tracking-tight font-notoserif">
-  Signature Set Menus
+  Signature Set Menu
 </h3>
         </div>
 
@@ -100,8 +100,7 @@ export const SetMenu = ({ setMenus }) => {
             return (
               <div
                 key={set.id}
-                className="group bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden border border-gray-100 dark:border-gray-700"
-              >
+             className="group bg-card border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 relative">
                 {/* Image Container - TĂNG CHIỀU CAO */}
                 <div 
                   className="relative aspect-[4/5] overflow-hidden bg-gray-100 dark:bg-gray-900 cursor-pointer"
@@ -172,7 +171,7 @@ export const SetMenu = ({ setMenus }) => {
                       rel="noopener noreferrer"
                       className="bg-amber-500 hover:bg-amber-600 text-white px-2 py-0.5 lg:px-3 lg:py-1 rounded-full text-[9px] lg:text-xs font-semibold transition-colors duration-300 shadow-md hover:shadow-lg inline-block"
                     >
-                      Đặt ngay
+                      Book now
                     </a>
                   </div>
                 </div>
@@ -186,7 +185,7 @@ export const SetMenu = ({ setMenus }) => {
           <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-sm">
             <span className="text-amber-500 text-base lg:text-lg">💡</span>
             <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400">
-              Nhấn vào hình ảnh set menu để xem toàn màn hình
+              Click on the set menu image to view it in full screen.
             </div>
           </div>
         </div>
@@ -194,7 +193,7 @@ export const SetMenu = ({ setMenus }) => {
         {/* Footer */}
         <div className="text-center mt-8 lg:mt-12">
           <p className="text-gray-500 dark:text-gray-400 text-xs lg:text-sm">
-            * Giá chưa bao gồm VAT 8%. 
+            * Prices exclude 8% VAT.
           </p>
         </div>
       </div>

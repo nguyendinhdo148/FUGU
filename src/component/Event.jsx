@@ -24,22 +24,22 @@ export const Event = () => {
       id: 1,
       title: "Birthday Party 100pax+",
       thumbnail: "/tiec/sn100+.jpg",
-      url: "https://drive.google.com/file/d/1lptOuGHn2Jt30qNrHbZIAHhh3fpMvjU-/preview",
+      url: "https://drive.google.com/file/d/1lC3wg0Vph-hdJlN6PDW71MriUuEGdutI/preview",
       description: "Beautiful birthday setup with personalized decorations and cake ceremony",
       category: "birthday",
       icon: Cake,
-      duration: "0:17",
+      duration: "01:37",
       color: "from-pink-500 to-rose-500"
     },
     {
       id: 2,
       title: "Romantic Proposal - Love Story",
       thumbnail: "/tiec/love.jpg",
-      url: "https://drive.google.com/file/d/1rp0zXpPfVH3eb9NICyp5-ndD4qyzyNJW/preview",
+      url: "https://drive.google.com/file/d/1rycZjKCszNPv21bImFq-Xam6SoU1O3Go/preview",
       description: "Magical proposal moments with flower arrangements and intimate setup",
       category: "proposal",
       icon: Heart,
-      duration: "0:32",
+      duration: "02:20",
       color: "from-red-500 to-pink-500"
     },
     {
@@ -79,11 +79,11 @@ export const Event = () => {
       id: 6,
       title: "Buffet Event - Premium Dining",
       thumbnail: "/tiec/bff.png",
-      url: "https://drive.google.com/file/d/1B8o8AiteTiH3isZlLHDKarXZqxAc--ck/preview",
+      url: "https://drive.google.com/file/d/1zItMWbSgjv3Wk0CjFK2aVFtFa4mfY9Mk/preview",
       description: "Luxurious buffet setup with live cooking stations",
       category: "buffet",
       icon: Users,
-      duration: "00:09",
+      duration: "00:28",
       color: "from-emerald-500 to-teal-500"
     }
   ];

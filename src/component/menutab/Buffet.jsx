@@ -21,7 +21,7 @@ export const Buffet = () => {
     },
     {
       id: 3,
-      price: "350.000 -> 420.000 VND",
+      price: "350.000 -> 450.000 VND",
       image: "/freeflow/3.jpg",
     },
     {
@@ -107,11 +107,9 @@ export const Buffet = () => {
             </span>
           </div>
           <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-serif tracking-tight font-notoserif">
-  FreeFlow Menus
+  FreeFlow Drink
 </h3>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
-            Thỏa sức thưởng thức với các set menu tự chọn không giới hạn
-          </p>
+          
         </div>
 
         {/* 6 FreeFlow Menu - 2 cột trên mobile, 3 cột trên desktop */}
@@ -123,8 +121,7 @@ export const Buffet = () => {
             return (
               <div
                 key={menu.id}
-                className="group bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden border border-gray-100 dark:border-gray-700"
-              >
+                className="group bg-card border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 relative">
                 {/* Image Container - Tỷ lệ 4:5 để ảnh cao hơn */}
                 <div 
                   className="relative aspect-[4/5] overflow-hidden bg-gray-100 dark:bg-gray-900 cursor-pointer"
@@ -200,7 +197,7 @@ export const Buffet = () => {
                       rel="noopener noreferrer"
                       className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-0.5 lg:px-3 lg:py-1 rounded-full text-[9px] lg:text-xs font-semibold transition-colors duration-300 shadow-md hover:shadow-lg inline-block"
                     >
-                      Đặt ngay
+                      Book now
                     </a>
                   </div>
                 </div>
@@ -214,7 +211,7 @@ export const Buffet = () => {
           <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-sm">
             <span className="text-blue-500 text-base lg:text-lg">💡</span>
             <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400">
-              Nhấn vào hình ảnh để xem toàn màn hình
+              Click on the set menu image to view it in full screen.
             </div>
           </div>
         </div>
@@ -222,7 +219,7 @@ export const Buffet = () => {
         {/* Footer */}
         <div className="text-center mt-8 lg:mt-12">
           <p className="text-gray-500 dark:text-gray-400 text-xs lg:text-sm">
-            * Giá chưa bao gồm VAT 8%. FreeFlow áp dụng cho tối thiểu 2 người.
+            * Prices exclude 10% VAT.
           </p>
         </div>
       </div>
@@ -260,11 +257,7 @@ export const Buffet = () => {
           </div>
 
           {/* ESC Hint */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 hidden md:block">
-            <div className="text-white/30 text-sm font-mono tracking-wider bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-              Press ESC to close
-            </div>
-          </div>
+          
         </div>
       )}
     </section>
