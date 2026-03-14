@@ -1,276 +1,272 @@
+/* eslint-disable react-hooks/immutability */
 import React, { useState, useEffect } from "react";
+import { Coffee, X } from "lucide-react";
 
-export const Buffet = ({ buffetPackages = [] }) => {
-  const [zoomedImage, setZoomedImage] = useState(null);
+export const Buffet = () => {
+  const [imageErrors, setImageErrors] = useState({});
+  const [loading, setLoading] = useState({});
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleImageClick = (buffet) => {
-    setZoomedImage(buffet);
-  };
-
-  const closeZoom = () => {
-    setZoomedImage(null);
-  };
-
-  // Handle ESC key press to close zoom
-  useEffect(() => {
-    const handleEscKey = (e) => {
-      if (e.key === 'Escape') closeZoom();
-    };
-    
-    if (zoomedImage) {
-      document.addEventListener('keydown', handleEscKey);
-      document.body.style.overflow = 'hidden';
-    }
-    
-    return () => {
-      document.removeEventListener('keydown', handleEscKey);
-      document.body.style.overflow = 'auto';
-    };
-  }, [zoomedImage]);
-
-  // Default packages if none provided
-  const defaultPackages = [
+  // Dữ liệu cho 6 freeflow menu
+  const freeflowMenus = [
     {
       id: 1,
-      name: "Buffet Package",
-      type: "food",
-      price: "1,050,000 VND",
-      description: "Premium food selection with 50+ dishes",
-      image: "/buffet/food.jpg",
-      color: "from-blue-600 to-cyan-600",
-      promoTag: "FOOD MENU"
+      price: "150.000 -> 200.000 VND",
+      image: "/freeflow/1.jpg",
     },
     {
       id: 2,
-      name: "Freeflow Drinks", 
-      type: "drink",
-      price: "250,000 VND",
-      description: "Unlimited beverages including wine, beer, and cocktails",
-      image: "/buffet/drinks.jpg",
-      color: "from-purple-600 to-indigo-600",
-      promoTag: "DRINK MENU"
+      price: "250.000 -> 300.000 VND",
+      image: "/freeflow/2.jpg",
+    },
+    {
+      id: 3,
+      price: "350.000 -> 420.000 VND",
+      image: "/freeflow/3.jpg",
+    },
+    {
+      id: 4,
+      price: "500.000 -> 650.000 VND",
+      image: "/freeflow/5.jpg",
+    },
+    {
+      id: 5,
+      price: "800.000 -> 990.000 VND",
+      image: "/freeflow/4.jpg",
+    },
+    {
+      id: 6,
+      price: "1.150.000 -> 1.350.000 VND",
+      image: "/freeflow/6.jpg",
     }
   ];
 
-  // Use provided packages or default
-  const packagesToShow = buffetPackages.length > 0 ? buffetPackages : defaultPackages;
+  const handleImageError = (id) => {
+    setImageErrors(prev => ({ ...prev, [id]: true }));
+    setLoading(prev => ({ ...prev, [id]: false }));
+  };
+
+  const handleImageLoad = (id) => {
+    setLoading(prev => ({ ...prev, [id]: false }));
+  };
+
+  const handleImageClick = (menu) => {
+    setSelectedImage(menu);
+    document.body.style.overflow = "hidden";
+
+    // Ẩn navbar nếu có
+    const navbar = document.querySelector("nav");
+    if (navbar) navbar.style.display = "none";
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImage(null);
+    document.body.style.overflow = "";
+
+    // Hiện lại navbar
+    const navbar = document.querySelector("nav");
+    if (navbar) navbar.style.display = "";
+  };
+
+  // Xử lý phím ESC để đóng modal
+  useEffect(() => {
+    const handleEscKey = (event) => {
+      if (event.key === 'Escape' && selectedImage) {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscKey);
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+    };
+  }, [selectedImage]);
+
+  // Cleanup khi unmount
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   return (
-    <div className="mb-4 font-sans bg-background">
-      {/* Header Section */}
-      <div className="text-center mb-16">
-        <div className="inline-block mb-4">
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto mb-6"></div>
-          <span className="text-primary font-semibold tracking-widest text-sm uppercase font-inter">
-            Exclusive Events
-          </span>
-        </div>
-        <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-notoserif tracking-tight">
-          Buffet Packages
-        </h3>
+    <section id="freeflow" className="py-0 relative overflow-hidden font-sans">
+      {/* Background decoration */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-64 h-64 bg-blue-100 dark:bg-blue-900/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-teal-100 dark:bg-teal-900/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse delay-1000"></div>
       </div>
 
-      {/* Compact Service Terms */}
-      <div className="max-w-2xl mx-auto mb-12 px-4">
-        <div className="bg-card border border-border rounded-xl p-5 shadow-sm">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shadow-sm">
-              <span className="text-lg text-primary">📋</span>
-            </div>
-            <h4 className="text-lg font-semibold text-foreground font-inter">
-              Service Terms
-            </h4>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-block mb-4">
+            <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent mx-auto mb-6"></div>
+            <span className="text-blue-600 dark:text-blue-400 font-semibold tracking-widest text-sm uppercase font-inter">
+              Unlimited Indulgence
+            </span>
           </div>
-          
-          <div className="space-y-3 pl-2">
-            <div className="flex items-start gap-2">
-              <div className="w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-              </div>
-              <p className="text-sm text-muted-foreground font-medium font-inter leading-snug">
-                Buffet packages are exclusively for private events & group catering (20+ people).
-              </p>
-            </div>
-            
-            <div className="flex items-start gap-2">
-              <div className="w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-              </div>
-              <p className="text-sm text-muted-foreground font-medium font-inter leading-snug">
-                Not available for individual orders. Advance booking required (3+ days)
-              </p>
-            </div>
-          </div>
+          <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-serif tracking-tight font-notoserif">
+  FreeFlow Menus
+</h3>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
+            Thỏa sức thưởng thức với các set menu tự chọn không giới hạn
+          </p>
         </div>
-      </div>
-      
-      {/* Buffet Packages - Luôn 2 cột trên mọi kích thước */}
-      <div className="grid grid-cols-2 gap-3 md:gap-10 max-w-6xl mx-auto px-2 md:px-4">
-        {packagesToShow.map((buffet) => (
-          <div
-            key={buffet.id}
-            className="relative bg-card border border-border rounded-xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 group"
-          >
-            {/* Gradient Background based on type */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${buffet.color} opacity-90`}></div>
+
+        {/* 6 FreeFlow Menu - 2 cột trên mobile, 3 cột trên desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+          {freeflowMenus.map((menu) => {
+            const hasImageError = imageErrors[menu.id];
+            const isLoading = loading[menu.id] !== false;
             
-            {/* Decorative Elements - Ẩn bớt trên mobile */}
-            <div className="absolute top-0 left-0 w-16 h-16 md:w-32 md:h-32 -translate-x-8 -translate-y-8 md:-translate-x-16 md:-translate-y-16 bg-white/10 rounded-full blur-xl"></div>
-            <div className="absolute bottom-0 right-0 w-20 h-20 md:w-40 md:h-40 translate-x-5 translate-y-5 md:translate-x-10 md:translate-y-10 bg-white/10 rounded-full blur-xl"></div>
-            
-            {/* Card Content - Giảm padding trên mobile */}
-            <div className="relative p-4 md:p-9 z-10">
-              {/* Header Section - Điều chỉnh cho mobile */}
-              <div className="flex flex-col mb-4 md:mb-8 space-y-2 md:space-y-4">
-                <div className="flex items-start justify-between gap-1">
-                  <h4 className="text-sm md:text-2xl lg:text-3xl font-bold tracking-tight font-notoserif text-white line-clamp-1">
-                    {buffet.name}
-                  </h4>
-                  {buffet.promoTag && (
-                    <span className="bg-white/20 backdrop-blur-sm px-2 py-1 md:px-4 md:py-2 rounded-full text-[8px] md:text-xs font-medium whitespace-nowrap shadow-lg border border-white/30 font-inter text-white flex-shrink-0">
-                      {buffet.promoTag}
-                    </span>
-                  )}
-                </div>
-                <div className="flex items-baseline gap-1 md:gap-2 font-inter">
-                  <span className="text-sm md:text-2xl lg:text-3xl font-semibold text-white">
-                    {buffet.price}
-                  </span>
-                  <span className="text-white/70 text-[8px] md:text-sm font-light">/pax</span>
-                </div>
-              </div>
-              
-              {/* Image Section - Giảm chiều cao trên mobile */}
-              <div 
-                className="h-32 md:h-[420px] rounded-lg md:rounded-2xl overflow-hidden shadow-lg md:shadow-2xl group/image cursor-pointer relative"
-                onClick={() => handleImageClick(buffet)}
+            return (
+              <div
+                key={menu.id}
+                className="group bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden border border-gray-100 dark:border-gray-700"
               >
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10"></div>
-                
-                {/* Main Image */}
-                <img 
-                  src={buffet.image} 
-                  alt={buffet.name}
-                  className="w-full h-full object-cover group-hover/image:scale-110 transition-transform duration-[1200ms] ease-out"
-                />
-                
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-all duration-500"></div>
-                
-                {/* Zoom Indicator - Nhỏ hơn trên mobile */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-all duration-500">
-                  <div className="bg-black/60 backdrop-blur-md p-2 md:p-4 rounded-full transform -translate-y-2 md:-translate-y-4 group-hover/image:translate-y-0 transition-transform duration-500 border border-white/30">
-                    <svg className="w-5 h-5 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+                {/* Image Container - Tỷ lệ 4:5 để ảnh cao hơn */}
+                <div 
+                  className="relative aspect-[4/5] overflow-hidden bg-gray-100 dark:bg-gray-900 cursor-pointer"
+                  onClick={() => handleImageClick(menu)}
+                >
+                  {/* Loading Spinner */}
+                  {isLoading && !hasImageError && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-900 z-10">
+                      <div className="w-8 h-8 lg:w-10 lg:h-10 border-3 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                    </div>
+                  )}
 
-      {/* Zoom Modal - Điều chỉnh cho mobile */}
-      {zoomedImage && (
-        <div 
-          className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-2 md:p-4 cursor-zoom-out font-sans backdrop-blur-sm"
-          onClick={closeZoom}
-        >
-          {/* Close Button - Nhỏ hơn trên mobile */}
-          <button 
-            className="absolute top-4 right-4 md:top-8 md:right-8 z-20 bg-black/70 hover:bg-black/90 backdrop-blur-sm text-white p-2 md:p-3.5 rounded-full transition-all duration-300 hover:scale-110 shadow-2xl border border-white/20"
-            onClick={(e) => {
-              e.stopPropagation();
-              closeZoom();
-            }}
-          >
-            <svg className="w-5 h-5 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-
-          {/* Info Overlay - Điều chỉnh cho mobile */}
-          <div className="absolute bottom-4 md:bottom-8 left-0 right-0 z-20 opacity-0 hover:opacity-100 transition-opacity duration-500">
-            <div className="max-w-4xl mx-auto px-4 md:px-8">
-              <div className="bg-gradient-to-t from-black/90 via-black/60 to-transparent backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-6 border border-white/10">
-                <div className="flex items-end justify-between">
-                  <div>
-                    <h3 className="text-base md:text-2xl font-bold text-white mb-1 md:mb-2 font-notoserif">{zoomedImage.name}</h3>
-                    <div className="flex items-center gap-1 md:gap-2 font-inter">
-                      <span className="text-sm md:text-xl text-white/70">
-                        {zoomedImage.type === "food" ? "Buffet" : "Drinks"}
+                  {!hasImageError && menu.image ? (
+                    <img
+                      src={menu.image}
+                      alt={menu.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      onLoad={() => handleImageLoad(menu.id)}
+                      onError={() => handleImageError(menu.id)}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center">
+                      <Coffee className="w-12 h-12 lg:w-16 lg:h-16 text-white/50" />
+                    </div>
+                  )}
+                  
+                  {/* Badge/Promo Tag */}
+                  {menu.promoTag && (
+                    <div className="absolute top-2 left-2 lg:top-4 lg:left-4">
+                      <span className="bg-blue-500 text-white px-2 py-0.5 lg:px-3 lg:py-1 rounded-full text-[10px] lg:text-sm font-semibold shadow-lg">
+                        {menu.promoTag}
                       </span>
-                      <div className="w-0.5 h-0.5 md:w-1 md:h-1 bg-white/40 rounded-full"></div>
-                      <span className="text-sm md:text-xl font-semibold text-amber-300">{zoomedImage.price}</span>
+                    </div>
+                  )}
+
+                  {/* Overlay với hiệu ứng zoom */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="transform scale-90 group-hover:scale-100 transition-all duration-300">
+                      <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm text-gray-900 dark:text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-full shadow-lg">
+                        <span className="text-xs lg:text-sm font-semibold flex items-center gap-1 lg:gap-2">
+                          🔍 <span className="hidden lg:inline">Nhấn để phóng to</span>
+                          <span className="lg:hidden">Phóng to</span>
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <div className="text-right font-inter hidden md:block">
-                    <div className="text-xs text-white/50 font-mono tracking-wider">ESC to close</div>
-                    <div className="text-xs text-white/40 mt-1">• Click anywhere to close •</div>
+                </div>
+
+                {/* Content - Thu gọn */}
+                <div className="p-2 lg:p-3">
+                  {/* Name */}
+                  <h3 className="text-xs lg:text-base font-bold text-gray-900 dark:text-white mb-1 font-notoserif line-clamp-1">
+                    {menu.name}
+                  </h3>
+
+                  {/* Description - Ẩn trên mobile, hiện trên desktop */}
+                  <p className="hidden lg:block text-gray-600 dark:text-gray-400 text-xs mb-2 line-clamp-2">
+                    {menu.description}
+                  </p>
+
+                  {/* Price - Thu nhỏ */}
+                  <div className="flex items-baseline gap-1 mb-1 lg:mb-2">
+                    <span className="text-xs lg:text-sm font-bold text-blue-600 dark:text-blue-400">{menu.price}</span>
+                    <span className="text-gray-400 dark:text-gray-500 text-[8px] lg:text-[10px]">/pax</span>
+                  </div>
+
+                  {/* Button */}
+                  <div className="flex items-center justify-between">
+                    <a
+                      href="https://zalo.me/0855873979"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-0.5 lg:px-3 lg:py-1 rounded-full text-[9px] lg:text-xs font-semibold transition-colors duration-300 shadow-md hover:shadow-lg inline-block"
+                    >
+                      Đặt ngay
+                    </a>
                   </div>
                 </div>
               </div>
+            );
+          })}
+        </div>
+
+        {/* Quick Instructions */}
+        <div className="text-center mt-6 lg:mt-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-sm">
+            <span className="text-blue-500 text-base lg:text-lg">💡</span>
+            <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400">
+              Nhấn vào hình ảnh để xem toàn màn hình
+            </div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center mt-8 lg:mt-12">
+          <p className="text-gray-500 dark:text-gray-400 text-xs lg:text-sm">
+            * Giá chưa bao gồm VAT 8%. FreeFlow áp dụng cho tối thiểu 2 người.
+          </p>
+        </div>
+      </div>
+
+      {/* Fullscreen Modal - Zoom ảnh */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center p-2 md:p-8"
+          onClick={handleCloseModal}
+        >
+          {/* Nút đóng */}
+          <button
+            onClick={handleCloseModal}
+            className="absolute top-2 right-2 md:top-6 md:right-6 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 z-[10000] group"
+            aria-label="Đóng"
+          >
+            <X className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:rotate-90 transition-transform duration-300" />
+          </button>
+
+          {/* Container ảnh */}
+          <div 
+            className="relative w-full h-full max-w-5xl mx-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="w-full h-full flex items-center justify-center">
+              <img
+                src={selectedImage.image}
+                alt={selectedImage.name}
+                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                onError={(e) => {
+                  e.target.src = 'https://via.placeholder.com/800x600?text=FreeFlow+Image';
+                }}
+              />
             </div>
           </div>
 
-          {/* ESC Hint - Ẩn trên mobile */}
-          <div className="absolute top-4 left-4 z-20 hidden md:block">
-            <div className="text-white/50 text-sm font-mono tracking-wider bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 font-inter">
-              Press ESC to close
-            </div>
-          </div>
-
-          {/* Main Image Container - Giảm chiều cao trên mobile */}
-          <div className="relative w-full max-w-7xl h-[60vh] md:h-[85vh]">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-full h-full">
-                {/* Background Blur */}
-                <div 
-                  className="absolute inset-0 blur-xl md:blur-3xl opacity-30"
-                  style={{
-                    backgroundImage: `url(${zoomedImage.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  }}
-                ></div>
-                
-                {/* Main Image */}
-                <img
-                  src={zoomedImage.image}
-                  alt={zoomedImage.name}
-                  className="relative z-10 w-full h-full object-contain p-2 md:p-4"
-                  style={{
-                    animation: 'fadeInZoom 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards'
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Hint - Ẩn trên mobile */}
+          {/* ESC Hint */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 hidden md:block">
-            <div className="text-white/30 text-xs font-light tracking-widest uppercase font-inter">
-              — View Mode —
+            <div className="text-white/30 text-sm font-mono tracking-wider bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
+              Press ESC to close
             </div>
           </div>
         </div>
       )}
-
-      {/* Add custom animation */}
-      <style jsx>{`
-        @keyframes fadeInZoom {
-          from {
-            opacity: 0;
-            transform: scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-      `}</style>
-    </div>
+    </section>
   );
 };

@@ -79,11 +79,11 @@ export const Event = () => {
       id: 6,
       title: "Buffet Event - Premium Dining",
       thumbnail: "/tiec/bff.png",
-      url: "https://drive.google.com/file/d/12lEclbbWa9KNOWudrqFTsdHItA5RWdZY/preview",
+      url: "https://drive.google.com/file/d/1B8o8AiteTiH3isZlLHDKarXZqxAc--ck/preview",
       description: "Luxurious buffet setup with live cooking stations",
       category: "buffet",
       icon: Users,
-      duration: "0:36",
+      duration: "00:09",
       color: "from-emerald-500 to-teal-500"
     }
   ];

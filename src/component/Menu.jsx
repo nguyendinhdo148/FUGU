@@ -89,20 +89,41 @@ export const Menu = () => {
   const setMenuData = [
     {
       id: 1,
-      name: "Set Menu Premium",
       price: "1.000.000 VNĐ",
       image: "/setmenu/1.jpg",
       color: "from-amber-900 to-amber-700",
-      promoTag: "Special offers",
     },
     {
       id: 2,
-      name: "Set Menu Deluxe",
-      price: "2.000.000 VNĐ",
+      price: "1.500.000 VNĐ",
       image: "/setmenu/2.jpg",
       color: "from-rose-900 to-rose-700",
-      promoTag: "Premium Experience",
-    }
+    },
+    {
+      id: 3,
+      price: "1.500.000 VNĐ",
+      image: "/setmenu/2..jpg",
+      color: "from-amber-900 to-amber-700",
+    },
+    {
+      id: 4,
+      price: "1.900.000 VNĐ",
+      image: "/setmenu/3.jpg",
+      color: "from-rose-900 to-rose-700",
+    },
+    {
+      id: 5,
+      price: "1.900.000 VNĐ",
+      image: "/setmenu/3..jpg",
+      color: "from-amber-900 to-amber-700",
+    },
+    {
+      id: 6,
+      price: "2.000.000 VNĐ",
+      image: "/setmenu/4.jpg",
+      color: "from-rose-900 to-rose-700",
+    },
+    
   ];
 
   useEffect(() => {
