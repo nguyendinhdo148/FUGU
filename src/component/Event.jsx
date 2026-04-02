@@ -110,9 +110,6 @@ export const Event = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Event Gallery
           </h2>
-          <p className="text-sm md:text-lg text-muted-foreground max-w-3xl mx-auto px-4">
-            Explore our memorable events and celebrations
-          </p>
         </div>
 
         {/* Grid Event Videos - 2 cột mobile, 3 cột desktop */}

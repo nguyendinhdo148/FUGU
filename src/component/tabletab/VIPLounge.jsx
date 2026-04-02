@@ -223,9 +223,7 @@ export const VIPLounge = () => {
           {/* Description */}
           <div className="bg-card rounded-xl p-4 md:p-5 border border-border shadow-sm">
             <div className="flex items-start gap-2 md:gap-3 mb-2 md:mb-3">
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                <span className="text-purple-600 dark:text-purple-400 text-base md:text-lg">👑</span>
-              </div>
+              
               <div>
                 <h4 className="text-base md:text-lg font-bold text-foreground font-notoserif">{vipLoungeDetails.name}</h4>
                 <p className="text-muted-foreground text-xs md:text-sm font-inter line-clamp-2">{vipLoungeDetails.description}</p>

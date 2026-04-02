@@ -111,9 +111,6 @@ export const EntertainmentShow = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Entertainment Shows
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Experience exceptional live performances at FUGU Restaurant
-          </p>
         </div>
 
         {/* Grid Performances - 2 cột mobile, 3 cột desktop */}

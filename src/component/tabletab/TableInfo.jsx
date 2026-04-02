@@ -119,13 +119,6 @@ export const TableInfo = ({
               )}
             </div>
           </div>
-
-          {/* Reservation Contact */}
-          <div className="pt-2">
-            <p className="text-xs text-muted-foreground">
-              For reservations: 📞 Contact our team
-            </p>
-          </div>
         </div>
       </div>
     </div>

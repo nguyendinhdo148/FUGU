@@ -9,7 +9,6 @@ export const MenuDaily = () => {
   const menuItems = {
     food: {
       name: "Food Menu",
-      description: "Full culinary experience - Japanese cuisine",
       googleDriveUrl: "https://drive.google.com/file/d/1ia8jMOfoI6dVjmfdVz-mJaf8DB-8Rkll/view",
       embedUrl: "https://drive.google.com/file/d/1ia8jMOfoI6dVjmfdVz-mJaf8DB-8Rkll/preview",
       features: [
@@ -20,12 +19,10 @@ export const MenuDaily = () => {
         "Main Courses",
         "Desserts"
       ],
-      icon: "🍽️",
       color: "from-orange-500 to-red-500"
     },
     drinks: {
       name: "Drink Menu",
-      description: "Complete beverage selection",
       googleDriveUrl: "https://drive.google.com/file/d/19WOnD3myETmFsW9pU3wjjVkvYc7iDtUf/preview",
       embedUrl: "https://drive.google.com/file/d/19WOnD3myETmFsW9pU3wjjVkvYc7iDtUf/preview",
       features: [
@@ -36,7 +33,6 @@ export const MenuDaily = () => {
         "Beer & Soft Drinks",
         "Non-Alcoholic"
       ],
-      icon: "🍸",
       color: "from-blue-500 to-purple-500"
     }
   };

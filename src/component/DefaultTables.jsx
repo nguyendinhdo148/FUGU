@@ -77,7 +77,6 @@ export const Table = () => {
                     : "text-muted-foreground hover:bg-secondary"
                 }`}
               >
-                <span className="text-xl md:text-2xl">🏢</span>
                 <span className="font-inter">Ground Floor</span>
               </button>
               <button
@@ -91,28 +90,13 @@ export const Table = () => {
                     : "text-muted-foreground hover:bg-secondary"
                 }`}
               >
-                <span className="text-xl md:text-2xl">👑</span>
+                <span className="text-xl md:text-2xl"></span>
                 <span className="font-inter">VIP Lounge (2F)</span>
               </button>
             </div>
           </div>
         </div>
 
-        {/* Legend */}
-        <div className="mb-6 md:mb-8 flex flex-wrap gap-3 md:gap-4 justify-center">
-          <div className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg shadow-sm">
-            <div className="w-4 h-4 rounded bg-gradient-to-br from-purple-600 to-indigo-700"></div>
-            <span className="text-xs md:text-sm font-medium text-foreground font-inter">Private Rooms</span>
-          </div>
-          <div className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg shadow-sm">
-            <div className="w-4 h-4 rounded bg-gradient-to-br from-amber-500 to-orange-600"></div>
-            <span className="text-xs md:text-sm font-medium text-foreground font-inter">VIP Tables</span>
-          </div>
-          <div className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg shadow-sm">
-            <div className="w-4 h-4 rounded bg-gradient-to-br from-primary to-cyan-600"></div>
-            <span className="text-xs md:text-sm font-medium text-foreground font-inter">Regular Tables</span>
-          </div>
-        </div>
 
         {/* Instruction Message - Chỉ hiển thị khi chưa chọn bàn nào trên ground floor */}
         {activeFloor === "ground" && !selectedTable && (
