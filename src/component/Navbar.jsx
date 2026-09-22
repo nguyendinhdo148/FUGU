@@ -3,19 +3,19 @@ import React, { useState, useEffect } from "react";
 import { Menu, X, Maximize2, Minimize2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+// ==================== NAV ITEMS (English) ====================
 const navItems = [
   { name: "Introduce", href: "#introduce" },
   { name: "Menu", href: "#menu" },
   { name: "Table Map", href: "#table" },
   { name: "Event", href: "#event" },
-  { name: "EntertainmentShow", href: "#entertainment-show" },
+  { name: "Entertainment", href: "#entertainment-show" },
 ];
 
 export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
-  const [] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     if (isMenuOpen && isMobileView) {
@@ -60,24 +60,18 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
     setIsMenuOpen(false);
   };
 
-  // SỬA: Lưu vị trí scroll trước khi toggle fullscreen
-  // SỬA: Luôn lấy và khôi phục scroll position
-const handleFullscreenClick = () => {
-  // Lưu vị trí scroll hiện tại TRƯỚC KHI toggle
-  const currentScroll = {
-    x: window.scrollX,
-    y: window.scrollY
+  const handleFullscreenClick = () => {
+    const currentScroll = {
+      x: window.scrollX,
+      y: window.scrollY,
+    };
+
+    toggleFullscreen();
+
+    requestAnimationFrame(() => {
+      window.scrollTo(currentScroll.x, currentScroll.y);
+    });
   };
-  
-  // Gọi toggle fullscreen
-  toggleFullscreen();
-  
-  // Khôi phục vị trí scroll ngay lập tức
-  // Sử dụng requestAnimationFrame để đảm bảo DOM đã sẵn sàng
-  requestAnimationFrame(() => {
-    window.scrollTo(currentScroll.x, currentScroll.y);
-  });
-};
 
   return (
     <nav
@@ -88,10 +82,11 @@ const handleFullscreenClick = () => {
     >
       <div className="w-full px-4 relative">
         <div className="flex items-center justify-between">
+          {/* ==================== LOGO + BRAND ==================== */}
           <a href="#" className="relative z-50 flex items-center gap-2">
             <img
-              src="logotab1.jpg"
-              alt="Logo FUGU"
+              src="/logotab1.jpg"
+              alt="Maxim Sai Gon logo"
               className="w-8 h-8 rounded-full object-cover"
             />
             <span
@@ -102,7 +97,7 @@ const handleFullscreenClick = () => {
                   : "bg-black/10 backdrop-blur-sm"
               )}
             >
-              Fugu Modern Izakaya & Bar
+              Maxim Sài Gòn
             </span>
           </a>
 
@@ -139,12 +134,13 @@ const handleFullscreenClick = () => {
                   "backdrop-blur-md border border-white/10",
                   "shadow-lg hover:shadow-primary/20"
                 )}
-                title={isFullscreen ? "Thoát Fullscreen" : "Toàn màn hình"}
+                title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+                aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
               >
                 {isFullscreen ? (
                   <>
                     <Minimize2 size={18} className="text-primary" />
-                    <span className="text-primary font-medium">Thoát FS</span>
+                    <span className="text-primary font-medium">Exit FS</span>
                   </>
                 ) : (
                   <>
@@ -161,7 +157,8 @@ const handleFullscreenClick = () => {
               <button
                 onClick={handleFullscreenClick}
                 className="p-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all hover:scale-105"
-                title={isFullscreen ? "Thoát Fullscreen" : "Toàn màn hình"}
+                title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+                aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
               >
                 {isFullscreen ? (
                   <Minimize2 size={20} className="text-primary" />
@@ -173,7 +170,7 @@ const handleFullscreenClick = () => {
               <button
                 className="p-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all hover:scale-105"
                 onClick={() => setIsMenuOpen((prev) => !prev)}
-                aria-label={isMenuOpen ? "Đóng menu" : "Mở menu"}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               >
                 {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
@@ -194,7 +191,7 @@ const handleFullscreenClick = () => {
               <button
                 className="p-3 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all hover:scale-110"
                 onClick={() => setIsMenuOpen(false)}
-                aria-label="Đóng menu"
+                aria-label="Close menu"
               >
                 <X size={24} />
               </button>
@@ -218,7 +215,7 @@ const handleFullscreenClick = () => {
                 e.preventDefault();
                 const currentScroll = {
                   x: window.scrollX,
-                  y: window.scrollY
+                  y: window.scrollY,
                 };
                 handleFullscreenClick(e);
                 setIsMenuOpen(false);
@@ -231,12 +228,12 @@ const handleFullscreenClick = () => {
               {isFullscreen ? (
                 <>
                   <Minimize2 size={24} />
-                  <span>Thoát Toàn Màn Hình</span>
+                  <span>Exit Fullscreen</span>
                 </>
               ) : (
                 <>
                   <Maximize2 size={24} />
-                  <span>Bật Toàn Màn Hình</span>
+                  <span>Enter Fullscreen</span>
                 </>
               )}
             </button>
