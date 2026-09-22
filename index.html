@@ -1,11 +1,117 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="logotab1.jpg" />
+
+    <!-- ==================== FAVICON ==================== -->
+    <link rel="icon" type="image/jpeg" href="/logotab1.jpg" />
+    <link rel="apple-touch-icon" href="/logotab1.jpg" />
+
+    <!-- ==================== VIEWPORT + THEME ==================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fugu Modern Izakaya & Bar</title>
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- ==================== SEO CƠ BẢN ==================== -->
+    <title>Maxim Sài Gòn | Nhà hàng Á Âu & Bar tại Sài Gòn</title>
+
+    <meta
+      name="description"
+      content="Maxim Sài Gòn – Nhà hàng Á Âu & Bar tại trung tâm Sài Gòn. Thưởng thức ẩm thực Á Âu tinh tế, không gian sang trọng, live music và cocktail cao cấp. Đặt bàn: 085 587 3979"
+    />
+
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <link rel="canonical" href="https://maximsaignon.vn/" />
+
+    <!-- ==================== LOCAL SEO (GEO) ==================== -->
+    <meta name="geo.region" content="VN-SG" />
+    <meta name="geo.placename" content="Ho Chi Minh City" />
+    <meta name="geo.position" content="10.7769;106.7009" />
+    <meta name="ICBM" content="10.7769, 106.7009" />
+
+    <!-- ==================== OPEN GRAPH ==================== -->
+    <meta property="og:title" content="Maxim Sài Gòn | Nhà hàng Á Âu & Bar" />
+    <meta
+      property="og:description"
+      content="Maxim Sài Gòn – Nhà hàng Á Âu & Bar tại trung tâm Sài Gòn. Ẩm thực Á Âu, không gian sang trọng và live music."
+    />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:url" content="https://maximsaignon.vn/" />
+    <meta property="og:image" content="https://maximsaignon.vn/banner/1.jpg" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:alt" content="Không gian nhà hàng Maxim Sài Gòn" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:site_name" content="Maxim Sài Gòn" />
+
+    <!-- ==================== TWITTER CARD ==================== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Maxim Sài Gòn | Nhà hàng Á Âu & Bar" />
+    <meta
+      name="twitter:description"
+      content="Nhà hàng Á Âu & Bar tại trung tâm Sài Gòn – ẩm thực tinh tế, không gian sang trọng và live music."
+    />
+    <meta name="twitter:image" content="https://maximsaignon.vn/banner/1.jpg" />
+
+    <!-- ==================== STRUCTURED DATA (JSON-LD) ==================== -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Maxim Sài Gòn",
+        "alternateName": "MaximSaiGon",
+        "description": "Maxim Sài Gòn – Nhà hàng Á Âu & Bar tại trung tâm Sài Gòn. Ẩm thực Á Âu tinh tế, không gian sang trọng, live music và cocktail cao cấp.",
+        "url": "https://maximsaignon.vn/",
+        "telephone": "+84855873979",
+        "priceRange": "$$$",
+        "servesCuisine": ["Asian", "European", "Fusion", "Contemporary"],
+        "image": "https://maximsaignon.vn/banner/1.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "13-15-17 Đồng Khởi, Phường Sài Gòn",
+          "addressLocality": "TP. Hồ Chí Minh",
+          "addressRegion": "Hồ Chí Minh",
+          "postalCode": "700000",
+          "addressCountry": "VN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 10.7769,
+          "longitude": 106.7009
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "17:00",
+            "closes": "24:00"
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/maximsaignon",
+          "https://www.facebook.com/maximsaignon"
+        ],
+        "acceptsReservations": true,
+        "hasMenu": "https://maximsaignon.vn/#menu",
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Live Music", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Full Bar", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Wine Cellar", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "VIP Rooms", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Credit Cards Accepted", "value": true }
+        ]
+      }
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

@@ -11,14 +11,13 @@ import { useFullscreen } from "@/component/hooks/useFullscreen";
 import { Event } from "@/component/Event";
 
 export const Home = () => {
-  // Sử dụng hook
   const { isFullscreen, toggleFullscreen } = useFullscreen();
 
   useEffect(() => {
     if (window.location.hash) {
       const element = document.getElementById(window.location.hash.substring(1));
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
   }, []);
@@ -27,19 +26,19 @@ export const Home = () => {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <ThemeToggle />
       <StarBackground />
-      
+
       <Navbar toggleFullscreen={toggleFullscreen} isFullscreen={isFullscreen} />
 
-<main className="flex flex-col w-full pt-24 md:pt-28">
-
+      {/* ✅ FIX: thêm "relative z-10" để main nổi lên trên StarBackground */}
+      <main className="relative z-10 flex flex-col w-full pt-24 md:pt-28">
         <Introduce />
         <Menu />
-        <Table/>
-        <Event/>
+        <Table />
+        <Event />
         <EntertainmentShow />
       </main>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 };
