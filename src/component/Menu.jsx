@@ -27,7 +27,7 @@ export const Menu = () => {
       discount: "55% OFF",
       image: "/happy_hour/2.jpg",
       features: ["Fresh lychee", "Mint leaves", "Lime twist", "Sparkling soda"],
-      color: "from-pink-400 to-rose-500"
+      color: "from-pink-400 to-rose-500",
     },
     {
       id: 2,
@@ -38,7 +38,7 @@ export const Menu = () => {
       discount: "53% OFF",
       image: "/happy_hour/2.jpg",
       features: ["Fresh mango", "Japanese spices", "Ice cubes"],
-      color: "from-yellow-400 to-orange-500"
+      color: "from-yellow-400 to-orange-500",
     },
     {
       id: 3,
@@ -49,7 +49,7 @@ export const Menu = () => {
       discount: "56% OFF",
       image: "/happy_hour/3.jpg",
       features: ["Edible flowers", "Citrus mix", "Herbal infusion", "Special glass"],
-      color: "from-purple-400 to-violet-500"
+      color: "from-purple-400 to-violet-500",
     },
     {
       id: 4,
@@ -60,7 +60,7 @@ export const Menu = () => {
       discount: "66% OFF",
       image: "/happy_hour/4.jpg",
       features: ["Mixed berries", "Fresh herbs", "Berry syrup"],
-      color: "from-blue-400 to-cyan-500"
+      color: "from-blue-400 to-cyan-500",
     },
     {
       id: 5,
@@ -71,75 +71,44 @@ export const Menu = () => {
       discount: "60% OFF",
       image: "/happy_hour/5.jpg",
       features: ["Melon liqueur", "Citrus mix", "Mint garnish", "Chilled glass"],
-      color: "from-green-400 to-emerald-500"
+      color: "from-green-400 to-emerald-500",
     },
     {
       id: 6,
-      name: "Fugu Sangria",
+      name: "Maxim Sangria", // ✅ Đổi Fugu → Maxim
       description: "Premium sangria with exotic fruit infusion",
       happyHourPrice: "125,000 VND",
       originalPrice: "250,000 VND",
       discount: "50% OFF",
       image: "/happy_hour/6.jpg",
       features: ["Red wine base", "Exotic fruits", "Brandy infusion", "Cinnamon stick"],
-      color: "from-red-400 to-pink-500"
+      color: "from-red-400 to-pink-500",
     },
   ];
 
   const setMenuData = [
-    {
-      id: 1,
-      price: "1.000.000 VNĐ",
-      image: "/setmenu/1.jpg",
-      color: "from-amber-900 to-amber-700",
-    },
-    {
-      id: 2,
-      price: "1.500.000 VNĐ",
-      image: "/setmenu/2.jpg",
-      color: "from-rose-900 to-rose-700",
-    },
-    {
-      id: 3,
-      price: "1.500.000 VNĐ",
-      image: "/setmenu/2..jpg",
-      color: "from-amber-900 to-amber-700",
-    },
-    {
-      id: 4,
-      price: "1.900.000 VNĐ",
-      image: "/setmenu/3.jpg",
-      color: "from-rose-900 to-rose-700",
-    },
-    {
-      id: 5,
-      price: "1.900.000 VNĐ",
-      image: "/setmenu/3..jpg",
-      color: "from-amber-900 to-amber-700",
-    },
-    {
-      id: 6,
-      price: "2.000.000 VNĐ",
-      image: "/setmenu/4.jpg",
-      color: "from-rose-900 to-rose-700",
-    },
-    
+    { id: 1, price: "1.000.000 VNĐ", image: "/setmenu/1.jpg", color: "from-amber-900 to-amber-700" },
+    { id: 2, price: "1.500.000 VNĐ", image: "/setmenu/2.jpg", color: "from-rose-900 to-rose-700" },
+    { id: 3, price: "1.500.000 VNĐ", image: "/setmenu/2..jpg", color: "from-amber-900 to-amber-700" },
+    { id: 4, price: "1.900.000 VNĐ", image: "/setmenu/3.jpg", color: "from-rose-900 to-rose-700" },
+    { id: 5, price: "1.900.000 VNĐ", image: "/setmenu/3..jpg", color: "from-amber-900 to-amber-700" },
+    { id: 6, price: "2.000.000 VNĐ", image: "/setmenu/4.jpg", color: "from-rose-900 to-rose-700" },
   ];
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
+    window.addEventListener("resize", checkMobile);
+
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 800);
-    
+
     return () => {
-      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener("resize", checkMobile);
       clearTimeout(timer);
     };
   }, []);
@@ -147,21 +116,16 @@ export const Menu = () => {
   // Skeleton loader for mobile
   if (isLoading && isMobile) {
     return (
-      <section id="menu" className="py-16">
+      <section id="menu" className="py-16" aria-label="Đang tải thực đơn Maxim Saigon">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Title Skeleton */}
           <div className="h-12 bg-gradient-to-r from-secondary to-secondary/50 rounded-lg w-48 mx-auto mb-8 animate-pulse"></div>
-          
-          {/* Categories Skeleton */}
           <div className="flex overflow-x-auto gap-3 mb-8 pb-4">
-            {[1,2,3,4,5,6,7,8,9].map((item) => (
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
               <div key={item} className="h-10 bg-gradient-to-r from-secondary to-secondary/50 rounded-full w-24 animate-pulse"></div>
             ))}
           </div>
-
-          {/* Menu Items Skeleton */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1,2,3,4,5,6].map((item) => (
+            {[1, 2, 3, 4, 5, 6].map((item) => (
               <div key={item} className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
                 <div className="h-48 bg-gradient-to-r from-secondary to-secondary/50 animate-pulse"></div>
                 <div className="p-4">
@@ -178,22 +142,42 @@ export const Menu = () => {
   }
 
   return (
-    <section id="menu" className="py-12 md:py-16">
+    <section
+      id="menu"
+      className="py-12 md:py-16"
+      itemScope
+      itemType="https://schema.org/Menu"
+      aria-label="Maxim Saigon Menu - Thực đơn nhà hàng Á Âu"
+    >
+      {/* SEO: Hidden semantic info */}
+      <meta itemProp="name" content="Maxim Saigon Menu" />
+      <meta
+        itemProp="description"
+        content="Thực đơn Maxim Saigon - Nhà hàng Á Âu & Bar tại Quận 1, Sài Gòn. Happy Hour cocktail, Set Menu, Buffet, Daily Menu. Đặt bàn: 085 587 3979"
+      />
+      <meta itemProp="inLanguage" content="en" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header - Dồn gọn lại */}
-        <div className="text-center mb-12">
+        {/* ==================== Header ==================== */}
+        <header className="text-center mb-12">
           <div className="inline-block mb-3">
-            <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto mb-3"></div>
+            <div
+              className="w-20 h-[1px] bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto mb-3"
+              aria-hidden="true"
+            ></div>
             <span className="text-amber-600 font-semibold tracking-widest text-xs uppercase">
               Our New Menu
-            </span> 
+            </span>
           </div>
-          <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-serif tracking-tight">
-            New Menu
-          </h3>
-        </div>
+          <h2
+            className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-serif tracking-tight"
+            itemProp="name"
+          >
+            Maxim Saigon Menu
+          </h2>
+        </header>
 
-        {/* Các sections dồn sát nhau */}
+        {/* ==================== Sections ==================== */}
         <div className="space-y-12 md:space-y-16">
           {/* Banner Carousel */}
           <Banner bannerImages={bannerImages} />
@@ -202,7 +186,7 @@ export const Menu = () => {
           <HappyHour drinks={happyHourDrinks} />
 
           {/* Daily Menu Section */}
-          <MenuDaily 
+          <MenuDaily
             activeCategory={activeCategory}
             setActiveCategory={setActiveCategory}
             activeDrinkCategory={activeDrinkCategory}
@@ -213,7 +197,7 @@ export const Menu = () => {
           <SetMenu setMenus={setMenuData} />
 
           {/* Buffet Packages Section */}
-          <Buffet /> 
+          <Buffet />
         </div>
       </div>
     </section>

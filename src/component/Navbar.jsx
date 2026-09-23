@@ -1,4 +1,3 @@
-/* eslint-disable no-empty-pattern */
 import React, { useState, useEffect } from "react";
 import { Menu, X, Maximize2, Minimize2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -86,7 +85,7 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
           <a href="#" className="relative z-50 flex items-center gap-2">
             <img
               src="/logotab1.jpg"
-              alt="Maxim Sai Gon logo"
+              alt="Maxim Saigon logo"
               className="w-8 h-8 rounded-full object-cover"
             />
             <span
@@ -97,7 +96,7 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
                   : "bg-black/10 backdrop-blur-sm"
               )}
             >
-              Maxim Sài Gòn
+              Maxim Saigon
             </span>
           </a>
 

@@ -12,7 +12,7 @@ export const Footer = () => {
       itemType="https://schema.org/Restaurant"
     >
       {/* SEO: Hidden semantic info */}
-      <meta itemProp="name" content="Maxim Sài Gòn" />
+      <meta itemProp="name" content="Maxim Saigon" />
       <meta itemProp="alternateName" content="MaximSaiGon" />
       <meta itemProp="servesCuisine" content="Asian, European, Fusion" />
       <meta itemProp="priceRange" content="$$$" />
@@ -23,25 +23,25 @@ export const Footer = () => {
           {/* ==================== Logo & Social ==================== */}
           <div className="text-center md:text-left">
             <h3 className="text-lg font-bold text-foreground">
-              <span itemProp="name">Maxim Sài Gòn</span>{" "}
+              <span itemProp="name">Maxim Saigon</span>{" "}
               <span className="text-primary">Asian-European Cuisine & Bar</span>
             </h3>
             <div className="flex justify-center md:justify-start gap-2 mt-2">
               <a
-                href="https://www.instagram.com/fugu.dininglounge"
+                href="https://www.instagram.com/maximsaignon"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 bg-pink-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition"
-                aria-label="Maxim Sài Gòn trên Instagram"
+                aria-label="Maxim Saigon on Instagram"
               >
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="https://www.facebook.com/fugumodernizakayabar"
+                href="https://www.facebook.com/maximsaignon"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center hover:scale-110 transition"
-                aria-label="Maxim Sài Gòn trên Facebook"
+                aria-label="Maxim Saigon on Facebook"
               >
                 <Facebook className="w-4 h-4" />
               </a>
@@ -58,18 +58,18 @@ export const Footer = () => {
             <a
               href="tel:+84855873979"
               className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors"
-              aria-label="Gọi Maxim Sài Gòn qua hotline 085 587 3979"
+              aria-label="Call Maxim Saigon hotline 085 587 3979"
               itemProp="telephone"
             >
               <Phone className="w-4 h-4" /> 085 587 3979
             </a>
             <a
-              href="mailto:seidininglounge@gmail.com"
+              href="mailto:info@maximsaignon.vn"
               className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors"
-              aria-label="Gửi email cho Maxim Sài Gòn"
+              aria-label="Email Maxim Saigon"
               itemProp="email"
             >
-              <Mail className="w-4 h-4" /> seidininglounge@gmail.com
+              <Mail className="w-4 h-4" /> info@maximsaignon.vn
             </a>
           </div>
 
@@ -79,7 +79,7 @@ export const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm hover:bg-primary/90 transition"
-            aria-label="Đặt bàn tại Maxim Sài Gòn qua Zalo"
+            aria-label="Book a table at Maxim Saigon via Zalo"
           >
             <Calendar className="w-4 h-4" /> Book Now <ArrowRight className="w-3 h-3" />
           </a>
@@ -89,7 +89,7 @@ export const Footer = () => {
         <div className="pt-4 border-t border-border text-center text-xs text-muted-foreground">
           <p>
             © {currentYear}{" "}
-            <span itemProp="name">Maxim Sài Gòn</span>. 13-15-17 Đồng Khởi, Quận 1. Open daily 5PM - 12AM
+            <span itemProp="name">Maxim Saigon</span>. 13-15-17 Đồng Khởi, Quận 1. Open daily 5PM - 12AM
           </p>
         </div>
       </div>

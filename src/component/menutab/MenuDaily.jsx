@@ -1,5 +1,5 @@
 // src/components/menutab/MenuDaily.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 export const MenuDaily = () => {
   const [activeTab, setActiveTab] = useState("food");
@@ -46,7 +46,7 @@ export const MenuDaily = () => {
     setIsLoading(false);
   };
 
-  const handleFullscreenToggle = () => {
+  const handleFullscreenToggle = useCallback(() => {
     if (!isFullscreen) {
       // Enter fullscreen
       setIsFullscreen(true);
@@ -72,7 +72,7 @@ export const MenuDaily = () => {
         }
       }, 100);
     }
-  };
+  }, [isFullscreen]);
 
   const handleDownload = () => {
     const menu = menuItems[activeTab];
@@ -95,7 +95,7 @@ export const MenuDaily = () => {
     return () => {
       document.removeEventListener('keydown', handleEscKey);
     };
-  }, [isFullscreen]);
+  }, [handleFullscreenToggle, isFullscreen]);
 
   // Cleanup on unmount
   useEffect(() => {

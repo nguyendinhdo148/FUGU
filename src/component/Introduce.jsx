@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ChefHat, MapPin, Phone, Clock, ArrowRight, Star, Instagram, Facebook, Mail, Utensils, Wine, ChevronLeft, ChevronRight, Navigation, CreditCard, Users, Music, Sparkles, Check, Calendar, Heart, Award } from "lucide-react";
 
 // ==================== SEO CONFIG ====================
 const SEO_CONFIG = {
-  brandName: "MaximSaiGon",
+  brandName: "Maxim Saigon",
   tagline: "Asian-European Cuisine & Bar",
   description:
-    "MaximSaiGon - Premium Asian-European Cuisine & Bar in District 1, Saigon. Refined fusion cuisine, nightly live music, 100+ premium wines & cocktails. Book now: 085 587 3979",
+    "Maxim Saigon - Premium Asian-European Cuisine & Bar in District 1, Saigon. Refined fusion cuisine, nightly live music, 100+ premium wines & cocktails. Book now: 085 587 3979",
   address: {
     street: "13-15-17 Dong Khoi, Saigon Ward",
     locality: "Ho Chi Minh City",
@@ -35,15 +35,17 @@ export const Introduce = () => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   // ==================== BANNER IMAGES ====================
-  // ✅ Giữ nguyên path /banner/ như file gốc
-  const bannerImages = [
-    "/banner/1.jpg",
-    "/banner/2.jpg",
-    "/banner/3.jpg",
-    "/banner/4.jpg",
-    "/banner/5.jpg",
-    "/banner/6.jpg",
-  ];
+  const bannerImages = useMemo(
+    () => [
+      "/banner/1.jpg",
+      "/banner/2.jpg",
+      "/banner/3.jpg",
+      "/banner/4.jpg",
+      "/banner/5.jpg",
+      "/banner/6.jpg",
+    ],
+    []
+  );
 
   const features = [
     { icon: Music, text: "Nightly live music" },
@@ -60,106 +62,6 @@ export const Introduce = () => {
     { value: "150", label: "Seats", icon: Users },
     { value: "100+", label: "Premium selections", icon: Wine },
   ];
-
-  // ==================== SEO: JSON-LD + Meta ====================
-  useEffect(() => {
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "Restaurant",
-      name: SEO_CONFIG.brandName,
-      alternateName: "Maxim Sai Gon",
-      description: SEO_CONFIG.description,
-      url: SEO_CONFIG.url,
-      telephone: SEO_CONFIG.phone,
-      email: SEO_CONFIG.email,
-      priceRange: SEO_CONFIG.priceRange,
-      servesCuisine: SEO_CONFIG.cuisine,
-      image: `${SEO_CONFIG.url}/banner/1.jpg`,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: SEO_CONFIG.address.street,
-        addressLocality: SEO_CONFIG.address.locality,
-        addressRegion: SEO_CONFIG.address.region,
-        postalCode: SEO_CONFIG.address.postalCode,
-        addressCountry: SEO_CONFIG.address.country,
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: SEO_CONFIG.latitude,
-        longitude: SEO_CONFIG.longitude,
-      },
-      openingHoursSpecification: [
-        {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          opens: "17:00",
-          closes: "24:00",
-        },
-      ],
-      // ⚠️ KHÔNG khai aggregateRating khi chưa có review thật
-      sameAs: [SEO_CONFIG.socials.instagram, SEO_CONFIG.socials.facebook],
-      acceptsReservations: true,
-      hasMenu: `${SEO_CONFIG.url}#menu`,
-      amenityFeature: [
-        { "@type": "LocationFeatureSpecification", name: "Live Music", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Full Bar", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Wine Cellar", value: true },
-        { "@type": "LocationFeatureSpecification", name: "VIP Rooms", value: true },
-        { "@type": "LocationFeatureSpecification", name: "Credit Cards Accepted", value: true },
-      ],
-    };
-
-    const scriptId = "maximsaignon-structured-data";
-    let script = document.getElementById(scriptId);
-    if (!script) {
-      script = document.createElement("script");
-      script.id = scriptId;
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify(structuredData);
-
-    document.title = `${SEO_CONFIG.brandName} | ${SEO_CONFIG.tagline} - Saigon Asian-European Restaurant`;
-
-    const setMeta = (name, content, property = false) => {
-      const attr = property ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    setMeta("description", SEO_CONFIG.description);
-    setMeta("robots", "index, follow, max-image-preview:large");
-    setMeta("geo.region", "VN-SG");
-    setMeta("geo.placename", "Ho Chi Minh City");
-    setMeta("geo.position", `${SEO_CONFIG.latitude};${SEO_CONFIG.longitude}`);
-    setMeta("ICBM", `${SEO_CONFIG.latitude}, ${SEO_CONFIG.longitude}`);
-
-    setMeta("og:title", `${SEO_CONFIG.brandName} | ${SEO_CONFIG.tagline}`, true);
-    setMeta("og:description", SEO_CONFIG.description, true);
-    setMeta("og:type", "restaurant", true);
-    setMeta("og:url", SEO_CONFIG.url, true);
-    setMeta("og:image", `${SEO_CONFIG.url}/banner/1.jpg`, true);
-    setMeta("og:locale", "en_US", true);
-    setMeta("og:site_name", SEO_CONFIG.brandName, true);
-
-    setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", `${SEO_CONFIG.brandName} | ${SEO_CONFIG.tagline}`);
-    setMeta("twitter:description", SEO_CONFIG.description);
-    setMeta("twitter:image", `${SEO_CONFIG.url}/banner/1.jpg`);
-
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.rel = "canonical";
-      document.head.appendChild(canonical);
-    }
-    canonical.href = SEO_CONFIG.url;
-  }, []);
 
   // ==================== PRELOAD + SLIDESHOW ====================
   useEffect(() => {
@@ -194,7 +96,7 @@ export const Introduce = () => {
       clearTimeout(fallback);
       window.removeEventListener("resize", checkMobile);
     };
-  }, [isPlaying]);
+  }, [bannerImages, isPlaying]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % bannerImages.length);
@@ -213,7 +115,7 @@ export const Introduce = () => {
   // ==================== SKELETON ====================
   if (!isImageLoaded) {
     return (
-      <section className="w-full h-[60vh] flex items-center justify-center" aria-label="Loading MaximSaiGon">
+      <section className="w-full h-[60vh] flex items-center justify-center" aria-label="Loading Maxim Saigon">
         <div className="w-full h-full bg-gray-100 dark:bg-gray-900 animate-pulse"></div>
       </section>
     );
@@ -373,23 +275,23 @@ export const Introduce = () => {
                   Highlights
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
-  {features.map((feature, index) => {
-    const Icon = feature.icon;
-    return (
-      <div
-        key={index}
-        className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary/50 transition-colors"
-      >
-        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-          <Icon className="w-5 h-5 text-primary" />
-        </div>
-        <span className="text-foreground font-medium text-sm md:text-base leading-snug">
-          {feature.text}
-        </span>
-      </div>
-    );
-  })}
-</div>
+                  {features.map((feature, index) => {
+                    const Icon = feature.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary/50 transition-colors"
+                      >
+                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <span className="text-foreground font-medium text-sm md:text-base leading-snug">
+                          {feature.text}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 
@@ -441,7 +343,7 @@ export const Introduce = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 w-full p-3 bg-red-600 dark:bg-red-700 hover:bg-red-700 dark:hover:bg-red-600 text-white rounded-lg transition-colors font-medium shadow-md hover:shadow-lg"
-                      aria-label="View MaximSaiGon location on Google Maps"
+                      aria-label={`View ${SEO_CONFIG.brandName} location on Google Maps`}
                     >
                       <Navigation className="w-5 h-5" />
                       View on Google Maps
@@ -476,7 +378,7 @@ export const Introduce = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex-1 px-6 py-3 md:py-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 font-bold text-base md:text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-                    aria-label="Book a table at MaximSaiGon via Zalo"
+                    aria-label={`Book a table at ${SEO_CONFIG.brandName} via Zalo`}
                   >
                     <Calendar className="w-5 h-5" />
                     Book a Table Now
@@ -486,7 +388,7 @@ export const Introduce = () => {
                   <a
                     href="#menu"
                     className="flex-1 px-6 py-3 md:py-4 border border-primary text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-bold text-base md:text-lg text-center hover:-translate-y-0.5"
-                    aria-label="View MaximSaiGon menu"
+                    aria-label={`View ${SEO_CONFIG.brandName} menu`}
                   >
                     View Menu
                   </a>
@@ -499,9 +401,9 @@ export const Introduce = () => {
                   </h4>
                   <div className="flex justify-center gap-4">
                     {[
-                      { icon: Instagram, href: SEO_CONFIG.socials.instagram, color: "bg-pink-500", label: "MaximSaiGon Instagram" },
-                      { icon: Facebook, href: SEO_CONFIG.socials.facebook, color: "bg-blue-600", label: "MaximSaiGon Facebook" },
-                      { icon: Phone, href: `tel:${SEO_CONFIG.phone}`, color: "bg-green-500", label: "Call MaximSaiGon" },
+                      { icon: Instagram, href: SEO_CONFIG.socials.instagram, color: "bg-pink-500", label: `${SEO_CONFIG.brandName} Instagram` },
+                      { icon: Facebook, href: SEO_CONFIG.socials.facebook, color: "bg-blue-600", label: `${SEO_CONFIG.brandName} Facebook` },
+                      { icon: Phone, href: `tel:${SEO_CONFIG.phone}`, color: "bg-green-500", label: `Call ${SEO_CONFIG.brandName}` },
                     ].map((social, index) => {
                       const Icon = social.icon;
                       return (
