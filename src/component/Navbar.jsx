@@ -84,7 +84,7 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
           {/* ==================== LOGO + BRAND ==================== */}
           <a href="#" className="relative z-50 flex items-center gap-2">
             <img
-              src="/logotab1.jpg"
+              src="/logotab2.jpg"
               alt="Maxim Saigon logo"
               className="w-8 h-8 rounded-full object-cover"
             />

@@ -28,18 +28,18 @@ export const eventsData = {
       spaceVideo: {
         title: "Birthday Party Space Preview",
         url: "https://drive.google.com/file/d/1NCCX5FDE_G7LgsDh2K4jBcwxs6R76BkQ/preview",
-        thumbnail: "/logotab1.jpg",
+        thumbnail: "/logotab2.jpg",
         description: "See how we transform our space for birthday celebrations"
       },
       eventVideo: {
         title: "Birthday Celebration Highlights",
         url: "https://drive.google.com/file/d/1NCCX5FDE_G7LgsDh2K4jBcwxs6R76BkQ/preview",
-        thumbnail: "/logotab1.jpg",
+        thumbnail: "/logotab2.jpg",
         description: "Highlights from recent birthday parties"
       },
       images: [
         { 
-          src: "/logotab1.jpg", 
+          src: "/logotab2.jpg", 
           title: "Birthday Setup", 
           description: "Beautiful table setup with custom decorations",
           type: "event"
@@ -77,36 +77,36 @@ export const eventsData = {
       spaceVideo: {
         title: "Intimate Dining Space",
         url: "https://drive.google.com/file/d/VIDEO_ID_SMALL_SPACE/preview",
-        thumbnail: "/logotab1.jpg", // Sửa lại đường dẫn
+        thumbnail: "/logotab2.jpg", // Sửa lại đường dẫn
         description: "Private corners for intimate gatherings"
       },
       eventVideo: {
         title: "Special Moments",
         url: "https://drive.google.com/file/d/VIDEO_ID_SMALL_EVENT/preview",
-        thumbnail: "/logotab1.jpg", // Sửa lại đường dẫn
+        thumbnail: "/logotab2.jpg", // Sửa lại đường dẫn
         description: "Capturing special moments"
       },
       images: [
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Romantic Setup", 
           description: "Private table setup for couples",
           type: "event"
         },
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Intimate Dining Menu", 
           description: "Special menu for small gatherings",
           type: "food-menu"
         },
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Premium Drinks", 
           description: "Wine & champagne selections",
           type: "drink-menu"
         },
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Proposal Setup", 
           description: "Special arrangement for marriage proposals",
           type: "event"
@@ -132,36 +132,36 @@ export const eventsData = {
       spaceVideo: {
         title: "Year-End Party Space",
         url: "https://drive.google.com/file/d/VIDEO_ID_YEAREND_SPACE/preview",
-        thumbnail: "/logotab1.jpg", // Sửa lại đường dẫn
+        thumbnail: "/logotab2.jpg", // Sửa lại đường dẫn
         description: "Corporate year-end party setup"
       },
       eventVideo: {
         title: "Year-End Celebration Highlights",
         url: "https://drive.google.com/file/d/VIDEO_ID_YEAREND_EVENT/preview",
-        thumbnail: "/logotab1.jpg", // Sửa lại đường dẫn
+        thumbnail: "/logotab2.jpg", // Sửa lại đường dẫn
         description: "Highlights from corporate celebrations"
       },
       images: [
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Corporate Setup", 
           description: "Professional event setup with company branding",
           type: "event"
         },
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Corporate Food Menu", 
           description: "Gourmet food selection for corporate events",
           type: "food-menu"
         },
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Corporate Drink Menu", 
           description: "Premium beverage packages for corporate clients",
           type: "drink-menu"
         },
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Award Ceremony", 
           description: "Employee recognition and awards ceremony",
           type: "event"
@@ -187,36 +187,36 @@ export const eventsData = {
       spaceVideo: {
         title: "Buffet Setup Preview",
         url: "https://drive.google.com/file/d/VIDEO_ID_BUFFET_SPACE/preview",
-        thumbnail: "/logotab1.jpg", // Sửa lại đường dẫn
+        thumbnail: "/logotab2.jpg", // Sửa lại đường dẫn
         description: "Buffet station setup and presentation"
       },
       eventVideo: {
         title: "Buffet Event Experience",
         url: "https://drive.google.com/file/d/VIDEO_ID_BUFFET_EVENT/preview",
-        thumbnail: "/logotab1.jpg", // Sửa lại đường dẫn
+        thumbnail: "/logotab2.jpg", // Sửa lại đường dẫn
         description: "Guests enjoying buffet experience"
       },
       images: [
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Buffet Spread", 
           description: "Complete buffet setup with various stations",
           type: "event"
         },
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Buffet Food Menu", 
           description: "Complete buffet food selection and pricing",
           type: "food-menu"
         },
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Buffet Drink Menu", 
           description: "Beverage packages for buffet events",
           type: "drink-menu"
         },
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Live Station", 
           description: "Chef preparing food at live cooking station",
           type: "event"
@@ -242,36 +242,36 @@ export const eventsData = {
       spaceVideo: {
         title: "Corporate Meeting Space",
         url: "https://drive.google.com/file/d/VIDEO_ID_CORPORATE_SPACE/preview",
-        thumbnail: "/logotab1.jpg", // Sửa lại đường dẫn
+        thumbnail: "/logotab2.jpg", // Sửa lại đường dẫn
         description: "Corporate meeting and conference setup"
       },
       eventVideo: {
         title: "Corporate Event Highlights",
         url: "https://drive.google.com/file/d/VIDEO_ID_CORPORATE_EVENT/preview",
-        thumbnail: "/logotab1.jpg", // Sửa lại đường dẫn
+        thumbnail: "/logotab2.jpg", // Sửa lại đường dẫn
         description: "Corporate events and meetings"
       },
       images: [
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Conference Setup", 
           description: "Professional conference room setup",
           type: "event"
         },
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Corporate Food Menu", 
           description: "Business lunch and meeting packages",
           type: "food-menu"
         },
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Corporate Drink Menu", 
           description: "Beverage options for business meetings",
           type: "drink-menu"
         },
         { 
-          src: "/logotab1.jpg", // Sửa lại đường dẫn
+          src: "/logotab2.jpg", // Sửa lại đường dẫn
           title: "Presentation Setup", 
           description: "AV setup for presentations and meetings",
           type: "event"

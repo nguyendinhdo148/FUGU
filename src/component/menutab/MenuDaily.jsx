@@ -5,12 +5,11 @@ export const MenuDaily = () => {
   const [activeTab, setActiveTab] = useState("food");
   const [isLoading, setIsLoading] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-
   const menuItems = {
     food: {
       name: "Food Menu",
-      googleDriveUrl: "https://drive.google.com/file/d/1ia8jMOfoI6dVjmfdVz-mJaf8DB-8Rkll/view",
-      embedUrl: "https://drive.google.com/file/d/1ia8jMOfoI6dVjmfdVz-mJaf8DB-8Rkll/preview",
+      googleDriveUrl: "https://drive.google.com/file/d/1E1_K4RaNCdu9QGxk4Jf8igxY7hm_GHSM/view",
+      embedUrl: "https://drive.google.com/file/d/1E1_K4RaNCdu9QGxk4Jf8igxY7hm_GHSM/preview",
       features: [
         "Appetizers & Starters",
         "Sashimi Selection",
@@ -23,8 +22,8 @@ export const MenuDaily = () => {
     },
     drinks: {
       name: "Drink Menu",
-      googleDriveUrl: "https://drive.google.com/file/d/19WOnD3myETmFsW9pU3wjjVkvYc7iDtUf/preview",
-      embedUrl: "https://drive.google.com/file/d/19WOnD3myETmFsW9pU3wjjVkvYc7iDtUf/preview",
+      googleDriveUrl: "https://drive.google.com/file/d/1KKTKok8rwxqCn-Sb5RoxlAzXmMdbN5ui/preview",
+      embedUrl: "https://drive.google.com/file/d/1KKTKok8rwxqCn-Sb5RoxlAzXmMdbN5ui/preview",
       features: [
         "Signature Cocktails",
         "Premium Spirits",
