@@ -81,66 +81,54 @@ export const Table = () => {
 
       <div className="max-w-7xl mx-auto">
         {/* ==================== Floor Selection Tabs ==================== */}
-        <div className="flex justify-center mb-8">
-          <div
-            className="bg-card border border-border rounded-xl p-1 shadow-md"
-            role="tablist"
-            aria-label="Chọn tầng"
-          >
-            <div className="flex">
-              <button
-                onClick={() => {
-                  setActiveFloor("ground");
-                  setSelectedTable(null);
-                }}
-                role="tab"
-                aria-selected={activeFloor === "ground"}
-                aria-controls="panel-ground"
-                className={`px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg transition-all duration-300 flex items-center justify-center gap-2 md:gap-3 min-w-[160px] ${
-                  activeFloor === "ground"
-                    ? "bg-gradient-to-r from-primary to-cyan-500 text-white shadow-lg transform scale-105"
-                    : "text-muted-foreground hover:bg-secondary"
-                }`}
-              >
-                <span className="font-inter">Ground Floor</span>
-              </button>
-              <button
-                onClick={() => {
-                  setActiveFloor("vip");
-                  setSelectedTable(null);
-                }}
-                role="tab"
-                aria-selected={activeFloor === "vip"}
-                aria-controls="panel-vip"
-                className={`px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg transition-all duration-300 flex items-center justify-center gap-2 md:gap-3 min-w-[160px] ${
-                  activeFloor === "vip"
-                    ? "bg-gradient-to-r from-purple-600 to-indigo-700 text-white shadow-lg transform scale-105"
-                    : "text-muted-foreground hover:bg-secondary"
-                }`}
-              >
-                <span className="text-xl md:text-2xl" aria-hidden="true">
-                  👑
-                </span>
-                <span className="font-inter">VIP Lounge (2F)</span>
-              </button>
-            </div>
-          </div>
-        </div>
+        {/* ==================== Floor Selection Tabs ==================== */}
+<div className="flex justify-center mb-6">
+  <div className="inline-flex items-center gap-1 bg-white border border-gray-200 rounded-full p-1 shadow-sm">
+    <button
+      onClick={() => {
+        setActiveFloor("ground");
+        setSelectedTable(null);
+      }}
+      role="tab"
+      aria-selected={activeFloor === "ground"}
+      aria-controls="panel-ground"
+      className={`px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
+        activeFloor === "ground"
+          ? "bg-gray-900 text-white shadow"
+          : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+      }`}
+    >
+      Ground Floor
+    </button>
+    <button
+      onClick={() => {
+        setActiveFloor("vip");
+        setSelectedTable(null);
+      }}
+      role="tab"
+      aria-selected={activeFloor === "vip"}
+      aria-controls="panel-vip"
+      className={`px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
+        activeFloor === "vip"
+          ? "bg-gray-900 text-white shadow"
+          : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+      }`}
+    >
+      VIP Lounge (2F)
+    </button>
+  </div>
+</div>
 
         {/* ==================== Instruction Message ==================== */}
         {activeFloor === "ground" && !selectedTable && (
           <div className="mb-6 text-center animate-fadeIn" role="status">
-            <div className="inline-flex items-center gap-2 px-4 py-3 bg-primary/10 border border-primary/20 rounded-xl">
-              <span className="text-primary text-lg" aria-hidden="true">
+            <div className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-2 shadow-sm">
+              <span className="text-amber-500 text-sm" aria-hidden="true">
                 💡
               </span>
-              <p className="text-primary font-medium font-inter">
-                Click on a table on the mini map to view table details.
+              <p className="text-gray-600 text-xs md:text-sm">
+                Click a table on the mini map to view details.
               </p>
-              <div
-                className="ml-2 w-3 h-3 rounded-full bg-primary animate-pulse"
-                aria-hidden="true"
-              ></div>
             </div>
           </div>
         )}

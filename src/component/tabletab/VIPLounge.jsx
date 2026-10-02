@@ -113,9 +113,7 @@ export const VIPLounge = () => {
       {/* ==================== VIP Lounge Header ==================== */}
       <header className="text-center mb-6 md:mb-8">
         <div className="inline-flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-          <span className="text-2xl md:text-3xl" aria-hidden="true">
-            👑
-          </span>
+          
           <h3
             className="text-xl md:text-3xl font-bold text-foreground font-notoserif"
             itemProp="name"
