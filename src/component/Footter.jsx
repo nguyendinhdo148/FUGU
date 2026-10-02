@@ -7,7 +7,7 @@ export const Footer = () => {
 
   return (
     <footer
-      className="bg-card border-t border-border py-8"
+      className="relative z-10 bg-card border-t border-border py-8"
       itemScope
       itemType="https://schema.org/Restaurant"
     >
@@ -24,7 +24,7 @@ export const Footer = () => {
           <div className="text-center md:text-left">
             <h3 className="text-lg font-bold text-foreground">
               <span itemProp="name">Maxim Saigon</span>{" "}
-              <span className="text-primary">Asian-European Cuisine & Bar</span>
+              <span className="text-primary">Restaurant & Lounge</span>
             </h3>
             <div className="flex justify-center md:justify-start gap-2 mt-2">
               <a
@@ -88,8 +88,11 @@ export const Footer = () => {
         {/* ==================== Bottom Bar ==================== */}
         <div className="pt-4 border-t border-border text-center text-xs text-muted-foreground">
           <p>
+             13-15-17 Đồng Khởi, Phường Sài Gòn, TP. HCM. Open daily 5PM - 12AM.
+          </p>
+          <p>
             © {currentYear}{" "}
-            <span itemProp="name">Maxim Saigon</span>. 13-15-17 Đồng Khởi, Quận 1. Open daily 5PM - 12AM
+            <span itemProp="name">Maxim Saigon</span>.
           </p>
         </div>
       </div>

@@ -6,7 +6,7 @@ const SEO_CONFIG = {
   brandName: "Maxim Saigon",
   tagline: "Restaurant & Lounge",
   description:
-    "Maxim Saigon - Premium Asian-European Cuisine & Bar in District 1, Saigon. Refined fusion cuisine, nightly live music, 100+ premium wines & cocktails. Book now: 085 587 3979",
+    "Maxim Saigon - Premium Restaurant & Lounge in District 1, Saigon. Refined fusion cuisine, nightly live music, 100+ premium wines & cocktails. Book now: 085 587 3979",
   address: {
     street: "13-15-17 Dong Khoi, Saigon Ward",
     locality: "Ho Chi Minh City",
@@ -257,7 +257,7 @@ export const Introduce = () => {
                 </div>
 
                 <p className="text-foreground/80 leading-relaxed mb-6">
-                  <strong>{SEO_CONFIG.brandName}</strong> - Asian-European Cuisine & Bar offers a contemporary
+                  <strong>{SEO_CONFIG.brandName}</strong> - Restaurant & Lounge offers a contemporary
                   fusion dining experience in a sophisticatedly designed space. With our team of internationally
                   experienced chefs and vibrant atmosphere, we are committed to creating memorable moments
                   for every guest in the heart of Saigon.

@@ -11,7 +11,7 @@ import { useFullscreen } from "@/component/hooks/useFullscreen";
 import { Event } from "@/component/Event";
 
 const HOME_SEO = {
-  title: "Maxim Saigon | Asian-European Cuisine & Bar in Ho Chi Minh City",
+  title: "Maxim Saigon | Restaurant & Lounge in Ho Chi Minh City",
   description:
     "Maxim Saigon is a premium Asian-European restaurant and bar in District 1, Ho Chi Minh City, serving refined cuisine, live music, cocktails, and private dining experiences.",
   url: "https://www.maximsaigon.vn/",
@@ -63,10 +63,10 @@ export const Home = () => {
         className="relative z-10 flex flex-col w-full pt-24 md:pt-28"
         itemScope
         itemType="https://schema.org/WebPage"
-        aria-label="Maxim Saigon - Asian-European Cuisine & Bar tại Sài Gòn"
+        aria-label="Maxim Saigon - Restaurant & Lounge tại Sài Gòn"
       >
         {/* SEO: Hidden semantic info cho main content */}
-        <meta itemProp="name" content="Maxim Saigon - Asian-European Cuisine & Bar" />
+        <meta itemProp="name" content="Maxim Saigon - Restaurant & Lounge" />
         <meta
           itemProp="description"
           content="Maxim Saigon - Nhà hàng Á Âu & Bar cao cấp tại Quận 1, Sài Gòn. Thực đơn Á Âu fusion, live music mỗi đêm, hơn 100 loại rượu vang & cocktail. Đặt bàn: 085 587 3979"
