@@ -43,50 +43,44 @@ export const HappyHour = ({ drinks }) => {
         </div>
 
         {/* Timeline Section */}
-        <div className="mb-10">
-          <div className="relative">
-            {/* Background glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-400/20 via-orange-500/20 to-red-500/20 blur-3xl -z-10"></div>
-            
-            <div className="relative bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl p-6 shadow-xl">
-              <div className="relative z-10 flex items-center justify-between max-w-2xl mx-auto">
-                {/* Start Time */}
-                <div className="flex flex-col items-center space-y-2 flex-1">
-                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30">
-                    <span className="text-2xl font-bold text-white">5:00</span>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-white font-bold text-lg">START</div>
-                    <div className="text-white/80 text-sm">5:00 PM</div>
-                  </div>
-                </div>
+        {/* Timeline Section */}
+<div className="mb-10 flex justify-center">
+  <div className="inline-flex items-center gap-6 md:gap-10 bg-white border border-gray-200 rounded-full px-6 md:px-10 py-4 shadow-sm">
+    {/* Start */}
+    <div className="flex items-center gap-3">
+      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center">
+        <span className="text-sm md:text-base font-bold text-amber-700">5:00</span>
+      </div>
+      <div className="text-left">
+        <div className="text-[10px] uppercase tracking-widest text-gray-500">Start</div>
+        <div className="text-sm md:text-base font-semibold text-gray-900">5:00 PM</div>
+      </div>
+    </div>
 
-                {/* Arrow Divider */}
-                <div className="flex flex-col items-center space-y-2 px-8">
-                  <div className="text-4xl text-white animate-pulse">→</div>
-                  <div className="text-white/70 text-sm">2.5 Hours</div>
-                </div>
+    {/* Divider */}
+    <div className="flex flex-col items-center gap-0.5">
+      <div className="w-8 md:w-12 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+      <span className="text-[10px] text-gray-500 whitespace-nowrap">2.5 hrs</span>
+      <div className="w-8 md:w-12 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+    </div>
 
-                {/* End Time */}
-                <div className="flex flex-col items-center space-y-2 flex-1">
-                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30">
-                    <span className="text-2xl font-bold text-white">7:30</span>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-white font-bold text-lg">END</div>
-                    <div className="text-white/80 text-sm">7:30 PM</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Time labels */}
-            <div className="flex justify-between mt-4 px-4 max-w-2xl mx-auto">
-              <div className="text-gray-600 dark:text-gray-400 text-sm">Daily</div>
-              <div className="text-gray-600 dark:text-gray-400 text-sm">Every Day</div>
-            </div>
-          </div>
-        </div>
+    {/* End */}
+    <div className="flex items-center gap-3">
+      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-rose-100 to-rose-200 flex items-center justify-center">
+        <span className="text-sm md:text-base font-bold text-rose-700">7:30</span>
+      </div>
+      <div className="text-left">
+        <div className="text-[10px] uppercase tracking-widest text-gray-500">End</div>
+        <div className="text-sm md:text-base font-semibold text-gray-900">7:30 PM</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{/* Label dưới */}
+<p className="text-center text-xs text-muted-foreground mb-10 tracking-wide">
+  Daily · Every Day
+</p>
       </div>
       
       {/* Happy Hour Drink Grid - Sửa style giống EventShow */}

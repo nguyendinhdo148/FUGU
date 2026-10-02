@@ -42,8 +42,25 @@ export const StarBackground = () => {
   const [meteors, setMeteors] = useState([]);
   const [shootingStars, setShootingStars] = useState([]);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+  /* =====================
+     THEME WATCHER
+  ===================== */
+  useEffect(() => {
+    const check = () =>
+      setIsDark(document.documentElement.classList.contains("dark"));
+    check();
+
+    const observer = new MutationObserver(check);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   /* =====================
      STARS
@@ -90,7 +107,7 @@ export const StarBackground = () => {
   }, [isMobile]);
 
   /* =====================
-     SHOOTING STARS (GIỮ NHƯ CŨ – GIẢM SỐ LƯỢNG)
+     SHOOTING STARS
   ===================== */
   const generateShootingStars = useCallback(() => {
     const numberOfShootingStars = isMobile ? 3 : 5;
@@ -148,6 +165,9 @@ export const StarBackground = () => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // 👈 dark mới render, light thì bỏ
+  if (!isDark) return null;
 
   return (
     <div

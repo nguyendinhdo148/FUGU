@@ -4,7 +4,7 @@ import { ChefHat, MapPin, Phone, Clock, ArrowRight, Star, Instagram, Facebook, M
 // ==================== SEO CONFIG ====================
 const SEO_CONFIG = {
   brandName: "Maxim Saigon",
-  tagline: "Asian-European Cuisine & Bar",
+  tagline: "Restaurant & Lounge",
   description:
     "Maxim Saigon - Premium Asian-European Cuisine & Bar in District 1, Saigon. Refined fusion cuisine, nightly live music, 100+ premium wines & cocktails. Book now: 085 587 3979",
   address: {
@@ -48,13 +48,13 @@ export const Introduce = () => {
   );
 
   const features = [
-    { icon: Music, text: "Nightly live music" },
-    { icon: Users, text: "150 seats" },
-    { icon: Sparkles, text: "Modern Asian-European architecture" },
-    { icon: Wine, text: "Over 100 premium wines & cocktails" },
-    { icon: ChefHat, text: "International chefs with 5+ years experience" },
-    { icon: CreditCard, text: "Multiple payment methods" },
-  ];
+  { icon: Music, text: "Nightly live music" },
+  { icon: Users, text: "150 seats" },
+  { icon: Sparkles, text: "Asian-European design" },
+  { icon: Wine, text: "100+ wines" },
+  { icon: ChefHat, text: "Chefs, 5+ years" },
+  { icon: CreditCard, text: "Multiple payments" },
+];
 
   const stats = [
     { value: "4.9", label: "Rating", icon: Star },
@@ -166,7 +166,9 @@ export const Introduce = () => {
               itemProp="name"
             >
               {SEO_CONFIG.brandName}
-              <span className="block text-primary font-extrabold">{SEO_CONFIG.tagline}</span>
+              <span className="block text-primary font-extrabold tracking-[0.25em] md:tracking-[0.35em] uppercase text-2xl md:text-3xl lg:text-4xl mt-2">
+                {SEO_CONFIG.tagline}
+              </span>
             </h1>
           </div>
         </div>

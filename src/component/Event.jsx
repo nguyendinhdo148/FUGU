@@ -104,12 +104,12 @@ export const Event = () => {
 
   return (
     <section
-      id="event"
-      className="py-20 bg-background"
-      itemScope
-      itemType="https://schema.org/ItemList"
-      aria-label="Maxim Saigon Event Gallery"
-    >
+  id="event"
+  className="py-20"
+  itemScope
+  itemType="https://schema.org/ItemList"
+  aria-label="Maxim Saigon Event Gallery"
+>
       {/* SEO: Hidden semantic info */}
       <meta
         itemProp="name"

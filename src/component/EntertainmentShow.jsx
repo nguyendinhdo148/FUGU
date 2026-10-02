@@ -92,12 +92,12 @@ export const EntertainmentShow = () => {
 
   return (
     <section
-      id="entertainment-show"
-      className="py-20 bg-background"
-      itemScope
-      itemType="https://schema.org/ItemList"
-      aria-label="Maxim Saigon Entertainment Shows"
-    >
+  id="entertainment-show"
+  className="py-20"
+  itemScope
+  itemType="https://schema.org/ItemList"
+  aria-label="Maxim Saigon Entertainment Shows"
+>
       {/* SEO: Hidden semantic info */}
       <meta
         itemProp="name"
