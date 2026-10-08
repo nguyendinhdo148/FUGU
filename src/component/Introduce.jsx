@@ -21,11 +21,12 @@ const SEO_CONFIG = {
   priceRange: "$$$",
   cuisine: ["Asian", "European", "Fusion", "Contemporary"],
   latitude: "10.773256",
-longitude: "106.706019",
+  longitude: "106.706019",
 
   // Link Google Maps chính thức của Maxim Saigon
-  // Sau này đổi địa điểm thì chỉ cần đổi link này
-  googleMapsUrl: "https://share.google/JqJHmZIXZXnsoy4CQ",
+  // Dùng short link dạng app: mở trên mobile sẽ vào thẳng app Google Maps
+  // và khách có thể bấm "Chỉ đường" ngay
+  googleMapsUrl: "https://maps.app.goo.gl/3Var6ERf4p23butF8",
 
   socials: {
     instagram: "https://www.instagram.com/maximsaignon",
@@ -364,7 +365,7 @@ export const Introduce = () => {
                       </div>
                     </div>
 
-                    {/* Open Google Maps */}
+                    {/* Open Google Maps - short link mở thẳng app trên mobile */}
                     <a
                       href={SEO_CONFIG.googleMapsUrl}
                       target="_blank"
