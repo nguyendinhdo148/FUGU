@@ -20,8 +20,13 @@ const SEO_CONFIG = {
   url: "https://maximsaignon.vn",
   priceRange: "$$$",
   cuisine: ["Asian", "European", "Fusion", "Contemporary"],
-  latitude: "10.7769",
-  longitude: "106.7009",
+  latitude: "10.773256",
+longitude: "106.706019",
+
+  // Link Google Maps chính thức của Maxim Saigon
+  // Sau này đổi địa điểm thì chỉ cần đổi link này
+  googleMapsUrl: "https://share.google/JqJHmZIXZXnsoy4CQ",
+
   socials: {
     instagram: "https://www.instagram.com/maximsaignon",
     facebook: "https://www.facebook.com/maximsaignon",
@@ -48,13 +53,13 @@ export const Introduce = () => {
   );
 
   const features = [
-  { icon: Music, text: "Nightly live music" },
-  { icon: Users, text: "150 seats" },
-  { icon: Sparkles, text: "Asian-European design" },
-  { icon: Wine, text: "100+ wines" },
-  { icon: ChefHat, text: "Chefs, 5+ years" },
-  { icon: CreditCard, text: "Multiple payments" },
-];
+    { icon: Music, text: "Nightly live music" },
+    { icon: Users, text: "150 seats" },
+    { icon: Sparkles, text: "Asian-European design" },
+    { icon: Wine, text: "100+ wines" },
+    { icon: ChefHat, text: "Chefs, 5+ years" },
+    { icon: CreditCard, text: "Multiple payments" },
+  ];
 
   const stats = [
     { value: "4.9", label: "Rating", icon: Star },
@@ -324,30 +329,50 @@ export const Introduce = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3">
-                      <a
-                        href={`tel:${SEO_CONFIG.phone}`}
-                        className="group flex items-center gap-3 p-3 bg-secondary hover:bg-secondary/80 rounded-lg transition-all"
-                        aria-label={`Call ${SEO_CONFIG.brandName} hotline ${SEO_CONFIG.phoneDisplay}`}
-                      >
-                        <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                          <Phone className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                        </div>
-                        <div className="text-left">
-                          <p className="text-foreground font-medium">Hotline</p>
-                          <p className="text-muted-foreground text-sm">{SEO_CONFIG.phoneDisplay}</p>
-                        </div>
-                      </a>
+                    {/* Hotline - clean white/black border style */}
+                    <a
+                      href={`tel:${SEO_CONFIG.phone}`}
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-black border border-black rounded-full hover:bg-black hover:text-white transition-all duration-300 font-medium text-sm shadow-sm hover:shadow-md"
+                      aria-label={`Call ${SEO_CONFIG.brandName} hotline ${SEO_CONFIG.phoneDisplay}`}
+                    >
+                      <Phone className="w-4 h-4" />
+                      Hotline: {SEO_CONFIG.phoneDisplay}
+                    </a>
+
+                    {/* Free interactive map - OpenStreetMap */}
+                    <div className="mt-2 overflow-hidden rounded-xl border border-border shadow-md">
+                      <iframe
+                        title={`${SEO_CONFIG.brandName} location map`}
+                        src={`https://www.openstreetmap.org/export/embed.html?bbox=${
+                          Number(SEO_CONFIG.longitude) - 0.004
+                        }%2C${
+                          Number(SEO_CONFIG.latitude) - 0.003
+                        }%2C${
+                          Number(SEO_CONFIG.longitude) + 0.004
+                        }%2C${
+                          Number(SEO_CONFIG.latitude) + 0.003
+                        }&layer=mapnik&marker=${
+                          SEO_CONFIG.latitude
+                        }%2C${SEO_CONFIG.longitude}`}
+                        className="w-full h-[280px] md:h-[320px] border-0"
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                      />
+
+                      <div className="px-3 py-2 bg-secondary/70 text-xs text-muted-foreground">
+                        © OpenStreetMap contributors
+                      </div>
                     </div>
 
+                    {/* Open Google Maps */}
                     <a
-                      href="https://www.google.com/maps?q=13+Đồng+Khởi+Quận+1+TPHCM"
+                      href={SEO_CONFIG.googleMapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 w-full p-3 bg-red-600 dark:bg-red-700 hover:bg-red-700 dark:hover:bg-red-600 text-white rounded-lg transition-colors font-medium shadow-md hover:shadow-lg"
+                      className="mt-3 inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-black border border-black rounded-full hover:bg-black hover:text-white transition-all duration-300 font-medium text-sm shadow-sm hover:shadow-md"
                       aria-label={`View ${SEO_CONFIG.brandName} location on Google Maps`}
                     >
-                      <Navigation className="w-5 h-5" />
+                      <Navigation className="w-4 h-4" />
                       View on Google Maps
                     </a>
                   </div>
