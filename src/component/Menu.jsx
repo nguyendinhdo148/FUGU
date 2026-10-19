@@ -87,12 +87,12 @@ export const Menu = () => {
   ];
 
   const setMenuData = [
-    { id: 1, price: "1.000.000 VNĐ", image: "/setmenu/1.jpg", color: "from-amber-900 to-amber-700" },
-    { id: 2, price: "1.500.000 VNĐ", image: "/setmenu/2.jpg", color: "from-rose-900 to-rose-700" },
-    { id: 3, price: "1.500.000 VNĐ", image: "/setmenu/2..jpg", color: "from-amber-900 to-amber-700" },
-    { id: 4, price: "1.900.000 VNĐ", image: "/setmenu/3.jpg", color: "from-rose-900 to-rose-700" },
-    { id: 5, price: "1.900.000 VNĐ", image: "/setmenu/3..jpg", color: "from-amber-900 to-amber-700" },
-    { id: 6, price: "2.000.000 VNĐ", image: "/setmenu/4.jpg", color: "from-rose-900 to-rose-700" },
+    { id: 1, price: "1.200.000 VNĐ", image: "/setmenu/set1200.jpg", color: "from-amber-900 to-amber-700" },
+    { id: 2, price: "1.500.000 VNĐ", image: "/setmenu/set1500.jpg", color: "from-rose-900 to-rose-700" },
+    { id: 3, price: "1.750.000 VNĐ", image: "/setmenu/set1750.jpg", color: "from-amber-900 to-amber-700" },
+    { id: 4, price: "1.950.000 VNĐ", image: "/setmenu/set1950.jpg", color: "from-rose-900 to-rose-700" },
+    { id: 5, price: "2.200.000 VNĐ", image: "/setmenu/set2200.jpg", color: "from-amber-900 to-amber-700" },
+    { id: 6, price: "2.500.000 VNĐ", image: "/setmenu/set2500.jpg", color: "from-rose-900 to-rose-700" },
   ];
 
   useEffect(() => {

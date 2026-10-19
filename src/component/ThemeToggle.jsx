@@ -76,7 +76,7 @@ export const ThemeToggle = () => {
       <button
         onClick={toggleTheme}
         className={cn(
-          "fixed top-15 left-1/2 -translate-x-1/2 z-200",
+          "fixed bottom-5 right-5 z-200",
           "flex h-10 w-10 items-center justify-center",
           "rounded-full border shadow-md",
           "bg-background text-foreground",
