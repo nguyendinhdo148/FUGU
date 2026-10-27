@@ -387,7 +387,7 @@ export const Introduce = () => {
                     <div className="space-y-2">
                       <div className="flex justify-between items-center py-2">
                         <span className="text-foreground/70">Monday - Sunday</span>
-                        <span className="text-foreground font-bold">5:00 PM – 12:00 AM</span>
+                        <span className="text-foreground font-bold">11:00 AM – 24:00 PM</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 mt-3 text-green-500">

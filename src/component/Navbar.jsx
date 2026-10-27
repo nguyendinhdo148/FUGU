@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Maximize2, Minimize2 } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 // ==================== NAV ITEMS (English) ====================
@@ -9,12 +10,16 @@ const navItems = [
   { name: "Table Map", href: "#table" },
   { name: "Event", href: "#event" },
   { name: "Entertainment", href: "#entertainment-show" },
+  { name: "Our Story", href: "/our-story" },
 ];
 
 export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isMenuOpen && isMobileView) {
@@ -51,12 +56,28 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
   }, []);
 
   const handleNavClick = (e, href) => {
-    e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
     setIsMenuOpen(false);
+
+    // Our Story is a separate page; allow React Router navigation.
+    if (!href.startsWith("#")) {
+      return;
+    }
+
+    e.preventDefault();
+    const sectionId = href.slice(1);
+
+    // If not on the homepage, navigate home and pass the target section.
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: sectionId } });
+      return;
+    }
+
+    // Already on the homepage: scroll directly to the section.
+    const target = document.getElementById(sectionId);
+
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   const handleFullscreenClick = () => {
@@ -82,12 +103,13 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
       <div className="w-full px-4 relative">
         <div className="flex items-center justify-between">
           {/* ==================== LOGO + BRAND ==================== */}
-          <a href="#" className="relative z-50 flex items-center gap-2">
+          <a href="/" className="relative z-50 flex items-center gap-2">
             <img
               src="/logotab2.jpg"
               alt="Maxim Saigon logo"
               className="w-8 h-8 rounded-full object-cover"
             />
+
             <span
               className={cn(
                 "px-3 py-1 rounded-lg text-xl font-bold text-glow transition-all",
@@ -100,12 +122,13 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
             </span>
           </a>
 
+          {/* ==================== DESKTOP NAVBAR ==================== */}
           {!isMobileView && (
             <div className="flex items-center space-x-4 absolute right-5 top-1/2 -translate-y-1/2">
               <div className="flex items-center space-x-2">
-                {navItems.map((item, index) => (
+                {navItems.map((item) => (
                   <a
-                    key={index}
+                    key={item.name}
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
                     className={cn(
@@ -121,7 +144,7 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
                 ))}
               </div>
 
-              <div className="h-6 w-px bg-foreground/20 mx-2"></div>
+              <div className="h-6 w-px bg-foreground/20 mx-2" />
 
               <button
                 onClick={handleFullscreenClick}
@@ -134,30 +157,39 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
                   "shadow-lg hover:shadow-primary/20"
                 )}
                 title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
-                aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+                aria-label={
+                  isFullscreen ? "Exit fullscreen" : "Enter fullscreen"
+                }
               >
                 {isFullscreen ? (
                   <>
                     <Minimize2 size={18} className="text-primary" />
-                    <span className="text-primary font-medium">Exit FS</span>
+                    <span className="text-primary font-medium">
+                      Exit FS
+                    </span>
                   </>
                 ) : (
                   <>
                     <Maximize2 size={18} className="text-primary" />
-                    <span className="text-primary font-medium">Full Screen</span>
+                    <span className="text-primary font-medium">
+                      Full Screen
+                    </span>
                   </>
                 )}
               </button>
             </div>
           )}
 
+          {/* ==================== MOBILE CONTROLS ==================== */}
           {isMobileView && (
             <div className="flex items-center gap-2">
               <button
                 onClick={handleFullscreenClick}
                 className="p-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all hover:scale-105"
                 title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
-                aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+                aria-label={
+                  isFullscreen ? "Exit fullscreen" : "Enter fullscreen"
+                }
               >
                 {isFullscreen ? (
                   <Minimize2 size={20} className="text-primary" />
@@ -171,13 +203,18 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
                 onClick={() => setIsMenuOpen((prev) => !prev)}
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               >
-                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                {isMenuOpen ? (
+                  <X size={20} />
+                ) : (
+                  <Menu size={20} />
+                )}
               </button>
             </div>
           )}
         </div>
       </div>
 
+      {/* ==================== MOBILE MENU ==================== */}
       {isMenuOpen && isMobileView && (
         <>
           <div
@@ -197,9 +234,9 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
             </div>
 
             <div className="flex flex-col space-y-4 w-full max-w-xs px-4">
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <a
-                  key={index}
+                  key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
                   className="w-full text-center px-6 py-4 rounded-xl bg-white/10 backdrop-blur-md text-lg font-semibold text-foreground/90 hover:text-primary transition-all hover:scale-105 shadow-lg"
@@ -210,17 +247,9 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
             </div>
 
             <button
-              onClick={(e) => {
-                e.preventDefault();
-                const currentScroll = {
-                  x: window.scrollX,
-                  y: window.scrollY,
-                };
-                handleFullscreenClick(e);
+              onClick={() => {
+                handleFullscreenClick();
                 setIsMenuOpen(false);
-                setTimeout(() => {
-                  window.scrollTo(currentScroll.x, currentScroll.y);
-                }, 50);
               }}
               className="mt-8 px-8 py-4 rounded-xl bg-gradient-to-r from-primary/30 to-primary/20 backdrop-blur-md text-xl font-semibold text-primary flex items-center gap-3 hover:scale-105 transition-all shadow-lg"
             >
