@@ -88,7 +88,7 @@ export const Footer = () => {
         {/* ==================== Bottom Bar ==================== */}
         <div className="pt-4 border-t border-border text-center text-xs text-muted-foreground">
           <p>
-             13-15-17 Đồng Khởi, Phường Sài Gòn, TP. HCM. Open daily 5PM - 12AM.
+             13-15-17 Đồng Khởi, Phường Sài Gòn, TP. HCM. Open ( T2 - T6: 11:00 - 24:00, T7 - CN: 15:30 - 24:00 )
           </p>
           <p>
             © {currentYear}{" "}
