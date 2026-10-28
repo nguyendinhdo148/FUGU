@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/our-story/",
+      "destination": "/our-story",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/our-story",
