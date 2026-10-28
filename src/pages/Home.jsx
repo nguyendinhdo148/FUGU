@@ -37,11 +37,20 @@ export const Home = () => {
     setMeta("description", HOME_SEO.description);
     setMeta("og:title", HOME_SEO.title, true);
     setMeta("og:description", HOME_SEO.description, true);
+    setMeta("og:type", "restaurant", true);
     setMeta("og:url", HOME_SEO.url, true);
     setMeta("og:image", HOME_SEO.image, true);
     setMeta("twitter:title", HOME_SEO.title);
     setMeta("twitter:description", HOME_SEO.description);
     setMeta("twitter:image", HOME_SEO.image);
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", HOME_SEO.url);
 
     if (window.location.hash) {
       const element = document.getElementById(window.location.hash.substring(1));
