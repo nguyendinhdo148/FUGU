@@ -119,8 +119,7 @@ export const Introduce = () => {
       <meta itemProp="priceRange" content={SEO_CONFIG.priceRange} />
 
       {/* ==================== BANNER ==================== */}
-            {/* ==================== BANNER ==================== */}
-      <div className="relative w-full h-[45vh] md:h-[55vh] group">
+      <div className="relative w-full h-[42vh] md:h-[52vh]">
         {bannerImages.map((image, index) => (
           <div
             key={index}
@@ -139,20 +138,20 @@ export const Introduce = () => {
               height="1080"
               decoding="async"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
           </div>
         ))}
 
-        {/* Overlay Content */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 md:pb-16">
+        {/* Overlay Content — Đồng bộ font chữ với các section khác */}
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-8 md:pb-10">
           <div className="text-center px-4">
             <h1
-              className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-serif tracking-tight drop-shadow-lg"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-serif tracking-tight drop-shadow-lg"
               itemProp="name"
             >
               {SEO_CONFIG.brandName}
               <span
-                className="block text-primary font-medium tracking-[0.3em] md:tracking-[0.45em] uppercase text-[10px] md:text-xs lg:text-sm mt-2"
+                className="block text-primary font-medium tracking-[0.3em] md:tracking-[0.45em] uppercase text-[10px] md:text-xs lg:text-sm mt-3"
                 style={{ fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif" }}
               >
                 {SEO_CONFIG.tagline}
@@ -161,52 +160,41 @@ export const Introduce = () => {
           </div>
         </div>
 
-        {/* ==================== THANH CHUYỂN SLIDE MỚI ==================== */}
-        {/* Căn giữa dưới đáy, thiết kế tối giản, hiện đại */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-[200px] md:max-w-[300px] px-4">
-          <div className="flex items-center gap-3">
-            {/* Nút Prev */}
+        {/* Slide Navigation */}
+        <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 z-30">
+          <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
             <button
               onClick={prevSlide}
-              className="text-white/70 hover:text-white transition-colors"
+              className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-all"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+              <ChevronLeft className="w-3.5 h-3.5" />
             </button>
-
-            {/* Thanh Progress */}
-            <div className="flex-1 flex gap-1 h-1">
+            <div className="flex gap-1.5 mx-2">
               {bannerImages.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`h-full flex-1 rounded-full transition-all duration-500 ${
-                    index === currentSlide 
-                      ? "bg-primary" // Thanh hiện tại màu chủ đạo (Cam)
-                      : index < currentSlide 
-                        ? "bg-white/80" // Các thanh đã qua màu trắng mờ
-                        : "bg-white/20 hover:bg-white/50" // Các thanh chưa tới
+                  className={`h-1.5 rounded-full transition-all ${
+                    index === currentSlide ? "bg-white w-5" : "bg-white/50 hover:bg-white/70 w-1.5"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
-
-            {/* Nút Next */}
             <button
               onClick={nextSlide}
-              className="text-white/70 hover:text-white transition-colors"
+              className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-all"
               aria-label="Next slide"
             >
-              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+              <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
 
-        {/* Slide Counter - Chuyển xuống dưới góc trái cho tinh tế */}
-        <div className="absolute bottom-4 left-4 z-30 hidden md:block">
-          <div className="text-white/50 text-xs font-medium tracking-widest">
-            {String(currentSlide + 1).padStart(2, '0')} <span className="mx-1">/</span> {String(bannerImages.length).padStart(2, '0')}
+        <div className="absolute top-3 right-3 z-30">
+          <div className="bg-black/40 backdrop-blur-sm text-white px-2.5 py-0.5 rounded-full text-xs">
+            {currentSlide + 1} / {bannerImages.length}
           </div>
         </div>
       </div>
