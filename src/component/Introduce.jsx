@@ -119,6 +119,7 @@ export const Introduce = () => {
       <meta itemProp="priceRange" content={SEO_CONFIG.priceRange} />
 
       {/* ==================== BANNER ==================== */}
+            {/* ==================== BANNER ==================== */}
       <div className="relative w-full h-[42vh] md:h-[52vh]">
         {bannerImages.map((image, index) => (
           <div
@@ -142,16 +143,16 @@ export const Introduce = () => {
           </div>
         ))}
 
-        {/* Overlay Content — Đồng bộ font chữ với các section khác */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-8 md:pb-10">
+        {/* Overlay Content — Đẩy cao lên để nhường chỗ cho thanh slide */}
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-16 md:pb-12">
           <div className="text-center px-4">
             <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-serif tracking-tight drop-shadow-lg"
+              className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-serif tracking-tight drop-shadow-lg"
               itemProp="name"
             >
               {SEO_CONFIG.brandName}
               <span
-                className="block text-primary font-medium tracking-[0.3em] md:tracking-[0.45em] uppercase text-[10px] md:text-xs lg:text-sm mt-3"
+                className="block text-primary font-medium tracking-[0.3em] md:tracking-[0.45em] uppercase text-[10px] md:text-xs lg:text-sm mt-2"
                 style={{ fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif" }}
               >
                 {SEO_CONFIG.tagline}
@@ -160,8 +161,8 @@ export const Introduce = () => {
           </div>
         </div>
 
-        {/* Slide Navigation */}
-        <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 z-30">
+        {/* Slide Navigation — Đẩy lên bottom-6 trên mobile, bottom-3 trên desktop */}
+        <div className="absolute bottom-6 md:bottom-4 left-1/2 transform -translate-x-1/2 z-30">
           <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
             <button
               onClick={prevSlide}
@@ -192,7 +193,8 @@ export const Introduce = () => {
           </div>
         </div>
 
-        <div className="absolute top-3 right-3 z-30">
+        {/* Slide Counter — Đẩy lên ngang hàng với nút để không bị đè */}
+        <div className="absolute top-4 right-4 z-30">
           <div className="bg-black/40 backdrop-blur-sm text-white px-2.5 py-0.5 rounded-full text-xs">
             {currentSlide + 1} / {bannerImages.length}
           </div>
