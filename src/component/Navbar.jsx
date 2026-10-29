@@ -8,8 +8,8 @@ const navItems = [
   { name: "Introduce", href: "#introduce" },
   { name: "Menu", href: "#menu" },
   { name: "Table Map", href: "#table" },
-  { name: "Event", href: "#event" },
-  { name: "Entertainment", href: "#entertainment-show" },
+  // { name: "Event", href: "#event" },
+  // { name: "Entertainment", href: "#entertainment-show" },
   { name: "Our Story", href: "/our-story" },
 ];
 
@@ -58,7 +58,6 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
   const handleNavClick = (e, href) => {
     setIsMenuOpen(false);
 
-    // Our Story is a separate page; allow React Router navigation.
     if (!href.startsWith("#")) {
       return;
     }
@@ -66,28 +65,20 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
     e.preventDefault();
     const sectionId = href.slice(1);
 
-    // If not on the homepage, navigate home and pass the target section.
     if (location.pathname !== "/") {
       navigate("/", { state: { scrollTo: sectionId } });
       return;
     }
 
-    // Already on the homepage: scroll directly to the section.
     const target = document.getElementById(sectionId);
-
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   const handleFullscreenClick = () => {
-    const currentScroll = {
-      x: window.scrollX,
-      y: window.scrollY,
-    };
-
+    const currentScroll = { x: window.scrollX, y: window.scrollY };
     toggleFullscreen();
-
     requestAnimationFrame(() => {
       window.scrollTo(currentScroll.x, currentScroll.y);
     });
@@ -102,14 +93,15 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
     >
       <div className="w-full px-4 relative">
         <div className="flex items-center justify-between">
+          
           {/* ==================== LOGO + BRAND ==================== */}
+          {/* Nav: Giữ nguyên đổi màu theo nền như Desktop */}
           <a href="/" className="relative z-50 flex items-center gap-2">
             <img
               src="/logotab2.jpg"
               alt="Maxim Saigon logo"
               className="w-8 h-8 rounded-full object-cover"
             />
-
             <span
               className={cn(
                 "px-3 py-1 rounded-lg text-xl font-bold text-glow transition-all",
@@ -157,23 +149,17 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
                   "shadow-lg hover:shadow-primary/20"
                 )}
                 title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
-                aria-label={
-                  isFullscreen ? "Exit fullscreen" : "Enter fullscreen"
-                }
+                aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
               >
                 {isFullscreen ? (
                   <>
                     <Minimize2 size={18} className="text-primary" />
-                    <span className="text-primary font-medium">
-                      Exit FS
-                    </span>
+                    <span className="text-primary font-medium">Exit FS</span>
                   </>
                 ) : (
                   <>
                     <Maximize2 size={18} className="text-primary" />
-                    <span className="text-primary font-medium">
-                      Full Screen
-                    </span>
+                    <span className="text-primary font-medium">Full Screen</span>
                   </>
                 )}
               </button>
@@ -183,31 +169,27 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
           {/* ==================== MOBILE CONTROLS ==================== */}
           {isMobileView && (
             <div className="flex items-center gap-2">
+              {/* Nút Fullscreen: Icon tự đổi màu theo nền */}
               <button
                 onClick={handleFullscreenClick}
                 className="p-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all hover:scale-105"
                 title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
-                aria-label={
-                  isFullscreen ? "Exit fullscreen" : "Enter fullscreen"
-                }
+                aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
               >
                 {isFullscreen ? (
-                  <Minimize2 size={20} className="text-primary" />
+                  <Minimize2 size={20} className="text-foreground" />
                 ) : (
-                  <Maximize2 size={20} className="text-primary" />
+                  <Maximize2 size={20} className="text-foreground" />
                 )}
               </button>
 
+              {/* Nút 3 gạch (Menu): Icon tự đổi màu theo nền */}
               <button
-                className="p-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all hover:scale-105"
+                className="p-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all hover:scale-105 text-foreground"
                 onClick={() => setIsMenuOpen((prev) => !prev)}
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               >
-                {isMenuOpen ? (
-                  <X size={20} />
-                ) : (
-                  <Menu size={20} />
-                )}
+                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
             </div>
           )}
@@ -224,8 +206,9 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
 
           <div className="fixed inset-0 z-50 flex flex-col items-center justify-center">
             <div className="absolute top-6 right-6">
+              {/* Nav: Nút X tự đổi màu theo nền */}
               <button
-                className="p-3 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all hover:scale-110"
+                className="p-3 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all hover:scale-110 text-foreground"
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Close menu"
               >
@@ -234,35 +217,32 @@ export const Navbar = ({ toggleFullscreen, isFullscreen }) => {
             </div>
 
             <div className="flex flex-col space-y-4 w-full max-w-xs px-4">
+              {/* Phần khoanh đỏ: Ép buộc LUÔN LUÔN text-white */}
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="w-full text-center px-6 py-4 rounded-xl bg-white/10 backdrop-blur-md text-lg font-semibold text-foreground/90 hover:text-primary transition-all hover:scale-105 shadow-lg"
+                  className="w-full text-center px-6 py-4 rounded-xl bg-white/10 backdrop-blur-md text-lg font-semibold text-white hover:text-white transition-all hover:scale-105 shadow-lg drop-shadow-md"
                 >
                   {item.name}
                 </a>
               ))}
             </div>
 
+            {/* Nút Fullscreen dưới cùng: Tự đổi màu theo nền */}
             <button
               onClick={() => {
                 handleFullscreenClick();
                 setIsMenuOpen(false);
               }}
-              className="mt-8 px-8 py-4 rounded-xl bg-gradient-to-r from-primary/30 to-primary/20 backdrop-blur-md text-xl font-semibold text-primary flex items-center gap-3 hover:scale-105 transition-all shadow-lg"
+              className="mt-8 p-4 rounded-full bg-gradient-to-r from-primary/30 to-primary/20 backdrop-blur-md text-primary flex items-center justify-center hover:scale-105 transition-all shadow-lg"
+              aria-label={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
             >
               {isFullscreen ? (
-                <>
-                  <Minimize2 size={24} />
-                  <span>Exit Fullscreen</span>
-                </>
+                <Minimize2 size={28} className="text-primary" />
               ) : (
-                <>
-                  <Maximize2 size={24} />
-                  <span>Enter Fullscreen</span>
-                </>
+                <Maximize2 size={28} className="text-primary" />
               )}
             </button>
           </div>

@@ -1,5 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { ChefHat, MapPin, Phone, Clock, ArrowRight, Star, Instagram, Facebook, Mail, Utensils, Wine, ChevronLeft, ChevronRight, Navigation, CreditCard, Users, Music, Sparkles, Check, Calendar, Heart, Award } from "lucide-react";
+import {
+  MapPin, Phone, Clock, ArrowRight, Star, Instagram, Facebook,
+  Wine, ChevronLeft, ChevronRight, Users, Calendar, Award, MessageCircle
+} from "lucide-react";
 
 // ==================== SEO CONFIG ====================
 const SEO_CONFIG = {
@@ -22,22 +25,17 @@ const SEO_CONFIG = {
   cuisine: ["Asian", "European", "Fusion", "Contemporary"],
   latitude: "10.773256",
   longitude: "106.706019",
-
-  // Link Google Maps chính thức của Maxim Saigon
-  // Dùng short link dạng app: mở trên mobile sẽ vào thẳng app Google Maps
-  // và khách có thể bấm "Chỉ đường" ngay
   googleMapsUrl: "https://maps.app.goo.gl/3Var6ERf4p23butF8",
-
   socials: {
-    instagram: "https://www.instagram.com/maximsaignon",
-    facebook: "https://www.facebook.com/maximsaignon",
+    instagram: "https://www.instagram.com/maiximsaigon/",
+    facebook: "https://www.facebook.com/profile.php?id=61594056338036",
+    whatsapp: "https://wa.me/84855873979",
   },
 };
 
 export const Introduce = () => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [, setIsMobile] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
 
   // ==================== BANNER IMAGES ====================
@@ -53,20 +51,11 @@ export const Introduce = () => {
     []
   );
 
-  const features = [
-    { icon: Music, text: "Nightly live music" },
-    { icon: Users, text: "150 seats" },
-    { icon: Sparkles, text: "Asian-European design" },
-    { icon: Wine, text: "100+ wines" },
-    { icon: ChefHat, text: "Chefs, 5+ years" },
-    { icon: CreditCard, text: "Multiple payments" },
-  ];
-
   const stats = [
     { value: "4.9", label: "Rating", icon: Star },
-    { value: "5+", label: "Years experience", icon: Award },
+    { value: "5+", label: "Years", icon: Award },
     { value: "150", label: "Seats", icon: Users },
-    { value: "100+", label: "Premium selections", icon: Wine },
+    { value: "100+", label: "Selections", icon: Wine },
   ];
 
   // ==================== PRELOAD + SLIDESHOW ====================
@@ -93,25 +82,15 @@ export const Introduce = () => {
       }, 5000);
     }
 
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
     return () => {
       if (slideInterval) clearInterval(slideInterval);
       clearTimeout(fallback);
-      window.removeEventListener("resize", checkMobile);
     };
   }, [bannerImages, isPlaying]);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % bannerImages.length);
-  };
-
-  const prevSlide = () => {
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % bannerImages.length);
+  const prevSlide = () =>
     setCurrentSlide((prev) => (prev - 1 + bannerImages.length) % bannerImages.length);
-  };
-
   const goToSlide = (index) => {
     setCurrentSlide(index);
     setIsPlaying(false);
@@ -121,7 +100,7 @@ export const Introduce = () => {
   // ==================== SKELETON ====================
   if (!isImageLoaded) {
     return (
-      <section className="w-full h-[60vh] flex items-center justify-center" aria-label="Loading Maxim Saigon">
+      <section className="w-full h-[50vh] flex items-center justify-center" aria-label="Loading Maxim Saigon">
         <div className="w-full h-full bg-gray-100 dark:bg-gray-900 animate-pulse"></div>
       </section>
     );
@@ -134,14 +113,13 @@ export const Introduce = () => {
       itemScope
       itemType="https://schema.org/Restaurant"
     >
-      {/* SEO: Hidden semantic info */}
       <meta itemProp="name" content={SEO_CONFIG.brandName} />
       <meta itemProp="telephone" content={SEO_CONFIG.phone} />
       <meta itemProp="servesCuisine" content="Asian, European, Fusion" />
       <meta itemProp="priceRange" content={SEO_CONFIG.priceRange} />
 
       {/* ==================== BANNER ==================== */}
-      <div className="relative w-full h-[60vh] md:h-[70vh]">
+      <div className="relative w-full h-[42vh] md:h-[52vh]">
         {bannerImages.map((image, index) => (
           <div
             key={index}
@@ -164,15 +142,19 @@ export const Introduce = () => {
           </div>
         ))}
 
-        {/* Overlay Content */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-12 md:pb-16">
+        {/* Overlay Content — font serif cao cấp */}
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-8 md:pb-10">
           <div className="text-center px-4">
             <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3"
+              className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold text-white mb-2 tracking-wide drop-shadow-lg"
               itemProp="name"
+              style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
             >
               {SEO_CONFIG.brandName}
-              <span className="block text-primary font-extrabold tracking-[0.25em] md:tracking-[0.35em] uppercase text-2xl md:text-3xl lg:text-4xl mt-2">
+              <span
+                className="block text-primary font-medium tracking-[0.3em] md:tracking-[0.45em] uppercase text-[10px] md:text-xs lg:text-sm mt-3"
+                style={{ fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif" }}
+              >
                 {SEO_CONFIG.tagline}
               </span>
             </h1>
@@ -180,42 +162,39 @@ export const Introduce = () => {
         </div>
 
         {/* Slide Navigation */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30">
-          <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full">
+        <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 z-30">
+          <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
             <button
               onClick={prevSlide}
-              className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-all"
+              className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-all"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-3.5 h-3.5" />
             </button>
-
-            <div className="flex gap-2 mx-4">
+            <div className="flex gap-1.5 mx-2">
               {bannerImages.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentSlide ? "bg-white w-8" : "bg-white/50 hover:bg-white/70"
+                  className={`h-1.5 rounded-full transition-all ${
+                    index === currentSlide ? "bg-white w-5" : "bg-white/50 hover:bg-white/70 w-1.5"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
-
             <button
               onClick={nextSlide}
-              className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-all"
+              className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-all"
               aria-label="Next slide"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
 
-        {/* Slide Counter */}
-        <div className="absolute top-4 right-4 z-30">
-          <div className="bg-black/40 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
+        <div className="absolute top-3 right-3 z-30">
+          <div className="bg-black/40 backdrop-blur-sm text-white px-2.5 py-0.5 rounded-full text-xs">
             {currentSlide + 1} / {bannerImages.length}
           </div>
         </div>
@@ -223,232 +202,129 @@ export const Introduce = () => {
 
       {/* ==================== CONTENT SECTION ==================== */}
       <div className="w-full bg-gradient-to-b from-black/5 to-background dark:from-black/20">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8 -mt-8 md:-mt-12 relative z-10">
-          {/* Stats Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8 md:mb-12">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 -mt-6 md:-mt-8 relative z-10">
+          {/* Stats Cards — nhỏ gọn */}
+          <div className="grid grid-cols-4 gap-2 md:gap-3 mb-5 md:mb-7">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={index}
-                  className="bg-card/90 backdrop-blur-md border border-border rounded-xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                  className="bg-card/90 backdrop-blur-md border border-border rounded-lg p-2 md:p-3 shadow-sm hover:shadow-md transition-all"
                 >
                   <div className="flex flex-col items-center text-center">
-                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                      <Icon className="w-6 h-6 md:w-7 md:h-7 text-primary" />
+                    <Icon className="w-4 h-4 md:w-5 md:h-5 text-primary mb-1" />
+                    <div className="text-base md:text-xl font-bold text-foreground leading-none">
+                      {stat.value}
                     </div>
-                    <div className="text-2xl md:text-3xl font-bold text-foreground mb-1">{stat.value}</div>
-                    <div className="text-sm md:text-base text-muted-foreground">{stat.label}</div>
+                    <div className="text-[10px] md:text-xs text-muted-foreground mt-1 leading-none">
+                      {stat.label}
+                    </div>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Main Content - 2 column layout */}
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
-            {/* Left Column */}
-            <div className="space-y-8">
-              <article className="bg-card rounded-2xl p-6 md:p-8 border border-border shadow-lg">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <ChefHat className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                      Welcome to {SEO_CONFIG.brandName}
-                    </h2>
-                    <p className="text-muted-foreground">Where Asian-European culinary excellence converges</p>
-                  </div>
-                </div>
-
-                <p className="text-foreground/80 leading-relaxed mb-6">
-                  <strong>{SEO_CONFIG.brandName}</strong> - Restaurant & Lounge offers a contemporary
-                  fusion dining experience in a sophisticatedly designed space. With our team of internationally
-                  experienced chefs and vibrant atmosphere, we are committed to creating memorable moments
-                  for every guest in the heart of Saigon.
+          {/* Main Content — 2 cột gọn */}
+          <div className="grid lg:grid-cols-2 gap-4 md:gap-6 pb-8">
+            {/* Left: Welcome */}
+            <article className="bg-card rounded-xl p-5 md:p-6 border border-border shadow-sm flex flex-col justify-center">
+              <div className="mb-3">
+                <h2 className="text-lg md:text-xl font-bold text-foreground leading-tight">
+                  Welcome to {SEO_CONFIG.brandName}
+                </h2>
+                <p className="text-xs md:text-sm text-muted-foreground mt-1">
+                  Modern Asian-European fusion.
                 </p>
+              </div>
 
-                <div className="flex flex-wrap gap-3">
-                  <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Asian-European Cuisine</span>
-                  <span className="px-3 py-1 bg-purple-500/10 text-purple-500 rounded-full text-sm">Nightly Live Music</span>
-                  <span className="px-3 py-1 bg-emerald-500/10 text-emerald-500 rounded-full text-sm">Premium Wine</span>
-                  <span className="px-3 py-1 bg-amber-500/10 text-amber-500 rounded-full text-sm">VIP Spaces</span>
-                </div>
-              </article>
+              <p className="text-foreground/80 text-sm leading-relaxed text-justify">
+                <strong>{SEO_CONFIG.brandName}</strong> - Restaurant & Lounge offers a contemporary
+                fusion dining experience in a sophisticatedly designed space. With internationally
+                experienced chefs and vibrant atmosphere, we create memorable moments in the heart of Saigon.
+              </p>
+            </article>
 
-              <div className="bg-card rounded-2xl p-6 md:p-8 border border-border shadow-lg">
-                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-6">
-                  <Sparkles className="w-6 h-6 text-primary inline-block mr-2" />
-                  Highlights
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
-                  {features.map((feature, index) => {
-                    const Icon = feature.icon;
-                    return (
-                      <div
-                        key={index}
-                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary/50 transition-colors"
-                      >
-                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <Icon className="w-5 h-5 text-primary" />
-                        </div>
-                        <span className="text-foreground font-medium text-sm md:text-base leading-snug">
-                          {feature.text}
-                        </span>
-                      </div>
-                    );
-                  })}
+            {/* Right: Contact + Booking gộp gọn */}
+            <div
+              className="bg-card rounded-xl p-4 md:p-6 border border-border shadow-sm flex flex-col"
+              itemProp="address"
+              itemScope
+              itemType="https://schema.org/PostalAddress"
+            >
+              <h3 className="text-base md:text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-red-500" />
+                Contact & Booking
+              </h3>
+
+              {/* Địa chỉ + giờ gọn */}
+              <div className="space-y-2 text-sm mb-4">
+                <p className="text-muted-foreground leading-snug" itemProp="streetAddress">
+                  {SEO_CONFIG.address.street}, {SEO_CONFIG.address.locality},{" "}
+                  <span itemProp="addressCountry">Vietnam</span>
+                </p>
+                <div className="flex items-start gap-1.5 text-muted-foreground">
+                  <Clock className="w-3.5 h-3.5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <div className="text-xs md:text-sm leading-relaxed">
+                    <span className="block">Mon – Fri: 11:00 – 24:00</span>
+                    <span className="block">Sat – Sun: 15:30 – 24:00</span>
+                  </div>
+                  <span className="flex items-center gap-1 text-green-500 text-xs ml-2 mt-0.5">
+                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                    Open
+                  </span>
                 </div>
               </div>
-            </div>
 
-            {/* Right Column */}
-            <div className="space-y-8">
-              <div
-                className="bg-card rounded-2xl p-6 md:p-8 border border-border shadow-lg"
-                itemProp="address"
-                itemScope
-                itemType="https://schema.org/PostalAddress"
-              >
-                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
-                  <MapPin className="w-6 h-6 text-red-500" />
-                  Contact & Location
-                </h3>
+              {/* Nút Hotline */}
+              <div className="mb-3">
+                <a
+                  href={`tel:${SEO_CONFIG.phone}`}
+                  className="flex items-center justify-center gap-2 px-3 py-2 bg-white text-black border border-black rounded-full hover:bg-black hover:text-white transition-all text-xs font-medium w-full"
+                  aria-label={`Call ${SEO_CONFIG.brandName} hotline ${SEO_CONFIG.phoneDisplay}`}
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  Hotline: {SEO_CONFIG.phoneDisplay}
+                </a>
+              </div>
 
-                <div className="space-y-6">
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <MapPin className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="text-muted-foreground" itemProp="streetAddress">
-                          {SEO_CONFIG.address.street}
-                          <br />
-                          <span itemProp="addressLocality">{SEO_CONFIG.address.locality}</span>,{" "}
-                          <span itemProp="addressCountry">Vietnam</span>
-                        </p>
-                      </div>
-                    </div>
+              {/* Book a Table full width */}
+              <div className="mt-auto">
+                <a
+                  href="https://zalo.me/84855873979"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group w-full px-4 py-2.5 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 font-bold text-sm shadow-md hover:shadow-lg"
+                  aria-label={`Book a table at ${SEO_CONFIG.brandName} via Zalo`}
+                >
+                  <Calendar className="w-4 h-4" />
+                  Book a Table Now
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
 
-                    {/* Hotline - clean white/black border style */}
+              {/* Social nhỏ gọn dưới cùng */}
+              <div className="flex justify-center gap-2 mt-3 pt-3 border-t border-border">
+                {[
+                  { icon: Instagram, href: SEO_CONFIG.socials.instagram, color: "bg-pink-500", label: `${SEO_CONFIG.brandName} Instagram` },
+                  { icon: Facebook, href: SEO_CONFIG.socials.facebook, color: "bg-blue-600", label: `${SEO_CONFIG.brandName} Facebook` },
+                  { icon: MessageCircle, href: SEO_CONFIG.socials.whatsapp, color: "bg-green-500", label: `${SEO_CONFIG.brandName} WhatsApp` },
+                ].map((social, index) => {
+                  const Icon = social.icon;
+                  return (
                     <a
-                      href={`tel:${SEO_CONFIG.phone}`}
-                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-black border border-black rounded-full hover:bg-black hover:text-white transition-all duration-300 font-medium text-sm shadow-sm hover:shadow-md"
-                      aria-label={`Call ${SEO_CONFIG.brandName} hotline ${SEO_CONFIG.phoneDisplay}`}
-                    >
-                      <Phone className="w-4 h-4" />
-                      Hotline: {SEO_CONFIG.phoneDisplay}
-                    </a>
-
-                    {/* Free interactive map - OpenStreetMap */}
-                    <div className="mt-2 overflow-hidden rounded-xl border border-border shadow-md">
-                      <iframe
-                        title={`${SEO_CONFIG.brandName} location map`}
-                        src={`https://www.openstreetmap.org/export/embed.html?bbox=${
-                          Number(SEO_CONFIG.longitude) - 0.004
-                        }%2C${
-                          Number(SEO_CONFIG.latitude) - 0.003
-                        }%2C${
-                          Number(SEO_CONFIG.longitude) + 0.004
-                        }%2C${
-                          Number(SEO_CONFIG.latitude) + 0.003
-                        }&layer=mapnik&marker=${
-                          SEO_CONFIG.latitude
-                        }%2C${SEO_CONFIG.longitude}`}
-                        className="w-full h-[280px] md:h-[320px] border-0"
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                      />
-
-                      <div className="px-3 py-2 bg-secondary/70 text-xs text-muted-foreground">
-                        © OpenStreetMap contributors
-                      </div>
-                    </div>
-
-                    {/* Open Google Maps - short link mở thẳng app trên mobile */}
-                    <a
-                      href={SEO_CONFIG.googleMapsUrl}
+                      key={index}
+                      href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-black border border-black rounded-full hover:bg-black hover:text-white transition-all duration-300 font-medium text-sm shadow-sm hover:shadow-md"
-                      aria-label={`View ${SEO_CONFIG.brandName} location on Google Maps`}
+                      className={`w-8 h-8 ${social.color} text-white rounded-full flex items-center justify-center hover:opacity-90 transition-all hover:scale-105 shadow-sm`}
+                      aria-label={social.label}
                     >
-                      <Navigation className="w-4 h-4" />
-                      View on Google Maps
+                      <Icon className="w-3.5 h-3.5" />
                     </a>
-                  </div>
-
-                  {/* Hours */}
-                  <div className="pt-6 border-t border-border">
-                    <h4 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                      <Clock className="w-5 h-5 text-green-500" />
-                      Opening Hours
-                    </h4>
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center py-2">
-                        <span className="text-foreground/70">Monday - Sunday</span>
-                        <span className="text-foreground font-bold">11:00 AM – 24:00 PM</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 mt-3 text-green-500">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-sm font-medium">Open now</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons & Social */}
-              <div className="space-y-6">
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <a
-                    href="https://zalo.me/84855873979"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex-1 px-6 py-3 md:py-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 font-bold text-base md:text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-                    aria-label={`Book a table at ${SEO_CONFIG.brandName} via Zalo`}
-                  >
-                    <Calendar className="w-5 h-5" />
-                    Book a Table Now
-                    <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-                  </a>
-
-                  <a
-                    href="#menu"
-                    className="flex-1 px-6 py-3 md:py-4 border border-primary text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-bold text-base md:text-lg text-center hover:-translate-y-0.5"
-                    aria-label={`View ${SEO_CONFIG.brandName} menu`}
-                  >
-                    View Menu
-                  </a>
-                </div>
-
-                <div className="bg-card rounded-2xl p-6 border border-border">
-                  <h4 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                    <Heart className="w-5 h-5 text-pink-500" />
-                    Connect with us
-                  </h4>
-                  <div className="flex justify-center gap-4">
-                    {[
-                      { icon: Instagram, href: SEO_CONFIG.socials.instagram, color: "bg-pink-500", label: `${SEO_CONFIG.brandName} Instagram` },
-                      { icon: Facebook, href: SEO_CONFIG.socials.facebook, color: "bg-blue-600", label: `${SEO_CONFIG.brandName} Facebook` },
-                      { icon: Phone, href: `tel:${SEO_CONFIG.phone}`, color: "bg-green-500", label: `Call ${SEO_CONFIG.brandName}` },
-                    ].map((social, index) => {
-                      const Icon = social.icon;
-                      return (
-                        <a
-                          key={index}
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`w-12 h-12 ${social.color} text-white rounded-full flex items-center justify-center hover:opacity-90 transition-all hover:scale-110 shadow-md`}
-                          aria-label={social.label}
-                        >
-                          <Icon className="w-5 h-5" />
-                        </a>
-                      );
-                    })}
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </div>
           </div>

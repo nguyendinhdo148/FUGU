@@ -197,7 +197,7 @@ export const Menu = () => {
           <SetMenu setMenus={setMenuData} />
 
           {/* Buffet Packages Section */}
-          <Buffet />
+          {/* <Buffet /> */}
         </div>
       </div>
     </section>

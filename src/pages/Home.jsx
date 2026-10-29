@@ -4,6 +4,7 @@ import { Navbar } from "@/component/Navbar";
 import { Introduce } from "@/component/Introduce";
 import { Menu } from "@/component/Menu";
 import { Table } from "@/component/DefaultTables";
+import { Map } from "@/component/Map"; // <-- Import Map ở đây
 import { useEffect } from "react";
 import { EntertainmentShow } from "../component/EntertainmentShow";
 import { Footer } from "@/component/Footter";
@@ -85,8 +86,12 @@ export const Home = () => {
         <Introduce />
         <Menu />
         <Table />
-        <Event />
-        <EntertainmentShow />
+        
+        {/* Đã gọi Map vào đây */}
+        <Map />
+        
+        {/* <Event />
+        <EntertainmentShow /> */}
       </main>
 
       <Footer />

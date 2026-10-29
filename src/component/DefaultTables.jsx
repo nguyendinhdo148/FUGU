@@ -60,64 +60,62 @@ export const Table = () => {
         content="Sơ đồ bàn Maxim Saigon - Nhà hàng Á Âu & Bar tại 13-15-17 Đồng Khởi, Quận 1, Sài Gòn. Tầng trệt và VIP Lounge tầng 2. Đặt bàn: 085 587 3979"
       />
 
-      {/* ==================== Header ==================== */}
+      {/* ==================== Header (Đồng bộ font chữ với Happy Hour) ==================== */}
       <header className="text-center mb-10 md:mb-16">
-        <div className="inline-block mb-4 md:mb-6">
-          <div
-            className="w-20 md:w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-3 md:mb-4"
-            aria-hidden="true"
-          ></div>
-          <span className="text-primary font-medium tracking-wider text-xs md:text-sm uppercase font-inter">
-            Restaurant Floor Plan
-          </span>
+        <div className="flex flex-col items-center gap-6">
+          <div className="space-y-2">
+            <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto mb-4"></div>
+            <span className="text-amber-600 font-semibold tracking-widest text-xs uppercase">
+              Restaurant Floor Plan
+            </span>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-serif tracking-tight"
+              itemProp="name"
+            >
+              Maxim Saigon Table Map
+            </h2>
+          </div>
         </div>
-        <h2
-          className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6 font-notoserif"
-          itemProp="name"
-        >
-          Maxim Saigon Table Map
-        </h2>
       </header>
 
       <div className="max-w-7xl mx-auto">
         {/* ==================== Floor Selection Tabs ==================== */}
-        {/* ==================== Floor Selection Tabs ==================== */}
-<div className="flex justify-center mb-6">
-  <div className="inline-flex items-center gap-1 bg-white border border-gray-200 rounded-full p-1 shadow-sm">
-    <button
-      onClick={() => {
-        setActiveFloor("ground");
-        setSelectedTable(null);
-      }}
-      role="tab"
-      aria-selected={activeFloor === "ground"}
-      aria-controls="panel-ground"
-      className={`px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
-        activeFloor === "ground"
-          ? "bg-gray-900 text-white shadow"
-          : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
-      }`}
-    >
-      Ground Floor
-    </button>
-    <button
-      onClick={() => {
-        setActiveFloor("vip");
-        setSelectedTable(null);
-      }}
-      role="tab"
-      aria-selected={activeFloor === "vip"}
-      aria-controls="panel-vip"
-      className={`px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
-        activeFloor === "vip"
-          ? "bg-gray-900 text-white shadow"
-          : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
-      }`}
-    >
-      VIP Lounge (2F)
-    </button>
-  </div>
-</div>
+        <div className="flex justify-center mb-6">
+          <div className="inline-flex items-center gap-1 bg-white border border-gray-200 rounded-full p-1 shadow-sm">
+            <button
+              onClick={() => {
+                setActiveFloor("ground");
+                setSelectedTable(null);
+              }}
+              role="tab"
+              aria-selected={activeFloor === "ground"}
+              aria-controls="panel-ground"
+              className={`px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
+                activeFloor === "ground"
+                  ? "bg-gray-900 text-white shadow"
+                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+              }`}
+            >
+              Ground Floor
+            </button>
+            <button
+              onClick={() => {
+                setActiveFloor("vip");
+                setSelectedTable(null);
+              }}
+              role="tab"
+              aria-selected={activeFloor === "vip"}
+              aria-controls="panel-vip"
+              className={`px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
+                activeFloor === "vip"
+                  ? "bg-gray-900 text-white shadow"
+                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+              }`}
+            >
+              VIP Lounge (2F)
+            </button>
+          </div>
+        </div>
 
         {/* ==================== Instruction Message ==================== */}
         {activeFloor === "ground" && !selectedTable && (
