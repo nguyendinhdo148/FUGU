@@ -142,13 +142,12 @@ export const Introduce = () => {
           </div>
         ))}
 
-        {/* Overlay Content — font serif cao cấp */}
+        {/* Overlay Content — Đồng bộ font chữ với các section khác */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-8 md:pb-10">
           <div className="text-center px-4">
             <h1
-              className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold text-white mb-2 tracking-wide drop-shadow-lg"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-serif tracking-tight drop-shadow-lg"
               itemProp="name"
-              style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
             >
               {SEO_CONFIG.brandName}
               <span
