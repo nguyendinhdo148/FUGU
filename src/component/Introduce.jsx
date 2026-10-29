@@ -120,7 +120,7 @@ export const Introduce = () => {
 
       {/* ==================== BANNER ==================== */}
             {/* ==================== BANNER ==================== */}
-      <div className="relative w-full h-[42vh] md:h-[52vh]">
+      <div className="relative w-full h-[45vh] md:h-[55vh] group">
         {bannerImages.map((image, index) => (
           <div
             key={index}
@@ -139,12 +139,12 @@ export const Introduce = () => {
               height="1080"
               decoding="async"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
           </div>
         ))}
 
-        {/* Overlay Content — Đẩy cao lên để nhường chỗ cho thanh slide */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-16 md:pb-12">
+        {/* Overlay Content */}
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 md:pb-16">
           <div className="text-center px-4">
             <h1
               className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-serif tracking-tight drop-shadow-lg"
@@ -161,42 +161,52 @@ export const Introduce = () => {
           </div>
         </div>
 
-        {/* Slide Navigation — Đẩy lên bottom-6 trên mobile, bottom-3 trên desktop */}
-        <div className="absolute bottom-6 md:bottom-4 left-1/2 transform -translate-x-1/2 z-30">
-          <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
+        {/* ==================== THANH CHUYỂN SLIDE MỚI ==================== */}
+        {/* Căn giữa dưới đáy, thiết kế tối giản, hiện đại */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-[200px] md:max-w-[300px] px-4">
+          <div className="flex items-center gap-3">
+            {/* Nút Prev */}
             <button
               onClick={prevSlide}
-              className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-all"
+              className="text-white/70 hover:text-white transition-colors"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="w-3.5 h-3.5" />
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
             </button>
-            <div className="flex gap-1.5 mx-2">
+
+            {/* Thanh Progress */}
+            <div className="flex-1 flex gap-1 h-1">
               {bannerImages.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    index === currentSlide ? "bg-white w-5" : "bg-white/50 hover:bg-white/70 w-1.5"
+                  className={`h-full flex-1 rounded-full transition-all duration-500 ${
+                    index === currentSlide 
+                      ? "bg-primary" // Thanh hiện tại màu chủ đạo (Cam)
+                      : index < currentSlide 
+                        ? "bg-white/80" // Các thanh đã qua màu trắng mờ
+                        : "bg-white/20 hover:bg-white/50" // Các thanh chưa tới
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
+
+            {/* Nút Next */}
             <button
               onClick={nextSlide}
-              className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-all"
+              className="text-white/70 hover:text-white transition-colors"
               aria-label="Next slide"
             >
-              <ChevronRight className="w-3.5 h-3.5" />
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
             </button>
           </div>
         </div>
 
-        {/* Slide Counter — Đẩy lên ngang hàng với nút để không bị đè */}
-        <div className="absolute top-4 right-4 z-30">
-          <div className="bg-black/40 backdrop-blur-sm text-white px-2.5 py-0.5 rounded-full text-xs">
-            {currentSlide + 1} / {bannerImages.length}
+        {/* Slide Counter - Chuyển xuống dưới góc trái cho tinh tế */}
+        <div className="absolute bottom-4 left-4 z-30 hidden md:block">
+          <div className="text-white/50 text-xs font-medium tracking-widest">
+            {String(currentSlide + 1).padStart(2, '0')} <span className="mx-1">/</span> {String(bannerImages.length).padStart(2, '0')}
           </div>
         </div>
       </div>
