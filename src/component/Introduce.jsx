@@ -142,17 +142,17 @@ export const Introduce = () => {
           </div>
         ))}
 
-        {/* Overlay Content — Đồng bộ font chữ với các section khác */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-8 md:pb-10">
+        {/* Overlay Content */}
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-12 md:pb-14">
           <div className="text-center px-4">
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-serif tracking-tight drop-shadow-lg"
               itemProp="name"
             >
               {SEO_CONFIG.brandName}
+              {/* Đã tăng size và dùng chung font-serif với Maxim Saigon */}
               <span
-                className="block text-primary font-medium tracking-[0.3em] md:tracking-[0.45em] uppercase text-[10px] md:text-xs lg:text-sm mt-3"
-                style={{ fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif" }}
+                className="block text-primary font-medium tracking-[0.2em] md:tracking-[0.3em] uppercase text-lg md:text-2xl lg:text-3xl mt-3 font-serif drop-shadow-md"
               >
                 {SEO_CONFIG.tagline}
               </span>
@@ -160,7 +160,7 @@ export const Introduce = () => {
           </div>
         </div>
 
-        {/* Slide Navigation */}
+        {/* Slide Navigation (Kiểu cũ) */}
         <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 z-30">
           <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
             <button
@@ -202,7 +202,7 @@ export const Introduce = () => {
       {/* ==================== CONTENT SECTION ==================== */}
       <div className="w-full bg-gradient-to-b from-black/5 to-background dark:from-black/20">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 -mt-6 md:-mt-8 relative z-10">
-          {/* Stats Cards — nhỏ gọn */}
+          {/* Stats Cards */}
           <div className="grid grid-cols-4 gap-2 md:gap-3 mb-5 md:mb-7">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
@@ -225,9 +225,8 @@ export const Introduce = () => {
             })}
           </div>
 
-          {/* Main Content — 2 cột gọn */}
+          {/* Main Content */}
           <div className="grid lg:grid-cols-2 gap-4 md:gap-6 pb-8">
-            {/* Left: Welcome */}
             <article className="bg-card rounded-xl p-5 md:p-6 border border-border shadow-sm flex flex-col justify-center">
               <div className="mb-3">
                 <h2 className="text-lg md:text-xl font-bold text-foreground leading-tight">
@@ -245,7 +244,6 @@ export const Introduce = () => {
               </p>
             </article>
 
-            {/* Right: Contact + Booking gộp gọn */}
             <div
               className="bg-card rounded-xl p-4 md:p-6 border border-border shadow-sm flex flex-col"
               itemProp="address"
@@ -257,7 +255,6 @@ export const Introduce = () => {
                 Contact & Booking
               </h3>
 
-              {/* Địa chỉ + giờ gọn */}
               <div className="space-y-2 text-sm mb-4">
                 <p className="text-muted-foreground leading-snug" itemProp="streetAddress">
                   {SEO_CONFIG.address.street}, {SEO_CONFIG.address.locality},{" "}
@@ -276,7 +273,6 @@ export const Introduce = () => {
                 </div>
               </div>
 
-              {/* Nút Hotline */}
               <div className="mb-3">
                 <a
                   href={`tel:${SEO_CONFIG.phone}`}
@@ -288,7 +284,6 @@ export const Introduce = () => {
                 </a>
               </div>
 
-              {/* Book a Table full width */}
               <div className="mt-auto">
                 <a
                   href="https://zalo.me/84855873979"
@@ -303,7 +298,6 @@ export const Introduce = () => {
                 </a>
               </div>
 
-              {/* Social nhỏ gọn dưới cùng */}
               <div className="flex justify-center gap-2 mt-3 pt-3 border-t border-border">
                 {[
                   { icon: Instagram, href: SEO_CONFIG.socials.instagram, color: "bg-pink-500", label: `${SEO_CONFIG.brandName} Instagram` },
