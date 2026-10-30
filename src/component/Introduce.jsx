@@ -152,10 +152,10 @@ export const Introduce = () => {
               {SEO_CONFIG.brandName}
               {/* Đã tăng size và dùng chung font-serif với Maxim Saigon */}
               <span
-                className="block text-primary font-medium tracking-[0.2em] md:tracking-[0.3em] uppercase text-lg md:text-2xl lg:text-3xl mt-3 font-serif drop-shadow-md"
-              >
-                {SEO_CONFIG.tagline}
-              </span>
+  className="block text-white font-medium tracking-[0.2em] md:tracking-[0.3em] uppercase text-lg md:text-2xl lg:text-3xl mt-3 font-serif drop-shadow-md"
+>
+  {SEO_CONFIG.tagline}
+</span>
             </h1>
           </div>
         </div>
