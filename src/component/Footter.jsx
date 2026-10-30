@@ -63,14 +63,14 @@ export const Footer = () => {
             >
               <Phone className="w-4 h-4" /> 085 587 3979
             </a>
-            <a
+            {/* <a
               href="mailto:info@maximsaignon.vn"
               className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors"
               aria-label="Email Maxim Saigon"
               itemProp="email"
             >
               <Mail className="w-4 h-4" /> info@maximsaignon.vn
-            </a>
+            </a> */}
           </div>
 
           {/* ==================== CTA ==================== */}
