@@ -20,7 +20,7 @@ const SEO_CONFIG = {
   phone: "+84855873979",
   phoneDisplay: "085 587 3979",
   email: "info@maximsaignon.vn",
-  url: "https://maximsaignon.vn",
+  url: "https://www.maximsaigon.vn/",
   priceRange: "$$$",
   cuisine: ["Asian", "European", "Fusion", "Contemporary"],
   latitude: "10.773256",

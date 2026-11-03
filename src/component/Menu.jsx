@@ -17,74 +17,74 @@ export const Menu = () => {
     "/bubble/3.jpg",
   ];
 
-  const happyHourDrinks = [
-    {
-      id: 1,
-      name: "Lychi Fizz",
-      description: "Refreshing lychee soda with mint and lime",
-      happyHourPrice: "89,000 VND",
-      originalPrice: "200,000 VND",
-      discount: "55% OFF",
-      image: "/happy_hour/2.jpg",
-      features: ["Fresh lychee", "Mint leaves", "Lime twist", "Sparkling soda"],
-      color: "from-pink-400 to-rose-500",
-    },
-    {
-      id: 2,
-      name: "Mango Japanese",
-      description: "Japanese-style mango mocktail with a tropical twist",
-      happyHourPrice: "95,000 VND",
-      originalPrice: "200,000 VND",
-      discount: "53% OFF",
-      image: "/happy_hour/2.jpg",
-      features: ["Fresh mango", "Japanese spices", "Ice cubes"],
-      color: "from-yellow-400 to-orange-500",
-    },
-    {
-      id: 3,
-      name: "Edible Sour",
-      description: "Unique sour cocktail with edible flower garnish",
-      happyHourPrice: "110,000 VND",
-      originalPrice: "250,000 VND",
-      discount: "56% OFF",
-      image: "/happy_hour/3.jpg",
-      features: ["Edible flowers", "Citrus mix", "Herbal infusion", "Special glass"],
-      color: "from-purple-400 to-violet-500",
-    },
-    {
-      id: 4,
-      name: "Youth",
-      description: "Vibrant fruit mix with fresh berries and herbs",
-      happyHourPrice: "85,000 VND",
-      originalPrice: "250,000 VND",
-      discount: "66% OFF",
-      image: "/happy_hour/4.jpg",
-      features: ["Mixed berries", "Fresh herbs", "Berry syrup"],
-      color: "from-blue-400 to-cyan-500",
-    },
-    {
-      id: 5,
-      name: "Midori Mist",
-      description: "Melon liqueur based cocktail with citrus twist",
-      happyHourPrice: "99,000 VND",
-      originalPrice: "250,000 VND",
-      discount: "60% OFF",
-      image: "/happy_hour/5.jpg",
-      features: ["Melon liqueur", "Citrus mix", "Mint garnish", "Chilled glass"],
-      color: "from-green-400 to-emerald-500",
-    },
-    {
-      id: 6,
-      name: "Maxim Sangria", // ✅ Đổi Fugu → Maxim
-      description: "Premium sangria with exotic fruit infusion",
-      happyHourPrice: "125,000 VND",
-      originalPrice: "250,000 VND",
-      discount: "50% OFF",
-      image: "/happy_hour/6.jpg",
-      features: ["Red wine base", "Exotic fruits", "Brandy infusion", "Cinnamon stick"],
-      color: "from-red-400 to-pink-500",
-    },
-  ];
+  // const happyHourDrinks = [
+  //   {
+  //     id: 1,
+  //     name: "Lychi Fizz",
+  //     description: "Refreshing lychee soda with mint and lime",
+  //     happyHourPrice: "89,000 VND",
+  //     originalPrice: "200,000 VND",
+  //     discount: "55% OFF",
+  //     image: "/happy_hour/2.jpg",
+  //     features: ["Fresh lychee", "Mint leaves", "Lime twist", "Sparkling soda"],
+  //     color: "from-pink-400 to-rose-500",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Mango Japanese",
+  //     description: "Japanese-style mango mocktail with a tropical twist",
+  //     happyHourPrice: "95,000 VND",
+  //     originalPrice: "200,000 VND",
+  //     discount: "53% OFF",
+  //     image: "/happy_hour/2.jpg",
+  //     features: ["Fresh mango", "Japanese spices", "Ice cubes"],
+  //     color: "from-yellow-400 to-orange-500",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Edible Sour",
+  //     description: "Unique sour cocktail with edible flower garnish",
+  //     happyHourPrice: "110,000 VND",
+  //     originalPrice: "250,000 VND",
+  //     discount: "56% OFF",
+  //     image: "/happy_hour/3.jpg",
+  //     features: ["Edible flowers", "Citrus mix", "Herbal infusion", "Special glass"],
+  //     color: "from-purple-400 to-violet-500",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Youth",
+  //     description: "Vibrant fruit mix with fresh berries and herbs",
+  //     happyHourPrice: "85,000 VND",
+  //     originalPrice: "250,000 VND",
+  //     discount: "66% OFF",
+  //     image: "/happy_hour/4.jpg",
+  //     features: ["Mixed berries", "Fresh herbs", "Berry syrup"],
+  //     color: "from-blue-400 to-cyan-500",
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Midori Mist",
+  //     description: "Melon liqueur based cocktail with citrus twist",
+  //     happyHourPrice: "99,000 VND",
+  //     originalPrice: "250,000 VND",
+  //     discount: "60% OFF",
+  //     image: "/happy_hour/5.jpg",
+  //     features: ["Melon liqueur", "Citrus mix", "Mint garnish", "Chilled glass"],
+  //     color: "from-green-400 to-emerald-500",
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Maxim Sangria", // ✅ Đổi Fugu → Maxim
+  //     description: "Premium sangria with exotic fruit infusion",
+  //     happyHourPrice: "125,000 VND",
+  //     originalPrice: "250,000 VND",
+  //     discount: "50% OFF",
+  //     image: "/happy_hour/6.jpg",
+  //     features: ["Red wine base", "Exotic fruits", "Brandy infusion", "Cinnamon stick"],
+  //     color: "from-red-400 to-pink-500",
+  //   },
+  // ];
 
   const setMenuData = [
     { id: 1, price: "1.200.000 VNĐ", image: "/setmenu/set1200.jpg", color: "from-amber-900 to-amber-700" },
@@ -183,7 +183,7 @@ export const Menu = () => {
           <Banner bannerImages={bannerImages} />
 
           {/* Happy Hour Special Promotion */}
-          <HappyHour drinks={happyHourDrinks} />
+          {/* <HappyHour drinks={happyHourDrinks} /> */}
 
           {/* Daily Menu Section */}
           <MenuDaily
