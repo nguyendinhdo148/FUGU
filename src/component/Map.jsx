@@ -7,12 +7,12 @@ export const Map = () => {
 
   return (
     <section 
-      id="map" 
-      className="w-full py-12 md:py-16 bg-background relative z-10"
-      itemScope 
-      itemType="https://schema.org/Place"
-      aria-label="Maxim Saigon Location Map"
-    >
+  id="map" 
+  className="w-full py-12 md:py-16 relative z-10"
+  itemScope 
+  itemType="https://schema.org/Place"
+  aria-label="Maxim Saigon Location Map"
+>
       {/* ==================== SEO: Hidden Semantic Info ==================== */}
       <meta itemProp="name" content="Maxim Saigon Location" />
       <meta itemProp="description" content="Bản đồ vị trí nhà hàng Maxim Saigon tại 13-15-17 Đồng Khởi, Quận 1, TP.HCM." />
