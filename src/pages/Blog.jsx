@@ -1,6 +1,5 @@
 
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -23,7 +22,7 @@ const BLOG_SEO = {
   image: "https://www.maximsaigon.vn/blog/1.jpg",
 };
 
-const images = Array.from({ length: 10 }, (_, index) => ({
+const images = Array.from({ length: 11 }, (_, index) => ({
   src: `/blog/${index + 1}.jpg`,
   alt: `Maxim Saigon dining and event experience ${index + 1}`,
 }));
@@ -80,6 +79,10 @@ export default function Blog() {
     setMeta("og:type", "article", true);
     setMeta("og:url", BLOG_SEO.url, true);
     setMeta("og:image", BLOG_SEO.image, true);
+    setMeta("robots", "index, follow, max-image-preview:large");
+    setMeta("og:site_name", "Maxim Saigon", true);
+    setMeta("og:locale", "en_US", true);
+    setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", BLOG_SEO.title);
     setMeta("twitter:description", BLOG_SEO.description);
     setMeta("twitter:image", BLOG_SEO.image);
@@ -96,9 +99,51 @@ export default function Blog() {
 
     canonical.setAttribute("href", BLOG_SEO.url);
 
+    // Structured data helps search engines understand this editorial page.
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": BLOG_SEO.title,
+      "description": BLOG_SEO.description,
+      "image": [BLOG_SEO.image],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": BLOG_SEO.url
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Maxim Saigon",
+        "url": "https://www.maximsaigon.vn/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maxim Saigon",
+        "url": "https://www.maximsaigon.vn/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.maximsaigon.vn/logotab2.jpg"
+        }
+      },
+      "inLanguage": "en"
+    };
+
+    let schemaScript = document.querySelector(
+      'script[data-blog-schema="maxim-blog"]'
+    );
+
+    if (!schemaScript) {
+      schemaScript = document.createElement("script");
+      schemaScript.type = "application/ld+json";
+      schemaScript.setAttribute("data-blog-schema", "maxim-blog");
+      document.head.appendChild(schemaScript);
+    }
+
+    schemaScript.textContent = JSON.stringify(structuredData);
+
     return () => {
       document.title =
         "Maxim Saigon | Restaurant & Lounge in Ho Chi Minh City";
+      schemaScript?.remove();
     };
   }, []);
 
@@ -373,13 +418,13 @@ export default function Blog() {
             <div className="grid md:grid-cols-2 gap-4 md:gap-6">
 
               <BlogImage
-                index={8}
+                index={9}
                 imageClass="aspect-[4/3]"
                 caption="09 — Maxim Saigon"
               />
 
               <BlogImage
-                index={9}
+                index={10}
                 imageClass="aspect-[4/3]"
                 caption="10 — An Evening at Maxim"
               />
@@ -387,15 +432,15 @@ export default function Blog() {
             </div>
 
             {/* CTA */}
-            <section className="bg-[#25231f] text-white mt-24">
+            <section className="bg-[#25231f] text-white mt-16 md:mt-20">
 
-              <div className="max-w-5xl mx-auto px-5 py-20 md:py-28 text-center">
+              <div className="max-w-5xl mx-auto px-5 py-12 md:py-16 text-center">
 
-                <span className="text-[10px] tracking-[0.3em] uppercase text-[#c5a47e]">
+                <span className="text-[9px] tracking-[0.28em] uppercase text-[#c5a47e]">
                   Discover Maxim Saigon
                 </span>
 
-                <h2 className="font-serif text-4xl md:text-6xl mt-7 leading-tight">
+                <h2 className="font-serif text-3xl md:text-5xl mt-4 leading-tight">
                   Your Next Memorable
                   <br />
                   <span className="italic text-[#c5a47e]">
@@ -403,18 +448,21 @@ export default function Blog() {
                   </span>
                 </h2>
 
-                <p className="text-white/60 text-sm leading-7 mt-7 max-w-xl mx-auto">
+                <p className="text-white/60 text-xs md:text-sm leading-6 mt-4 max-w-xl mx-auto">
                   Discover the dining atmosphere and experiences
                   waiting for you at Maxim Saigon.
                 </p>
 
-                <Link
-                  to="/"
-                  className="inline-flex items-center gap-4 border border-white/40 px-8 py-4 mt-9 text-[10px] tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all"
+                <a
+                  href="https://zalo.me/84855873979"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Book a table at Maxim Saigon via Zalo"
+                  className="inline-flex items-center gap-3 border border-white/40 px-6 py-3 mt-6 text-[9px] tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all"
                 >
-                  Explore Maxim
-                  <ArrowUpRight size={15} />
-                </Link>
+                  Booking Now
+                  <ArrowUpRight size={14} />
+                </a>
 
               </div>
             </section>
