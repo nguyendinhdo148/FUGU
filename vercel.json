@@ -1,9 +1,13 @@
-
 {
   "redirects": [
     {
       "source": "/our-story/",
       "destination": "/our-story",
+      "permanent": true
+    },
+    {
+      "source": "/blog/",
+      "destination": "/blog",
       "permanent": true
     }
   ],
@@ -11,6 +15,10 @@
     {
       "source": "/our-story",
       "destination": "/our-story.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog.html"
     },
     {
       "source": "/(.*)",
