@@ -42,7 +42,7 @@ export const Footer = () => {
 
               {/* Instagram */}
               <a
-                href="https://www.instagram.com/maximsaignon"
+                href="https://www.instagram.com/maximsaigon/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 bg-pink-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition"
@@ -53,7 +53,7 @@ export const Footer = () => {
 
               {/* Facebook */}
               <a
-                href="https://www.facebook.com/maximsaignon"
+                href="https://www.facebook.com/profile.php?id=61596058165185"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center hover:scale-110 transition"

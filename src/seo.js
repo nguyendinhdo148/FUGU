@@ -54,8 +54,8 @@ export const createStoryStructuredData = () => ({
       "https://maps.app.goo.gl/3Var6ERf4p23butF8",
 
     sameAs: [
-      "https://www.instagram.com/maiximsaigon/",
-      "https://www.facebook.com/profile.php?id=61594056338036",
+      "https://www.instagram.com/maximsaigon/",
+      "https://www.facebook.com/profile.php?id=61596058165185",
       "https://wa.me/84855873979",
     ],
   },

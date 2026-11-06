@@ -28,8 +28,8 @@ const SEO_CONFIG = {
   longitude: "106.706019",
   googleMapsUrl: "https://maps.app.goo.gl/3Var6ERf4p23butF8",
   socials: {
-    instagram: "https://www.instagram.com/maiximsaigon/",
-    facebook: "https://www.facebook.com/profile.php?id=61594056338036",
+    instagram: "https://www.instagram.com/maximsaigon/",
+    facebook: "https://www.facebook.com/profile.php?id=61596058165185",
     whatsapp: "https://wa.me/84855873979",
   },
 };
