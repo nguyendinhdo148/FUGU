@@ -34,6 +34,37 @@
   opacity: 0.58;
 }
 
+.our-story-surface {
+  background-color: transparent;
+}
+
+.dark .our-story-surface {
+  background-color: rgb(8 15 28 / 0.24);
+}
+
+.dark .our-story-surface .text-stone-900,
+.dark .our-story-surface .text-stone-800 {
+  color: #f8fafc;
+}
+
+.dark .our-story-surface .text-stone-700,
+.dark .our-story-surface .text-stone-600,
+.dark .our-story-surface .text-stone-500 {
+  color: #cbd5e1;
+}
+
+.dark .our-story-surface .text-stone-400 {
+  color: #94a3b8;
+}
+
+.dark .our-story-surface [class~="border-stone-300/60"] {
+  border-color: rgb(226 232 240 / 0.3);
+}
+
+.dark .our-story-surface [class~="bg-stone-200"] {
+  background-color: #334155;
+}
+
 .christmas-background__sleigh {
   position: absolute;
   display: block;

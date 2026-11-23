@@ -297,7 +297,7 @@ export const OurStory = () => {
         `}</style>
 
         {/* ════════ PAGE CONTENT — warm cream canvas ════════ */}
-        <div className="bg-[#f5f2ec] text-stone-900">
+        <div className="our-story-surface text-stone-900">
           {/* ──── HERO ──── */}
           <section className="px-6 md:px-10 pt-20 md:pt-28 pb-16 md:pb-24">
             <div className="max-w-6xl mx-auto">
