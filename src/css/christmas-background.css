@@ -49,6 +49,31 @@
     christmas-sleigh-path 42s linear 3s infinite;
 }
 
+.christmas-background__snow,
+.christmas-background__snowflake {
+  position: absolute;
+  inset: 0;
+}
+
+.christmas-background__snowflake {
+  inset: -8px auto auto;
+  z-index: 2;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 6px 1px #fff9;
+  animation: christmas-snowfall linear infinite;
+}
+
+@keyframes christmas-snowfall {
+  from {
+    transform: translate3d(0, -5vh, 0);
+  }
+
+  to {
+    transform: translate3d(28px, 105vh, 0);
+  }
+}
+
 @keyframes christmas-sleigh-frames {
   to { background-position: -1080px 0; }
 }
@@ -66,5 +91,9 @@
 
   .christmas-background__sleigh {
     animation: none;
+  }
+
+  .christmas-background__snow {
+    display: none;
   }
 }
