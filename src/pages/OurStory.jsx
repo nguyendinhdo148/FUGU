@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { ThemeToggle } from "@/component/ThemeToggle";
 import { StarBackground } from "@/component/StarBackground";
+import { ChristmasBackground } from "@/component/ChristmasBackground";
 import { Navbar } from "@/component/Navbar";
 import { Footer } from "@/component/Footter";
 import { useFullscreen } from "@/component/hooks/useFullscreen";
@@ -276,6 +277,7 @@ export const OurStory = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <ThemeToggle />
+      <ChristmasBackground />
       <StarBackground />
       <Navbar toggleFullscreen={toggleFullscreen} isFullscreen={isFullscreen} />
 

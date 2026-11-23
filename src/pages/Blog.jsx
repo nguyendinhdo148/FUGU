@@ -10,6 +10,7 @@ import {
 
 import { ThemeToggle } from "@/component/ThemeToggle";
 import { StarBackground } from "@/component/StarBackground";
+import { ChristmasBackground } from "@/component/ChristmasBackground";
 import { Navbar } from "@/component/Navbar";
 import { Footer } from "@/component/Footter";
 import { useFullscreen } from "@/component/hooks/useFullscreen";
@@ -152,6 +153,7 @@ export default function Blog() {
 
       {/* Existing website background */}
       <ThemeToggle />
+      <ChristmasBackground />
       <StarBackground />
 
       {/* Existing Navbar */}

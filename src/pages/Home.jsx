@@ -1,5 +1,6 @@
 import { ThemeToggle } from "@/component/ThemeToggle";
 import { StarBackground } from "@/component/StarBackground";
+import { ChristmasBackground } from "@/component/ChristmasBackground";
 import { Navbar } from "@/component/Navbar";
 import { Introduce } from "@/component/Introduce";
 import { Menu } from "@/component/Menu";
@@ -64,6 +65,7 @@ export const Home = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <ThemeToggle />
+      <ChristmasBackground />
       <StarBackground />
 
       <Navbar toggleFullscreen={toggleFullscreen} isFullscreen={isFullscreen} />

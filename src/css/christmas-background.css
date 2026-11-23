@@ -1,0 +1,70 @@
+.christmas-background {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+.christmas-background__day,
+.christmas-background__night {
+  position: absolute;
+  inset: 0;
+  background-position: center 58%;
+  background-size: cover;
+  opacity: 1;
+  transition: opacity 1.2s ease;
+}
+
+.christmas-background__day {
+  background-image: url("../image/christmas-festive-garden-day-v1-2x.jpg");
+}
+
+.christmas-background__night {
+  background-image: url("../image/christmas-festive-garden-night-v1-2x.jpg");
+  opacity: 0;
+}
+
+.dark .christmas-background__day {
+  opacity: 0;
+}
+
+.dark .christmas-background__night {
+  opacity: 0.58;
+}
+
+.christmas-background__sleigh {
+  position: absolute;
+  display: block;
+  background-repeat: no-repeat;
+  top: 4%;
+  left: 0;
+  width: 216px;
+  height: 108px;
+  background-image: url("../image/santa-sleigh-loading.png");
+  background-size: 1080px 648px;
+  animation:
+    christmas-sleigh-frames 1.2s steps(5) infinite,
+    christmas-sleigh-path 42s linear 3s infinite;
+}
+
+@keyframes christmas-sleigh-frames {
+  to { background-position: -1080px 0; }
+}
+
+@keyframes christmas-sleigh-path {
+  from { translate: -240px 0; }
+  to { translate: calc(100vw + 240px) 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .christmas-background__day,
+  .christmas-background__night {
+    transition: none;
+  }
+
+  .christmas-background__sleigh {
+    animation: none;
+  }
+}
